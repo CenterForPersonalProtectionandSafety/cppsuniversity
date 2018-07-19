@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // ga('create','UA-XXXXX-X','auto');ga('send','pageview');
 </script>
 
-<div class="container">
+<div class="container footer">
         <div class="row">
                 <div class="col-sm-12 text-center">
                         <footer><font color='white'><br>&copy;

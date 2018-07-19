@@ -4,7 +4,8 @@
 }
 
 body {
-    background-color: #00315c;
+    /*background-color: #00315c;*/
+    background-color: white;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -27,9 +28,9 @@ body {
 .mybutton {
     font-family: Arial;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 15px;
     background: #00315c;
-    padding: 10px 20px 10px 20px;
+    padding: 6px 12px 6px 12px;
     text-decoration: none;
 }
 
@@ -57,6 +58,11 @@ body {
     margin-bottom: 64px;
 }
 
+.img-course {
+    width: 300px;
+    height: auto;
+}
+
 .loginbottomspace {
     margin-bottom: 136px;
 }
@@ -70,7 +76,7 @@ body {
 }
 
 .indexwelcometo {
-    font-size: 32px;
+    font-size: 22px;
     margin-bottom: 0px;
     font-weight: 500;
 }
@@ -82,20 +88,20 @@ body {
 }
 
 .indexbar1 {
-    padding-top: 32px;
-    padding-bottom: 62px;
+    padding-top: 16px;
+    padding-bottom: 40px;
 }
 
 .indexbar2 {
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding-top: 16px;
+    padding-bottom: 12px;
     background-color: #551503;
 }
 
 .indexdescription {
-    padding-left: 300px;
-    padding-right: 300px;
-    font-size: 22px;
+    padding-left: 500px;
+    padding-right: 500px;
+    font-size: 16px;
     color: white;
 }
 
@@ -125,14 +131,14 @@ body {
 }
 
 .previewtitle {
-    font-size: 32px;
+    font-size: 22px;
     margin-top: -2px;
     font-weight: 600;
 }
 
 .previewdescription {
     margin-bottom: 32px;
-    font-size: 22px;
+    font-size: 14px;
     margin-top: 0px;
 }
 
@@ -149,14 +155,16 @@ body {
 }
 
 .indexbaradmin1 {
-    padding-top: 32px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: 16px;
     background-color: #f2f2f2;
 }
 
 .indexdashboard {
     font-weight: 600;
     margin-top: 0px;
+    margin-bottom: 6px;
+    font-size: 22px;
 }
 
 .viewcoursep {
@@ -231,4 +239,67 @@ body {
 .managercheck {
     margin-top: 0;
     margin-bottom: 32px;
+}
+
+/* ---- usersc/login.php ---- */
+
+.login-logo {
+    width: 300px;
+    height: auto;
+}
+
+.forgot-password-row {
+    margin-bottom: 70px;
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    #login-row {
+        padding-left: 140px;
+        padding-right: 140px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+    #login-row {
+        padding-left: 250px;
+        padding-right: 250px;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    #login-row {
+        padding-left: 350px;
+        padding-right: 350px;
+    }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #00315c;
 }
