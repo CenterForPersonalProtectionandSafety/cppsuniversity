@@ -1,4 +1,7 @@
 <?php
+/*
+Set complete_tier3 to YES
+*/
 
 //it grabs the init file, wherever it is located relative to the parser file itself
 require_once '../users/init.php';

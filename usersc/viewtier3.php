@@ -1,4 +1,10 @@
 <?php
+/*
+SCORM Player - Tier 3
+*/
+?>
+
+<?php
 require_once '../users/init.php';
 require_once $abs_us_root.$us_url_root.'users/includes/header.php';
 require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
@@ -14,17 +20,45 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
     </div> <!-- /.container -->
 </div> <!-- /.wrapper -->
 
-
-<!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
-
 <!-- Place any per-page javascript here -->
 <script>
-    function patrick() {
+    function scormIsComplete() {
         //my code goes here
         jQuery.ajax({
-            url:"parser_tier3.php",
+            url:"parsers/tier3_iscomplete.php",
             method:"POST",
+            success: function() {
+                console.log('success');
+                window.close();
+            },
+            error: function(xhr, error, thrownError) {
+                console.log(xhr, error, thrownError);
+            }
+        });
+
+        console.log('scormIsComplete function fired');
+    }
+    
+    function scormSaveTime(mytime) {
+        jQuery.ajax({
+            url:"parsers/tier3_savetime.php",
+            method:"POST",
+            data:{mybookmark:mytime},
+            success: function() {
+                console.log('success');
+            },
+            error: function(xhr, error, thrownError) {
+                console.log(xhr, error, thrownError);
+            }
+        });
+    }
+    
+    function scormGetTime() {
+        //my code goes here
+        var mytime = jQuery.ajax({
+            url:"parsers/tier3_gettime.php",
+            method:"POST",
+            async: false,
             success: function() {
                 console.log('success');
             },
@@ -33,10 +67,17 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
             }
         });
 
-        console.log('patrick function fired');
+        console.log('scormGetTime function fired');
+        
+        return mytime;
+    }
+    
+    function leave() {
+        //window.top.location = 'http://34.217.67.239/';
+        window.close();
     }
 
-    //patrick();
+    //scormIsComplete();
 </script>
 <script>
     (function(){
@@ -178,7 +219,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
             this.LMSInitialize=function(arg)
             {  
                 console.log('lmsinit');
-                //patrick();
+                //scormIsComplete();
 
                 var success = this.api.LMSInitialize(arg);
                 this.lastCmd = "LMSInitialize('" + arg + "') = " + success;
@@ -208,14 +249,14 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
             this.LMSFinish=function(arg)
             {
                 //my code goes here
-                //patrick();
+                //scormIsComplete();
                 console.log('lmsfinish');
                 var isCompleted = this.LMSGetValue('cmi.core.lesson_status');
                 console.log(isCompleted);
 
                 if (isCompleted == 'passed' || isCompleted == 'completed') 
                 {
-                    patrick();
+                    scormIsComplete();
                 }
 
                 var success = this.api.LMSFinish(arg);
@@ -249,12 +290,23 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
                         }
                     }
                 }
+                
+                if (isCompleted != 'passed' && isCompleted != 'completed') {
+                    leave();   
+                }
+                
                 return success;
             };
             // LMSGetValue
             this.LMSGetValue=function(name)
             {
-                var value = unescape(this.api.LMSGetValue(name));
+                //my code
+                if (name == 'cmi.core.session_time') {
+                    //var value = '0000:00:00.00';
+                    var value = scormGetTime();
+                } else {
+                    var value = unescape(this.api.LMSGetValue(name));
+                }
                 this.lastCmd = "LMSGetValue('" + name + "') = " + value;
                 this.logCommand();
                 return value;
@@ -263,6 +315,12 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
             this.LMSSetValue=function(name, value)
             {
 
+                if (name == 'cmi.core.session_time') {
+                    //scormSaveTime(value);
+                    var mytime = value;
+                    scormSaveTime(mytime);
+                }
+                
                 var success = this.api.LMSSetValue(name, escape(value));
                 this.lastCmd = "LMSSetValue('" + name + "','" + value + "') = " + success;
                 this.logCommand();
@@ -513,7 +571,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
                 initTimeout = 0;
                 timeoutErrorDisplayed = false;
                 //            var launchFileAltVal = $('launchFileAlt').value;
-                var launchFileAltVal = '../../MYCODE/Tier3New/index_lms.html';
+                var launchFileAltVal = 'SCORM/Tier3/index_lms.html';
                 //            var cookieNameAltVal = $('cookieNameAlt').value;
                 if(launchFileAltVal.length > 0)
                 {
@@ -2899,10 +2957,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 </script>
 
 <script>
-    //my code goes here
-    //patrick();
     Utils.launchSCO();
-    //patrick();
 </script>
 
 <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

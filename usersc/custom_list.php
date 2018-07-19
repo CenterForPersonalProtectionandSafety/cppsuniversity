@@ -1,3 +1,9 @@
+<?php
+/*
+Admin Dashboard ex. page
+*/
+?>
+
 <?php require_once '../users/init.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
@@ -208,8 +214,8 @@ $random_password = random_password();
                                 <table id="paginate" class='table table-hover table-list-search'>
                                     <thead>
                                         <tr>
-                                            <th></th><th></th><th>Username</th><th>Name</th><th>Email</th>
-                                            <th>Last Sign In</th><?php if($act==1) {?><th>Verified</th><?php } ?><th>WPV</th><th>EGML</th>
+                                            <th>Name</th><th>Email</th>
+                                            <th>Last Sign In</th><?php if($act==1) {?><th>Verified</th><?php } ?><th>WPV</th><th>EGML</th><th>WLS</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -218,9 +224,6 @@ $random_password = random_password();
                                         foreach ($userData as $v1) {
                                         ?>
                                         <tr>
-                                            <td><a class="nounderline" href='admin_user.php?id=<?=$v1->id?>'><?=$v1->id?></a></td>
-                                            <td><?php if($v1->force_pr==1) {?><font color="red"><i class="glyphicon glyphicon-lock"></i></font><?php } ?></td>
-                                            <td><a class="nounderline" href='admin_user.php?id=<?=$v1->id?>'><?=$v1->username?></a></td>
                                             <td><?=$v1->fname?> <?=$v1->lname?></td>
                                             <td><?=$v1->email?></td>
                                             <td><?php if($v1->last_login != 0) { echo $v1->last_login; } else {?> <i>Never</i> <?php }?></td>
@@ -233,6 +236,8 @@ $random_password = random_password();
                                             <td><?php if($v1->complete_tier2==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
                                             
                                             <td><?php if($v1->complete_tier3==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+                                            
+                                            <td><?php if($v1->complete_wls==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
