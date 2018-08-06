@@ -89,7 +89,7 @@ body {
 
 .indexbar1 {
     padding-top: 16px;
-    padding-bottom: 40px;
+    padding-bottom: 16px;
 }
 
 .indexbar2 {
@@ -99,35 +99,37 @@ body {
 }
 
 .indexdescription {
-    padding-left: 500px;
-    padding-right: 500px;
+    padding-left: 600px;
+    padding-right: 600px;
     font-size: 16px;
-    color: white;
+    margin-top: 16px;
+    margin-bottom: 10px;
 }
 
 .playdescription {
-    padding-left: 300px;
-    padding-right: 300px;
-    font-size: 22px;
+    padding-left: 380px;
+    padding-right: 380px;
+    font-size: 18px;
     color: black;
     margin-bottom: 32px;
+    text-align: justify;
 }
 
 .indexbar3 {
     padding-top: 32px;
-    padding-bottom: 32px;
+    padding-bottom: 16px;
     background-color: white;
 }
 
 .indexbar4 {
-    padding-top: 32px;
+    padding-top: 16px;
     padding-bottom: 32px;
-    background-color: #f6f6f6;
+    background-color: white;
 }
 
 .indexrow {
-    margin-left: 64px;
-    margin-right: 64px;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 .previewtitle {
@@ -137,7 +139,7 @@ body {
 }
 
 .previewdescription {
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     font-size: 14px;
     margin-top: 0px;
 }
@@ -158,6 +160,12 @@ body {
     padding-top: 10px;
     padding-bottom: 16px;
     background-color: #f2f2f2;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.indexbaradmin-row {
+    margin-left: -6px;
 }
 
 .indexdashboard {
@@ -173,7 +181,7 @@ body {
 }
 
 .myjumbo {
-    background: url(/usersc/images/tier2_banner_new.jpg) no-repeat center center;
+    background: url(/usersc/images/tier2_banner_new_blue.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -193,7 +201,7 @@ body {
 }
 
 .myjumbo3 {
-    background: url(/usersc/images/tier2_banner_new.jpg) no-repeat center center;
+    background: url(/usersc/images/tier2_banner_new_blue.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -239,6 +247,28 @@ body {
 .managercheck {
     margin-top: 0;
     margin-bottom: 32px;
+}
+
+.row-card-left {
+    padding-left: 16px;
+    padding-right: 8px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #f6f6f6;
+    margin-right: 0px;
+}
+
+.row-card-right {
+    padding-left: 8px;
+    padding-right: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #f6f6f6;
+    margin-left: 0px;
+}
+
+.index-logo {
+    margin-left: 16px;
 }
 
 /* ---- usersc/login.php ---- */
