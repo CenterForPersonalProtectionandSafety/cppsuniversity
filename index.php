@@ -17,7 +17,7 @@ if(isset($user) && $user->isLoggedIn()){
     <div class="container-fluid indexbar1">
         <!-- <p class="indexwelcometo">WELCOME TO</p> -->
         <div class="text-center">
-            <img src="/lms_master/lms_master/usersc/images/universitylogo.png" alt="..." class="index-logo" width="160px" height="auto">
+            <img src="/lms_master/usersc/images/universitylogo.png" alt="..." class="index-logo" width="160px" height="auto">
         </div>
         <div class="text-justify">
             <p class="indexdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -29,7 +29,7 @@ if(isset($user) && $user->isLoggedIn()){
             <div class="col-md-2">
                 <div class="text-center indexbaradmin1">
                     <h2 class="indexdashboard">Manager Dashboard</h2>
-                    <a href="/lms_master/lms_master/usersc/custom_list.php" class="button is-white mybutton">TAKE ME TO DASHBOARD</a>
+                    <a href="/lms_master/usersc/custom_list.php" class="button is-white mybutton">TAKE ME TO DASHBOARD</a>
                 </div>
             </div>
         </div>
@@ -41,16 +41,16 @@ if(isset($user) && $user->isLoggedIn()){
                 <div class="row indexrow row-card-left">
                     <div class="previewcol col-md-4">
                         <?php if ($user->data()->complete_wls == 0){ ?>
-                        <img class="img-responsive img-course" src="/lms_master/lms_master/usersc/images/tier2.jpg" alt="">
+                        <img class="img-responsive img-course" src="/lms_master/usersc/images/tier2.jpg" alt="">
                         <?php } ?>
                         <?php if ($user->data()->complete_wls == 1){ ?>
-                        <img class="img-responsive img-course" src="/lms_master/lms_master/usersc/images/wls_watched.jpg" alt="">
+                        <img class="img-responsive img-course" src="/lms_master/usersc/images/wls_watched.jpg" alt="">
                         <?php } ?>
                     </div>
                     <div class="previewcol col-md-8 text-col">
                         <h1 class="previewtitle">When Lightning Strikes</h1>
                         <p class="previewdescription text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <a href="/lms_master/lms_master/usersc/wls_page.php" target="" class="button is-white mybutton">
+                        <a href="/lms_master/usersc/wls_page.php" target="" class="button is-white mybutton">
                             <?php if ($user->data()->complete_wls == 0){ ?>
                             TAKE ME TO VIDEO
                             <?php } ?>
@@ -65,16 +65,16 @@ if(isset($user) && $user->isLoggedIn()){
                 <div class="row indexrow row-card-right">
                     <div class="previewcol col-md-4">
                         <?php if ($user->data()->complete_tier2 == 0){ ?>
-                        <img class="img-responsive img-course" src="/lms_master/lms_master/usersc/images/tier2_new.jpg" alt="Generic placeholder image">
+                        <img class="img-responsive img-course" src="/lms_master/usersc/images/tier2_new.jpg" alt="Generic placeholder image">
                         <?php } ?>
                         <?php if ($user->data()->complete_tier2 == 1){ ?>
-                        <img class="img-responsive img-course" src="/lms_master/lms_master/usersc/images/tier2_watched.jpg" alt="Generic placeholder image">
+                        <img class="img-responsive img-course" src="/lms_master/usersc/images/tier2_watched.jpg" alt="Generic placeholder image">
                         <?php } ?>
                     </div>
                     <div class="previewcol col-md-8 text-col">
                         <h1 class="previewtitle">Workplace Violence Prevention and Response for Employees</h1>
                         <p class="previewdescription text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <a href="/lms_master/lms_master/usersc/tier2page.php" target="" class="button is-white mybutton">
+                        <a href="/lms_master/usersc/tier2page.php" target="" class="button is-white mybutton">
                             <?php if ($user->data()->complete_tier2 == 0){ ?>
                             TAKE ME TO COURSE
                             <?php } ?>
@@ -94,16 +94,16 @@ if(isset($user) && $user->isLoggedIn()){
                 <div class="row indexrow row-card-left">
                     <div class="previewcol col-md-4">
                         <?php if ($user->data()->complete_tier3 == 0){ ?>
-                        <img class="img-responsive img-course" src="/lms_master/lms_master/usersc/images/tier3.jpg" alt="Generic placeholder image">
+                        <img class="img-responsive img-course" src="/lms_master/usersc/images/tier3.jpg" alt="Generic placeholder image">
                         <?php } ?>
                         <?php if ($user->data()->complete_tier3 == 1){ ?>
-                        <img class="img-responsive img-course" src="/lms_master/lms_master/usersc/images/tier3_watched.jpg" alt="Generic placeholder image">
+                        <img class="img-responsive img-course" src="/lms_master/usersc/images/tier3_watched.jpg" alt="Generic placeholder image">
                         <?php } ?>
                     </div>
                     <div class="previewcol col-md-8 text-col">
                         <h1 class="previewtitle">Enhanced Guidance for Managers and Leaders</h1>
                         <p class="previewdescription text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <a href="/lms_master/lms_master/usersc/tier3page.php" target="" class="button is-white mybutton">
+                        <a href="/lms_master/usersc/tier3page.php" target="" class="button is-white mybutton">
                             <?php if ($user->data()->complete_tier3 == 0){ ?>
                             TAKE ME TO COURSE
                             <?php } ?>
