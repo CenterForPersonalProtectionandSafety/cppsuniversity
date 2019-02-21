@@ -688,7 +688,7 @@ $token = Token::generate();
         </div>
       </div></a>
       <br>
-      <?php require_once("../lms_master/usersc/includes/admin_panel_buttons.php"); ?>
+      <?php require_once("../usersc/includes/admin_panel_buttons.php"); ?>
     </div>
 
     <?=resultBlock($errors,$successes);?>

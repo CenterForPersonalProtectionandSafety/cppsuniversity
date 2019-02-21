@@ -39,7 +39,7 @@ while(!feof($file)){
 }
 fclose($file);
 
-//sample text: $path=('/','/users/','/lms_master/usersc/');
+//sample text: $path=('/','/users/','/usersc/');
 //Get array of paths, with quotes removed
 $lineLength=strlen($currentLine);
 $pathString=str_replace("'","",substr($currentLine,7,$lineLength-11));
