@@ -28,7 +28,7 @@ $GLOBALS['config'] = array(
 'host'         => 'localhost',
 'username'     => 'root',
 'password'     => '1357RiskyDiscos!',
-'db'           => 'university',
+'db'           => 'userspicedb',
 ),
 'remember'        => array(
   'cookie_name'   => 'pmqesoxiw318374csb',
