@@ -12,7 +12,7 @@ if(isset($user) && $user->isLoggedIn()){
     <div class="container-fluid indexbar1">
         <div class="text-center">
             <p class="indexwelcometo">WELCOME TO</p>
-            <img src="/users/images/universitylogo.png" alt="..." class="">
+            <img src="/usersc/images/universitylogo.png" alt="..." class="">
         </div>
     </div>
     <div class="container-fluid indexbar2">
@@ -24,7 +24,7 @@ if(isset($user) && $user->isLoggedIn()){
     <div class="container-fluid indexbaradmin1">
         <div class="text-center">
             <h2 class="indexdashboard">Admin Dashboard</h2>
-            <a href="/users/custom_list.php" target="_blank" class="button is-white mybutton">TAKE ME TO USER LIST</a>
+            <a href="/usersc/custom_list.php" target="_blank" class="button is-white mybutton">TAKE ME TO USER LIST</a>
         </div>
     </div>
     <?php } //is user an admin ?>
@@ -32,16 +32,16 @@ if(isset($user) && $user->isLoggedIn()){
         <div class="row indexrow">
             <div class="previewcol col-md-4">
                 <?php if ($user->data()->complete_wls == 0){ ?>
-                <img class="img-responsive" src="/users/images/tier2.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/wls.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_wls == 1){ ?>
-                <img class="img-responsive" src="/users/images/wls_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/wls_watched.jpg" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">
                 <h1 class="previewtitle">When Lightning Strikes</h1>
                 <p class="previewdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="/users/wls_page.php" target="" class="button is-white mybutton">
+                <a href="/usersc/wls_page.php" target="" class="button is-white mybutton">
                     <?php if ($user->data()->complete_wls == 0){ ?>
                     TAKE ME TO VIDEO
                     <?php } ?>
@@ -52,20 +52,20 @@ if(isset($user) && $user->isLoggedIn()){
             </div>
         </div>
     </div>
-    <div class="container-fluid indexbar4">
+    <div class="container-fluid indexbar3">
         <div class="row indexrow">
             <div class="previewcol col-md-4">
                 <?php if ($user->data()->complete_tier2 == 0){ ?>
-                <img class="img-responsive" src="/users/images/tier2_new.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/tier2_new.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_tier2 == 1){ ?>
-                <img class="img-responsive" src="/users/images/tier2_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/tier2_watched.jpg" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">
                 <h1 class="previewtitle">Workplace Violence Prevention and Response for Employees</h1>
                 <p class="previewdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="/users/tier2page.php" target="" class="button is-white mybutton">
+                <a href="/usersc/tier2page.php" target="" class="button is-white mybutton">
                     <?php if ($user->data()->complete_tier2 == 0){ ?>
                     TAKE ME TO COURSE
                     <?php } ?>
@@ -76,20 +76,20 @@ if(isset($user) && $user->isLoggedIn()){
             </div>
         </div>
     </div>
-    <div class="container-fluid indexbar4">
+    <div class="container-fluid indexbar3">
         <div class="row indexrow">
             <div class="previewcol col-md-4">
                 <?php if ($user->data()->complete_bl == 0){ ?>
-                <img class="img-responsive" src="/users/images/tier2_new.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/bl.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_bl == 1){ ?>
-                <img class="img-responsive" src="/users/images/tier2_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/bl_watched.jpg" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">
                 <h1 class="previewtitle">Beyond Lockdown</h1>
                 <p class="previewdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="/users/tier2page.php" target="" class="button is-white mybutton">
+                <a href="/usersc/BL_page.php" target="" class="button is-white mybutton">
                     <?php if ($user->data()->complete_bl == 0){ ?>
                     TAKE ME TO COURSE
                     <?php } ?>
@@ -105,16 +105,16 @@ if(isset($user) && $user->isLoggedIn()){
         <div class="row indexrow">
             <div class="previewcol col-md-4">
                 <?php if ($user->data()->complete_tier3 == 0){ ?>
-                <img class="img-responsive" src="/users/images/tier3.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/tier3.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_tier3 == 1){ ?>
-                <img class="img-responsive" src="/users/images/tier3_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/tier3_watched.jpg" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">
                 <h1 class="previewtitle">Enhanced Guidance for Managers and Leaders</h1>
                 <p class="previewdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <a href="/users/tier3page.php" target="" class="button is-white mybutton">
+                <a href="/usersc/tier3page.php" target="" class="button is-white mybutton">
                     <?php if ($user->data()->complete_tier3 == 0){ ?>
                     TAKE ME TO COURSE
                     <?php } ?>

@@ -71,7 +71,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 
         return mytime;
     }
-    
+
     function leave() {
         //window.top.location = 'http://34.217.67.239/';
         window.close();
@@ -217,7 +217,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
             };
             // LMSInitialize
             this.LMSInitialize=function(arg)
-            {  
+            {
                 console.log('lmsinit');
                 //scormIsComplete();
 
@@ -254,7 +254,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
                 var isCompleted = this.LMSGetValue('cmi.core.lesson_status');
                 console.log(isCompleted);
 
-                if (isCompleted == 'passed' || isCompleted == 'completed') 
+                if (isCompleted == 'passed' || isCompleted == 'completed')
                 {
                     scormIsComplete();
                 }
@@ -294,7 +294,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
                 }
 
                 if (isCompleted != 'passed' && isCompleted != 'completed') {
-                    leave();   
+                    leave();
                 }
 
                 return success;
@@ -417,7 +417,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
             },
             replaceAll:function(text, strA, strB)
             {
-                return text.replace( new RegExp(strA,"g"), strB );    
+                return text.replace( new RegExp(strA,"g"), strB );
             },
             addTime:function(first, second)
             {
@@ -572,7 +572,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
                 initTimeout = 0;
                 timeoutErrorDisplayed = false;
                 //            var launchFileAltVal = $('launchFileAlt').value;
-                var launchFileAltVal = 'SCORM/Tier2-1/index_lms.html';
+                var launchFileAltVal = 'SCORM/Tier2/index_lms.html';
                 //            var cookieNameAltVal = $('cookieNameAlt').value;
                 if(launchFileAltVal.length > 0)
                 {

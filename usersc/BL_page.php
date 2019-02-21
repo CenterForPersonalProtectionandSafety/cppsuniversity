@@ -12,10 +12,10 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 ?>
 
 <div id="page-wrapper" class="pagetier2">
-    <div class="jumbotron jumbotron-fluid myjumbo2">
+    <div class="jumbotron jumbotron-fluid blbanner">
         <div class="container">
             <h1 class=tier2display>Beyond Lockdown</h1>
-            <h1 class=tier2display2>Enhanced Guidencefor</h1>
+            <h1 class=tier2display2>Enhanced Guidence for</h1>
             <h1 class=tier2display3>Administrators Teachers Counselors</h1>
         </div>
     </div>
