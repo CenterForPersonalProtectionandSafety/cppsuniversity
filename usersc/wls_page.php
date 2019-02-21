@@ -10,7 +10,7 @@ WLS Video Landing Page
 if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
 <div id="page-wrapper" class="pagetier2">
-    <div class="jumbotron jumbotron-fluid myjumbo3">
+    <div class="jumbotron jumbotron-fluid wlsbanner">
         <div class="container">
             <h1 class=tier2display></h1>
             <h1 class=tier2display2>When Lightning Strikes</h1>

@@ -12,7 +12,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}
 ?>
 
 <div id="page-wrapper" class="pagetier2">
-    <div class="jumbotron jumbotron-fluid myjumbo2">
+    <div class="jumbotron jumbotron-fluid tier3banner">
         <div class="container">
             <h1 class=tier2display>Enhanced Guidance for</h1>
             <h1 class=tier2display2>MANAGERS</h1>

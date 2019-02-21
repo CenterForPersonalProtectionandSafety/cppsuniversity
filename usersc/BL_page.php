@@ -1,19 +1,22 @@
 <?php
 /*
-Landing page for Tier2
+Landing page for Tier3
 */
 ?>
 
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
-if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
+<?php
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+if (!securePage($_SERVER['PHP_SELF'])){die();}
+?>
 
 <div id="page-wrapper" class="pagetier2">
-    <div class="jumbotron jumbotron-fluid tier2banner">
+    <div class="jumbotron jumbotron-fluid myjumbo2">
         <div class="container">
-            <h1 class=tier2display>Workplace Violence Prevention and Response</h1>
-            <h1 class=tier2display2>FOR EMPLOYEES</h1>
+            <h1 class=tier2display>Beyond Lockdown</h1>
+            <h1 class=tier2display2>Enhanced Guidencefor</h1>
+            <h1 class=tier2display3>Administrators Teachers Counselors</h1>
         </div>
     </div>
     <div class="container-fluid indexbarplay">
@@ -21,7 +24,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
             <p class="playdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
         <div class="text-center">
-            <a href="/usersc/viewtier2.php" target="_blank" class="button is-white mybutton">PLAY COURSE</a>
+            <a href="/usersc/viewBL.php" target="_blank" class="button is-white mybutton">PLAY COURSE</a>
         </div>
     </div>
 </div> <!-- /.wrapper -->

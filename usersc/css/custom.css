@@ -180,7 +180,7 @@ body {
     margin-bottom: 64px;
 }
 
-.myjumbo {
+.tier2banner {
     background: url(/usersc/images/tier2_banner_new_blue.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
@@ -190,7 +190,7 @@ body {
     margin-bottom: 0;
 }
 
-.myjumbo2 {
+.tier3banner {
     background: url(/usersc/images/tier3bannerv2.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
@@ -200,7 +200,7 @@ body {
     margin-bottom: 0;
 }
 
-.myjumbo3 {
+.wlsbanner {
     background: url(/usersc/images/tier2_banner_new_blue.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
@@ -282,12 +282,12 @@ body {
     margin-bottom: 70px;
 }
 
-/* Custom, iPhone Retina */ 
+/* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
 
 }
 
-/* Extra Small Devices, Phones */ 
+/* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
 
 }
