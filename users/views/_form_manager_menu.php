@@ -165,8 +165,8 @@ if(!empty($_POST['deleteThisForm'])){
   </div>
 </div>
 
-<script src="../users/js/jwerty.js"></script>
-<script src="../users/js/combobox.js"></script>
+<script src="../lms_master/users/js/jwerty.js"></script>
+<script src="../lms_master/users/js/combobox.js"></script>
 <script>
 $(document).ready(function() {
   $('.show-tooltip').tooltip();

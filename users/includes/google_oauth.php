@@ -24,7 +24,7 @@ $value=null;
 $gender=null;
 $link=null;
 if($settings->glogin==1 && !$user->isLoggedIn()){
-	require_once $abs_us_root.$us_url_root.'users/helpers/google_helpers.php';
+	require_once $abs_us_root.$us_url_root.'lms_master/users/helpers/google_helpers.php';
 	if(isset($_REQUEST['code'])){
 				$gClient->authenticate();
 				$_SESSION['token'] = $gClient->getAccessToken();
@@ -43,7 +43,7 @@ if($settings->glogin==1 && !$user->isLoggedIn()){
 					$findExistingUS=$db->query("SELECT * FROM users WHERE email = ?",array($userProfile['email']));
 					if(!$findExistingUS->count()>0) {
 						session_destroy();
-						Redirect::to($us_url_root.'users/join.php');
+						Redirect::to($us_url_root.'lms_master/users/join.php');
 						die();
 					}
 				}
@@ -89,7 +89,7 @@ if($settings->glogin==1 && !$user->isLoggedIn()){
 					$_SESSION['twofa']=1;
 						$page=encodeURIComponent(Input::get('redirect'));
 						logger($user->data()->id,"Two FA","Two FA being requested.");
-						Redirect::To($us_url_root.'users/twofa.php');
+						Redirect::To($us_url_root.'lms_master/users/twofa.php');
 					}
 
 			} else {
@@ -99,7 +99,7 @@ if($settings->glogin==1 && !$user->isLoggedIn()){
 		}
 			// if(isset($authUrl)) {
 			// 	echo '<a href="'.$authUrl.'"><img src="'
-			// 	.$us_url_root.'/users/images/google.png" alt=""/></a>';
+			// 	.$us_url_root.'/lms_master/users/images/google.png" alt=""/></a>';
 			// } else {
 			// 	echo '<a href="users/logout.php?logout">Logout</a>';
 			// }

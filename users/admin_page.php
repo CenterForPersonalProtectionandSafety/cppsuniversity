@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
 //PHP Goes Here!
@@ -36,7 +36,7 @@ if($new=='yes') {
 
 //Check if selected pages exist
 if(!pageIdExists($pageId)){
-  Redirect::to($us_url_root.'users/admin_pages.php'); die();
+  Redirect::to($us_url_root.'lms_master/users/admin_pages.php'); die();
 }
 
 $pageDetails = fetchPageDetails($pageId); //Fetch information specific to page
@@ -46,7 +46,7 @@ $pageDetails = fetchPageDetails($pageId); //Fetch information specific to page
 if(Input::exists()){
 	$token = Input::get('csrf');
 	if(!Token::check($token)){
-		include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+		include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
 	}
 	$update = 0;
 
@@ -252,7 +252,7 @@ $countCountQ = $countQ->count();
 
 			<input type="hidden" name="csrf" value="<?=Token::generate();?>" >
 			<input class='btn btn-primary' type='submit' value='Update' class='submit' />
-			<a class='btn btn-warning' href="../users/admin_pages.php">Cancel</a><br><br>
+			<a class='btn btn-warning' href="../lms_master/users/admin_pages.php">Cancel</a><br><br>
 			</form>
         </div>
     </div>
@@ -260,8 +260,8 @@ $countCountQ = $countQ->count();
 </div>
     <!-- /.row -->
     <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

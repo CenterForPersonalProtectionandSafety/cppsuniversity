@@ -21,14 +21,14 @@ Special thanks to user Brandin for the mods!
 */
 ?>
 <?php
-require_once '../users/init.php';
-require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once '../lms_master/users/init.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}
 if($settings->messaging != 1){
-  Redirect::to($us_url_root.'users/account.php?err=Messaging+is+disabled');
+  Redirect::to($us_url_root.'lms_master/users/account.php?err=Messaging+is+disabled');
 }
 ?>
 <style>
@@ -126,7 +126,7 @@ if (($single->msg_to != $user->data()->id) && ($single->msg_from != $user->data(
     'ip'                        => $ip,
   );
   $db->insert('audit',$fields);
-  Redirect::to($us_url_root.'users/messages.php?err=That thread does not belong to you or does not exist.'); die();
+  Redirect::to($us_url_root.'lms_master/users/messages.php?err=That thread does not belong to you or does not exist.'); die();
 }
 
 //ONLY mark messages read if you are the recipient
@@ -143,12 +143,12 @@ if(!empty($_POST)){
   if(!empty($_POST['markUnread'])){
     $token = $_POST['csrf'];
     if(!Token::check($token)){
-      include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+      include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
     }
     foreach ($messages as $message){
       if(($message->msg_read == 1) && ($message->msg_to == $user->data()->id)) {
         $db->update('messages',$message->id,['msg_read'=>0]);
-        Redirect::to($us_url_root.'users/message.php?id='.$id.'&unread=1');
+        Redirect::to($us_url_root.'lms_master/users/message.php?id='.$id.'&unread=1');
       }
     }
 
@@ -157,14 +157,14 @@ if(!empty($_POST)){
   if(!empty($_POST['markRead'])){
     $token = $_POST['csrf'];
     if(!Token::check($token)){
-      include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+      include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
     }
     foreach ($messages as $message){
       if(($message->msg_read == 0) && ($message->msg_to == $user->data()->id)) {
         $db->update('messages',$message->id,['msg_read'=>1]);
       }
     }
-    Redirect::to($us_url_root.'users/message.php?id='.$id);
+    Redirect::to($us_url_root.'lms_master/users/message.php?id='.$id);
   }
   //
   $validation = new Validate();
@@ -172,7 +172,7 @@ if(!empty($_POST)){
   if(!empty($_POST['reply']) && (($settings->msg_blocked_users==1 || ($perm==2 && $settings->msg_blocked_users==0)) && (!$thread->hidden_from==1 && !$thread->hidden_to==1))){
     $token = $_POST['csrf'];
     if(!Token::check($token)){
-      include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+      include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
     }
 
     $to = $single->msg_to;
@@ -239,7 +239,7 @@ $csrf = Token::generate();
       <div class="col-sm-10 col-sm-offset-1">
         <div class="row">
           <div class="col-sm-10">
-            <h2><a href="../users/messages.php"><i class="glyphicon glyphicon-chevron-left"></i></a> <?=$thread ->msg_subject?></h2>
+            <h2><a href="../lms_master/users/messages.php"><i class="glyphicon glyphicon-chevron-left"></i></a> <?=$thread ->msg_subject?></h2>
           </div>
           <div class="col-sm-2">
             <?php
@@ -367,9 +367,9 @@ $csrf = Token::generate();
 
 
             <!-- footers -->
-            <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+            <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
             <script src='https:////cdn.tinymce.com/4/tinymce.min.js'></script>
-            <script src="../users/js/jwerty.js"></script>
+            <script src="../lms_master/users/js/jwerty.js"></script>
             <script>
             tinymce.init({
               selector: '#mytextarea'
@@ -388,4 +388,4 @@ $csrf = Token::generate();
             </script>
             <!-- Place any per-page javascript here -->
 
-            <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+            <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

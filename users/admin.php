@@ -20,9 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ini_set('max_execution_time', 1356);
 ini_set('memory_limit','1024M');
 ?>
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <link href="css/admin-tabs.css" rel="stylesheet">
@@ -52,7 +52,7 @@ $tab = Input::get('tab');
 
 // To make this panel super admin only, uncomment out the lines below
 // if($user->data()->id !='1'){
-//   Redirect::to($us_url_root.'users/account.php');
+//   Redirect::to($us_url_root.'lms_master/users/account.php');
 // }
 
 //PHP Goes Here!
@@ -119,7 +119,7 @@ else $vcWarning = 0;
 if(!emptY($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
   }if(!empty($_POST['settings'])){
 
 
@@ -327,7 +327,7 @@ if(!emptY($_POST)) {
       logger($user->data()->id,"Setting Change","Changed notif_daylimit from $settings->notif_daylimit to $notif_daylimit.");
     }
 
-    //Redirect::to($us_url_root.'users/admin.php?tab='.$tab);
+    //Redirect::to($us_url_root.'lms_master/users/admin.php?tab='.$tab);
   }
 
   if(!empty($_POST['css'])){
@@ -353,7 +353,7 @@ if(!emptY($_POST)) {
       $successes[] = "Updated us_css3.";
       logger($user->data()->id,"Setting Change","Changed us_css3 from $settings->us_css3 to $us_css3.");
     }
-    Redirect::to($us_url_root.'users/admin.php?msg=Updated+CSS+settings');
+    Redirect::to($us_url_root.'lms_master/users/admin.php?msg=Updated+CSS+settings');
   }
 
   if(!empty($_POST['register'])){
@@ -557,10 +557,10 @@ if(!emptY($_POST)) {
       logger($user->data()->id,"Setting Change","Changed finalredir from $settings->finalredir to $finalredir.");
     }
 
-    //Redirect::to($us_url_root.'users/admin.php?tab='.$tab);
+    //Redirect::to($us_url_root.'lms_master/users/admin.php?tab='.$tab);
   }
   if($settings->custom_settings == 1){
-    require_once($abs_us_root.$us_url_root.'usersc/includes/admin_panel_custom_settings_post.php');
+    require_once($abs_us_root.$us_url_root.'lms_master/usersc/includes/admin_panel_custom_settings_post.php');
   }
   $settingsQ = $db->query("SELECT * FROM settings");
   $settings = $settingsQ->first();
@@ -571,7 +571,7 @@ $token = Token::generate();
 <div id="page-wrapper"> <!-- leave in place for full-screen backgrounds etc -->
   <div class="container"> <!-- -fluid -->
     <?php
-    include($abs_us_root.$us_url_root.'users/includes/migrations.php');
+    include($abs_us_root.$us_url_root.'lms_master/users/includes/migrations.php');
     if($pwWarning == 1 && !$local){ ?>
       <div class="alert alert-danger">
         <strong>Warning!</strong> Please change the default password for the user 'admin' by clicking the manage users panel below.
@@ -688,7 +688,7 @@ $token = Token::generate();
         </div>
       </div></a>
       <br>
-      <?php require_once("../usersc/includes/admin_panel_buttons.php"); ?>
+      <?php require_once("../lms_master/usersc/includes/admin_panel_buttons.php"); ?>
     </div>
 
     <?=resultBlock($errors,$successes);?>
@@ -696,8 +696,8 @@ $token = Token::generate();
     <!-- CHECK IF ADDITIONAL ADMIN PAGES ARE PRESENT AND INCLUDE IF AVAILABLE -->
 
     <?php
-    if(file_exists($abs_us_root.$us_url_root.'usersc/includes/admin_panels.php')){
-      require_once $abs_us_root.$us_url_root.'usersc/includes/admin_panels.php';
+    if(file_exists($abs_us_root.$us_url_root.'lms_master/usersc/includes/admin_panels.php')){
+      require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/admin_panels.php';
     }
     ?>
 
@@ -731,33 +731,33 @@ $token = Token::generate();
             <div class="panel-body">
               <div class="tab-content">
                 <div class="tab-pane fade <?php if($tab == 1 || $tab == ''){echo "in active";}?>" id="tab1default">
-                  <?php include($abs_us_root.$us_url_root.'users/views/_admin_stats.php');?>
+                  <?php include($abs_us_root.$us_url_root.'lms_master/users/views/_admin_stats.php');?>
                 </div>
 
                 <div class="tab-pane fade <?php if($tab == 2){echo "in active";}?>" id="tab2default">
-                  <?php include($abs_us_root.$us_url_root.'users/views/_admin_site_settings.php');?>
+                  <?php include($abs_us_root.$us_url_root.'lms_master/users/views/_admin_site_settings.php');?>
                 </div>
 
                 <div class="tab-pane fade <?php if($tab == 3){echo "in active";}?>" id="tab3default">
-                  <?php include($abs_us_root.$us_url_root.'users/views/_admin_register_settings.php');?>
+                  <?php include($abs_us_root.$us_url_root.'lms_master/users/views/_admin_register_settings.php');?>
                 </div>
 
                 <div class="tab-pane fade <?php if($tab == 4){echo "in active";}?>" id="tab4default">
                   <!-- css settings -->
-                  <?php include($abs_us_root.$us_url_root.'users/views/_admin_login_settings.php');?>
+                  <?php include($abs_us_root.$us_url_root.'lms_master/users/views/_admin_login_settings.php');?>
                 </div>
 
                 <div class="tab-pane fade <?php if($tab == 5){echo "in active";}?>" id="tab5default">
                   <!-- css settings -->
-                  <?php include($abs_us_root.$us_url_root.'users/views/_admin_css_settings.php');?>
+                  <?php include($abs_us_root.$us_url_root.'lms_master/users/views/_admin_css_settings.php');?>
                 </div>
                 <div class="tab-pane fade <?php if($tab == 6){echo "in active";}?>" id="tab6default">
-                  <?php include($abs_us_root.$us_url_root.'users/views/_admin_css_samples.php');?>
+                  <?php include($abs_us_root.$us_url_root.'lms_master/users/views/_admin_css_samples.php');?>
                 </div>
                 <?php
                 if($settings->custom_settings == 1){ ?>
                   <div class="tab-pane fade <?php if($tab == 7){echo "in active";}?>" id="tab7default">
-                    <?php include($abs_us_root.$us_url_root.'usersc/includes/admin_panel_custom_settings.php');?>
+                    <?php include($abs_us_root.$us_url_root.'lms_master/usersc/includes/admin_panel_custom_settings.php');?>
                   </div>
                 <?php } ?>
 
@@ -791,7 +791,7 @@ $token = Token::generate();
 </div> <!-- /#page-wrapper -->
 
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 <script type="text/javascript">
@@ -826,4 +826,4 @@ $(document).ready(function(){
 </script>
 <?php } ?>
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

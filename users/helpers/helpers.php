@@ -187,7 +187,7 @@ function email_body($template,$options = array()){
 	}
 	extract($options);
 	ob_start();
-	require $abs_us_root.$us_url_root.'users/views/'.$template;
+	require $abs_us_root.$us_url_root.'lms_master/users/views/'.$template;
 	return ob_get_clean();
 }
 

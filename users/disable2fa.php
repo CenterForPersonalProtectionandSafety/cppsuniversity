@@ -1,17 +1,17 @@
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}?>
 <?php
 if($settings->twofa != 1){
-  Redirect::to($us_url_root.'users/account.php?err=Sorry.Two+factor+is+not+enabled+at+this+time');
+  Redirect::to($us_url_root.'lms_master/users/account.php?err=Sorry.Two+factor+is+not+enabled+at+this+time');
 }
-if($user->data()->twoKey=='' || is_null($user->data()->twoKey) || $user->data()->twoEnabled==0) Redirect::to($us_url_root.'users/account.php?err=Two FA is not enabled.');
+if($user->data()->twoKey=='' || is_null($user->data()->twoKey) || $user->data()->twoEnabled==0) Redirect::to($us_url_root.'lms_master/users/account.php?err=Two FA is not enabled.');
 
 if (!empty($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
   }
 
   if(!empty($_POST['twoChange']) && $settings->twofa == 1) {
@@ -19,7 +19,7 @@ if (!empty($_POST)) {
         if($twofa==1) {
           $db->query("UPDATE users SET twoKey=null,twoEnabled=0 WHERE id = ?",[$user->data()->id]);
           logger($user->data()->id,"Two FA","Disabled Two FA");
-          Redirect::to($us_url_root.'users/account.php?msg=Two FA has been disabled.');
+          Redirect::to($us_url_root.'lms_master/users/account.php?msg=Two FA has been disabled.');
         }
       }
     }
@@ -30,8 +30,8 @@ if (!empty($_POST)) {
     <div class="well">
       <div class="row">
       	<div class="col-xs-12 col-md-3">
-              <p><a href="../users/account.php" class="btn btn-primary">Account Home</a></p>
-              <p><a href="../users/manage2fa.php" class="btn btn-primary">Manage 2FA</a></p>
+              <p><a href="../lms_master/users/account.php" class="btn btn-primary">Account Home</a></p>
+              <p><a href="../lms_master/users/manage2fa.php" class="btn btn-primary">Manage 2FA</a></p>
 
           </div>
           <div class="col-xs-12 col-md-9">
@@ -57,5 +57,5 @@ if (!empty($_POST)) {
     </div>
   </div>
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; ?>

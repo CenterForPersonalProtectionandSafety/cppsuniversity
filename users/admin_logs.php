@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
 $get_info_id = $user->data()->id;
@@ -33,13 +33,13 @@ if(!empty($_POST)) {
 	$post_user_id = Input::get('post_user_id');
 	$post_type = Input::get('post_type');
 		if(!empty($post_user_id)) {
-			Redirect::to($us_url_root.'users/admin_logs.php?user_id='.$post_user_id);
+			Redirect::to($us_url_root.'lms_master/users/admin_logs.php?user_id='.$post_user_id);
 		}
 		elseif(!empty($post_type)) {
-			Redirect::to($us_url_root.'users/admin_logs.php?type='.$post_type);
+			Redirect::to($us_url_root.'lms_master/users/admin_logs.php?type='.$post_type);
 		}
 		else {
-		Redirect::to($us_url_root.'users/admin_logs.php'); }
+		Redirect::to($us_url_root.'lms_master/users/admin_logs.php'); }
 	}
 
 $user_id = Input::get('user_id');
@@ -74,7 +74,7 @@ $fuCount = $fuQ->count();
 				<h1>System Logs <a href="#" data-toggle="modal" data-target="#userfilter" class="show-tooltip" title="Filter by User"><i class="glyphicon glyphicon-user"></i></a>
 				<a href="#" data-toggle="modal" data-target="#datafilter" class="show-tooltip" title="Filter by Type"><i class="glyphicon glyphicon-book"></i></a>
 				<?php if(!empty($user_id) || !empty($type)) {?><a href="admin_logs.php" class="show-tooltip" title="Reset Filter"><i class="glyphicon glyphicon-refresh"></i></a><?php } ?>
-				<a href="../users/admin_logs_manager.php" class="show-tooltip" title="Logs Manager"><i class="glyphicon glyphicon-cog"></i></a>
+				<a href="../lms_master/users/admin_logs_manager.php" class="show-tooltip" title="Logs Manager"><i class="glyphicon glyphicon-cog"></i></a>
 			</h1>
 				<?=resultBlock($errors,$successes);?>
 				<hr>
@@ -168,9 +168,9 @@ $fuCount = $fuQ->count();
 		</div>
 
 	</div>
-	<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; ?>
-	<script src="../users/js/jwerty.js"></script>
-	<script src="../users/js/combobox.js"></script>
+	<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; ?>
+	<script src="../lms_master/users/js/jwerty.js"></script>
+	<script src="../lms_master/users/js/combobox.js"></script>
 	<script>
 	$(document).ready(function() {
 		$('.show-tooltip').tooltip();
@@ -194,6 +194,6 @@ $fuCount = $fuQ->count();
 	    $('#paginate').DataTable({"pageLength": 25,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
 	} );
 	</script>
-	<script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-	<script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
-	<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; ?>
+	<script src="../lms_master/users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="../lms_master/users/js/pagination/dataTables.js" type="text/javascript"></script>
+	<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; ?>

@@ -21,14 +21,14 @@ Special thanks to user Brandin for the mods!
 */
 ?>
 <?php
-require_once '../users/init.php';
-require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once '../lms_master/users/init.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}
 if($settings->notifications != 1){
-  Redirect::to($us_url_root.'users/admin.php?err=Notifications+are+disabled');
+  Redirect::to($us_url_root.'lms_master/users/admin.php?err=Notifications+are+disabled');
 }
 $validation = new Validate();
 $errors = [];
@@ -182,7 +182,7 @@ $count = $adminNotificationsQ->count();
 
 
     <!-- footers -->
-    <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+    <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
     <!-- Place any per-page javascript here -->
   <script>
@@ -199,6 +199,6 @@ $count = $adminNotificationsQ->count();
      });
 	} );
 	</script>
-	<script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-	<script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
-    <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+	<script src="../lms_master/users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="../lms_master/users/js/pagination/dataTables.js" type="text/javascript"></script>
+    <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

@@ -24,9 +24,9 @@ Set longer execution time and larger memory limit to deal with large backup sets
 ini_set('max_execution_time', 1356);
 ini_set('memory_limit','1024M');
 
-require_once '../users/init.php';
-require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once '../lms_master/users/init.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
 
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 if(in_array($user->data()->id,$master_account)){
@@ -109,7 +109,7 @@ if(!empty($_POST)) {
 			logger($user->data()->id,"Setting Change","Changed backup_table from $settings->backup_table to $backup_table.");
 		}
 
-		Redirect::to($us_url_root.'users/admin_backup.php?sc1=Settings+saved!');
+		Redirect::to($us_url_root.'lms_master/users/admin_backup.php?sc1=Settings+saved!');
 
 	}
 
@@ -601,7 +601,7 @@ $pagename = lang('AB_PAGENAME');
 
 <?php
 }
-require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php';?>
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php';?>
 <script>
 $(document).ready(function(){
 $('.checkAllBackups').on('click', function(e) {
@@ -610,4 +610,4 @@ $('.checkAllBackups').on('click', function(e) {
  </script>
 
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php';?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php';?>

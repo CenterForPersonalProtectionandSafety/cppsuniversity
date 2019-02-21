@@ -5,9 +5,9 @@ An Open Source PHP User Management System
 by the UserSpice Team at http://UserSpice.com
 */
 ?>
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}
 
@@ -26,7 +26,7 @@ if (Input::exists('get')) {
 }
 
 if (!$item) {
-    Redirect::to($us_url_root.'users/admin_menu.php?menu_title='.Input::get('menu_title').'&err=This+menu+item+does+not+exist.');
+    Redirect::to($us_url_root.'lms_master/users/admin_menu.php?menu_title='.Input::get('menu_title').'&err=This+menu+item+does+not+exist.');
 }
 
 if (Input::exists('post')) {
@@ -46,10 +46,10 @@ if (Input::exists('post')) {
 			//dump(Input::get('authorized_groups'));
         updateGroupsMenus((Input::get('authorized_groups')), $item->id);
 				logger($user->data()->id,"Menu Manager","Updated $menuId");
-        Redirect::to($us_url_root.'users/admin_menu.php?menu_title='.$item->menu_title.'&msg=Menu+item+updated');
+        Redirect::to($us_url_root.'lms_master/users/admin_menu.php?menu_title='.$item->menu_title.'&msg=Menu+item+updated');
     }
     else {
-        Redirect::to($us_url_root.'users/admin_menu.php?menu_title='.$item->menu_title.'&err=Unable+to+update+menu+item.');
+        Redirect::to($us_url_root.'lms_master/users/admin_menu.php?menu_title='.$item->menu_title.'&err=Unable+to+update+menu+item.');
     }
 }
 
@@ -161,8 +161,8 @@ foreach (fetchGroupsByMenu($menuId) as $g) {
 </div>
 
 <!-- footers -->
-<?php require_once ABS_US_ROOT.US_URL_ROOT.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once ABS_US_ROOT.US_URL_ROOT.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 
-<?php require_once ABS_US_ROOT.US_URL_ROOT.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once ABS_US_ROOT.US_URL_ROOT.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
@@ -51,7 +51,7 @@ if(empty($_POST)) {
 if (!empty($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
   }
 
   if(!empty($_POST['verifyAdmin'])) {
@@ -69,7 +69,7 @@ if (!empty($_POST)) {
     $errors[] = lang("INCORRECT_ADMINPW");
     if(isset($_SESSION['reauth_count']) && $_SESSION['reauth_count']==3) {
       logger($user->data()->id,"Admin Verification","3 failed verification attempts, logging out");
-      Redirect::to('../users/logout.php');
+      Redirect::to('../lms_master/users/logout.php');
     }
     if(isset($_SESSION['reauth_count'])) $_SESSION['reauth_count'] = $_SESSION['reauth_count']+1;
     else $_SESSION['reauth_count'] = 2;
@@ -115,8 +115,8 @@ if (!empty($_POST)) {
 </div>
     <!-- End of main content section -->
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
     <!-- Place any per-page javascript here -->
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

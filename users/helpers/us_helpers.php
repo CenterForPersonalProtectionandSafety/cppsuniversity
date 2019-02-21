@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 // UserSpice Specific Functions
-require_once $abs_us_root.$us_url_root.'usersc/includes/custom_functions.php';
-require_once $abs_us_root.$us_url_root.'usersc/includes/analytics.php';
+require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/custom_functions.php';
+require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/analytics.php';
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
 if(!function_exists('testUS')) {
@@ -276,10 +276,10 @@ if(!function_exists('getPageFiles')) {
 //Retrive a list of all .php files in users/ folder
 if(!function_exists('getUSPageFiles')) {
 	function getUSPageFiles() {
-		$directory = "../users/";
+		$directory = "../lms_master/users/";
 		$pages = glob($directory . "*.php");
 		foreach ($pages as $page){
-			$fixed = str_replace('../users/','/'.$us_url_root.'users/',$page);
+			$fixed = str_replace('../lms_master/users/','/'.$us_url_root.'lms_master/users/',$page);
 			$row[$fixed] = $fixed;
 		}
 		return $row;
@@ -513,7 +513,7 @@ if(!function_exists('securePage')) {
 	  // if($ban > 0){
 	  //   $unban = $db->query("SELECT id FROM us_ip_whitelist WHERE ip = ?",array($ip))->count();
 	  //   if($unban < 1){
-	  //     Redirect::to($us_url_root.'usersc/scripts/banned.php');die();
+	  //     Redirect::to($us_url_root.'lms_master/usersc/scripts/banned.php');die();
 	  //   }
 		// }
 
@@ -524,7 +524,7 @@ if(!function_exists('securePage')) {
 		// dnd($user);
 		if(isset($user) && $user->data() != null){
 			if($user->data()->permissions==0){
-				Redirect::to($us_url_root.'usersc/scripts/banned.php');
+				Redirect::to($us_url_root.'lms_master/usersc/scripts/banned.php');
 				die();
 			}
 		}
@@ -541,9 +541,9 @@ if(!function_exists('securePage')) {
 				$new = $db->insert('pages',$fields);
 				$last = $db->lastId();
 				//dnd($page);
-				if(strpos($page,'usersc/')!==false) {
-					//dnd(str_replace('usersc/','users/',$page));
-					$q=$db->query("SELECT * FROM pages WHERE page = ?",[str_replace('usersc/','users/',$page)]);
+				if(strpos($page,'lms_master/usersc/')!==false) {
+					//dnd(str_replace('lms_master/usersc/','lms_master/users/',$page));
+					$q=$db->query("SELECT * FROM pages WHERE page = ?",[str_replace('lms_master/usersc/','lms_master/users/',$page)]);
 					if($q->count()==1) {
 						$result=$q->first();
 						$db->update('pages',$last,['title' => $result->title,'private' => $result->private,'re_auth' => $result->re_auth]);
@@ -558,7 +558,7 @@ if(!function_exists('securePage')) {
 						Redirect::to($us_url_root.$page.'?msg=Page inserted and auto-mapped.');
 					}
 				}
-				Redirect::to($us_url_root.'users/admin_page.php?err=Please+confirm+permission+settings.&new=yes&id='.$last.'&dest='.$dest);
+				Redirect::to($us_url_root.'lms_master/users/admin_page.php?err=Please+confirm+permission+settings.&new=yes&id='.$last.'&dest='.$dest);
 			}else{
 			bold('<br><br>You must go into the Admin Panel and click the Manage Pages button to add this page to the database. Doing so will make this error go away.');
 			die();
@@ -582,8 +582,8 @@ if(!function_exists('securePage')) {
 				'ip'		=> $ip,
 			);
 			$db->insert('audit',$fields);
-			require_once $abs_us_root.$us_url_root.'usersc/scripts/not_logged_in.php';
-			Redirect::to($us_url_root.'users/login.php?dest='.$page.'&redirect='.$dest);
+			require_once $abs_us_root.$us_url_root.'lms_master/usersc/scripts/not_logged_in.php';
+			Redirect::to($us_url_root.'lms_master/users/login.php?dest='.$page.'&redirect='.$dest);
 			return false;
 		}else {
 			//Retrieve list of permission levels with access to page
@@ -607,7 +607,7 @@ if(!function_exists('securePage')) {
 					'ip'		=> $ip,
 				);
 				$db->insert('audit',$fields);
-				require_once $abs_us_root.$us_url_root.'usersc/scripts/did_not_have_permission.php';
+				require_once $abs_us_root.$us_url_root.'lms_master/usersc/scripts/did_not_have_permission.php';
 				Redirect::to($homepage);
 				return false;
 			}
@@ -790,7 +790,7 @@ if(!function_exists('deletePermission')) {
 		}
 		return $i;
 
-		//Redirect::to($us_url_root.'users/admin_permissions.php');
+		//Redirect::to($us_url_root.'lms_master/users/admin_permissions.php');
 	}
 }
 
@@ -1131,9 +1131,9 @@ if(!function_exists('reAuth')) {
 				return true;
 			}elseif ($pageDetails['re_auth'] == 0){//If page is public, allow access
 				return true;
-			} elseif ($page=='users/admin_verify' || $page=='usersc/admin_verify') {
+			} elseif ($page=='lms_master/users/admin_verify' || $page=='lms_master/usersc/admin_verify') {
 				return true;
-			} elseif ($page=='users/admin_pin.php' || $page=='usersc/admin_pin.php') {
+			} elseif ($page=='lms_master/users/admin_pin.php' || $page=='lms_master/usersc/admin_pin.php') {
 				return true;
 				} elseif ($local) {
 					return true;
@@ -1166,8 +1166,8 @@ if(!function_exists('verifyadmin')) {
 		$dbPlus = date("Y-m-d H:i:s", strtotime('+'.$settings->admin_verify_timeout.' minutes', strtotime($last_confirm)));
 		if (strtotime($ctFormatted) > strtotime($dbPlus)){
 			$q = $db->query("SELECT pin FROM users WHERE id = ?",[$user->data()->id]);
-			if(is_null($q->first()->pin)) Redirect::to($us_url_root.'users/admin_pin.php?actual_link='.$actual_link.'&page='.$page);
-			else Redirect::to($us_url_root.'users/admin_verify.php?actual_link='.$actual_link.'&page='.$page);
+			if(is_null($q->first()->pin)) Redirect::to($us_url_root.'lms_master/users/admin_pin.php?actual_link='.$actual_link.'&page='.$page);
+			else Redirect::to($us_url_root.'lms_master/users/admin_verify.php?actual_link='.$actual_link.'&page='.$page);
 		}
 		else
 		{
@@ -1782,7 +1782,7 @@ if(!function_exists('storeUser')) {
 			} else {
 				if($api) return false;
 					$user->logout();
-					Redirect::to($us_url_root.'users/?msg=Your session was ended remotely');
+					Redirect::to($us_url_root.'lms_master/users/?msg=Your session was ended remotely');
 			}
 		} else {
 			if(isset($_SESSION['fingerprint']) && $_SESSION['fingerprint']!='') {

@@ -19,9 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
 <?php
-require_once '../users/init.php';
-require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once '../lms_master/users/init.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
 ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
@@ -66,7 +66,7 @@ if(!empty($_POST)){
 							);
 
 						$db->insert('us_ip_blacklist',$fields);
-						Redirect::to($us_url_root.'users/tomfoolery.php?err=IP+is+now+banned');
+						Redirect::to($us_url_root.'lms_master/users/tomfoolery.php?err=IP+is+now+banned');
 					}
 				}
 			}
@@ -171,7 +171,7 @@ if(!empty($_POST['clear'])){
 		</div> <!-- /.wrapper -->
 
 
-		<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+		<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 		<script>
 		$(document).ready(function() {
@@ -182,7 +182,7 @@ if(!empty($_POST['clear'])){
 			);
 		} );
 		</script>
-		<script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-		<script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
+		<script src="../lms_master/users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+		<script src="../lms_master/users/js/pagination/dataTables.js" type="text/javascript"></script>
 
-		<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+		<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

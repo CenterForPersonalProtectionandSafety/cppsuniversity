@@ -23,7 +23,7 @@ class Redirect {
     #die("Redirecting to $location<br />\n");
     if ($location) {
       if (!preg_match('/^https?:\/\//', $location) && !file_exists($location)) {
-        foreach (array($us_url_root, '../', 'users/', substr($us_url_root, 1), '../../', '/', '/users/') as $prefix) {
+        foreach (array($us_url_root, '../', 'lms_master/users/', substr($us_url_root, 1), '../../', '/', '/lms_master/users/') as $prefix) {
           if (file_exists($prefix.$location)) {
             $location = $prefix.$location;
             $location = preg_replace('~/{2,}~', '/', $location);

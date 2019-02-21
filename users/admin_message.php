@@ -21,14 +21,14 @@ Special thanks to user Brandin for the mods!
 */
 ?>
 <?php
-require_once '../users/init.php';
-require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once '../lms_master/users/init.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}
 if($settings->messaging != 1){
-  Redirect::to($us_url_root.'users/admin.php?err=Messaging+is+disabled');
+  Redirect::to($us_url_root.'lms_master/users/admin.php?err=Messaging+is+disabled');
 }
 ?>
 <style>
@@ -150,7 +150,7 @@ if (!empty($_POST)) {
       <div class="col-sm-10 col-sm-offset-1">
         <div class="row">
           <div class="col-sm-10">
-            <h2><a href="../users/admin_messages.php"><i class="glyphicon glyphicon-chevron-left"></i></a> <?=$thread ->msg_subject?> - ADMIN VIEW</h2>
+            <h2><a href="../lms_master/users/admin_messages.php"><i class="glyphicon glyphicon-chevron-left"></i></a> <?=$thread ->msg_subject?> - ADMIN VIEW</h2>
           </div>
           <div class="col-sm-2">
           </div>
@@ -236,9 +236,9 @@ if (!empty($_POST)) {
 
 
           <!-- footers -->
-          <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+          <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
             <script src='https:////cdn.tinymce.com/4/tinymce.min.js'></script>
-                        <script src="../users/js/jwerty.js"></script>
+                        <script src="../lms_master/users/js/jwerty.js"></script>
                         <script>
                         tinymce.init({
                         selector: '#mytextarea'
@@ -260,4 +260,4 @@ if (!empty($_POST)) {
                         </script>
             <!-- Place any per-page javascript here -->
 
-            <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+            <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

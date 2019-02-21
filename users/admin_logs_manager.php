@@ -19,9 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
 <?php
-require_once '../users/init.php';
-require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once '../lms_master/users/init.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
@@ -32,7 +32,7 @@ $form_valid=TRUE;
 if (!empty($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
   }
   if(!empty($_POST['addLog'])) {
   	$name = Input::get('name');
@@ -78,7 +78,7 @@ $count = $query->count();
 		<div class="row">
 			<div class="page-wrapper">
 
-				<h1>Logs Manager <a class="nounderline" href="../users/admin_logs_manager.php"><i class="fa fa-fw fa-refresh"></i></a> <a class="nounderline" href="../users/admin_logs.php"><i class="fa fa-fw fa-search"></i></a></h1>
+				<h1>Logs Manager <a class="nounderline" href="../lms_master/users/admin_logs_manager.php"><i class="fa fa-fw fa-refresh"></i></a> <a class="nounderline" href="../lms_master/users/admin_logs.php"><i class="fa fa-fw fa-search"></i></a></h1>
         <hr>
 					<center>
 					<div>
@@ -160,11 +160,11 @@ $count = $query->count();
 
 
 	<!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
-<script src="../users/js/jwerty.js"></script>
-<script src="../users/js/bootstrap-editable.js"></script>
+<script src="../lms_master/users/js/jwerty.js"></script>
+<script src="../lms_master/users/js/bootstrap-editable.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     $.fn.editable.defaults.mode = "inline"
@@ -185,4 +185,4 @@ $(document).ready(function() {
 });
 </script>
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

@@ -7,8 +7,8 @@
 			<select class="form-control" name="us_css1" id="us_css1" >
 				<option selected="selected"><?=$settings->us_css1?></option>
 				<?php
-				$css_userspice=glob('../users/css/color_schemes/*.css');
-				$css_custom=glob('../usersc/css/color_schemes/*.css');
+				$css_userspice=glob('../lms_master/users/css/color_schemes/*.css');
+				$css_custom=glob('../lms_master/usersc/css/color_schemes/*.css');
 				foreach(array_merge($css_userspice,$css_custom) as $filename){
 				echo "<option value=".$filename.">".$filename."</option>";
 				}
@@ -21,8 +21,8 @@
 			<select class="form-control" name="us_css2" id="us_css2">
 				<option selected="selected"><?=$settings->us_css2?></option>
 				<?php
-				$css_userspice=glob('../users/css/*.css');
-				$css_custom=glob('../usersc/css/*.css');
+				$css_userspice=glob('../lms_master/users/css/*.css');
+				$css_custom=glob('../lms_master/usersc/css/*.css');
 				foreach(array_merge($css_userspice,$css_custom) as $filename){
 				echo "<option value=".$filename.">".$filename."</option>";
 				}
@@ -35,8 +35,8 @@
 			<select class="form-control" name="us_css3" id="us_css3">
 				<option selected="selected"><?=$settings->us_css3?></option>
 				<?php
-				$css_userspice=glob('../users/css/*.css');
-				$css_custom=glob('../usersc/css/*.css');
+				$css_userspice=glob('../lms_master/users/css/*.css');
+				$css_custom=glob('../lms_master/usersc/css/*.css');
 				foreach(array_merge($css_userspice,$css_custom) as $filename){
 				echo "<option value=".$filename.">".$filename."</option>";
 				}

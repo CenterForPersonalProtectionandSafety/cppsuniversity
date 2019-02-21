@@ -169,10 +169,10 @@ if ($settings->req_num == 1){ ?>
                 </div>
                 <br><br>
 
-                <?php include($abs_us_root.$us_url_root.'usersc/scripts/additional_join_form_fields.php'); ?>
+                <?php include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/additional_join_form_fields.php'); ?>
 
                 <label for="confirm">Registration User Terms and Conditions</label>
-                <textarea id="agreement" name="agreement" rows="5" class="form-control" disabled ><?php require $abs_us_root.$us_url_root.'usersc/includes/user_agreement.php'; ?></textarea>
+                <textarea id="agreement" name="agreement" rows="5" class="form-control" disabled ><?php require $abs_us_root.$us_url_root.'lms_master/usersc/includes/user_agreement.php'; ?></textarea>
 
                 <label><input type="checkbox" id="agreement_checkbox" name="agreement_checkbox"> Check box to agree to terms</label>
         </div>

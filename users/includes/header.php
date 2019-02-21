@@ -20,8 +20,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once $abs_us_root.$us_url_root.'users/helpers/helpers.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/user_spice_ver.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/helpers/helpers.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/user_spice_ver.php'; ?>
 
 <?php
 //check for a custom page
@@ -34,9 +34,9 @@ if(isset($_GET['msg'])){
 	$msg = Input::get('msg');
 }
 
-if(file_exists($abs_us_root.$us_url_root.'usersc/'.$currentPage)){
+if(file_exists($abs_us_root.$us_url_root.'lms_master/usersc/'.$currentPage)){
 	if(currentFolder() == 'users'){
-		$url = $us_url_root.'usersc/'.$currentPage;
+		$url = $us_url_root.'lms_master/usersc/'.$currentPage;
 		if(isset($_GET)){
 			$url .= '?'; //add initial ?
 			foreach ($_GET as $key=>$value){
@@ -57,7 +57,7 @@ if($user->isLoggedIn() && !checkMenu(2,$user->data()->id)){
 		//:: force logout then redirect to maint.page
 		logger($user->data()->id,"Offline","Landed on Maintenance Page."); //Lggger
 		$user->logout();
-		Redirect::to($us_url_root.'users/maintenance.php');
+		Redirect::to($us_url_root.'lms_master/users/maintenance.php');
 	}
 }
 
@@ -66,7 +66,7 @@ if(!$user->isLoggedIn()){
 	if (($settings->site_offline==1) && ($currentPage != 'login.php') && ($currentPage != 'maintenance.php')){
 		//:: redirect to maint.page
 		logger(1,"Offline","Guest Landed on Maintenance Page."); //Logger
-		Redirect::to($us_url_root.'users/maintenance.php');
+		Redirect::to($us_url_root.'lms_master/users/maintenance.php');
 	}
 }
 
@@ -78,7 +78,7 @@ if($user->isLoggedIn()){
 }
 
 if($settings->glogin==1 && !$user->isLoggedIn()){
-	require_once $abs_us_root.$us_url_root.'users/includes/google_oauth.php';
+	require_once $abs_us_root.$us_url_root.'lms_master/users/includes/google_oauth.php';
 }
 
 if ($settings->force_ssl==1){
@@ -90,7 +90,7 @@ if ($settings->force_ssl==1){
 		exit;
 	}
 }
-require_once $abs_us_root.$us_url_root.'usersc/includes/security_headers.php';
+require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/security_headers.php';
 
 //if track_guest enabled AND there is a user logged in
 if($settings->track_guest == 1 && $user->isLoggedIn()){
@@ -103,7 +103,7 @@ if($settings->track_guest == 1 && $user->isLoggedIn()){
 
 }
 
-if($user->isLoggedIn() && $currentPage != 'user_settings.php' && $user->data()->force_pr == 1) Redirect::to($us_url_root.'users/user_settings.php?err=You+must+change+your+password!');
+if($user->isLoggedIn() && $currentPage != 'user_settings.php' && $user->data()->force_pr == 1) Redirect::to($us_url_root.'lms_master/users/user_settings.php?err=You+must+change+your+password!');
 
 if(substr($us_url_root,1).$currentPage == currentFolder().'/'.$currentPage){
 	$find = $currentPage;
@@ -126,8 +126,8 @@ else $pageTitle = '';
 	<meta name="author" content="">
 
 	<?php
-	if(file_exists($abs_us_root.$us_url_root.'usersc/includes/head_tags.php')){
-		require_once $abs_us_root.$us_url_root.'usersc/includes/head_tags.php';
+	if(file_exists($abs_us_root.$us_url_root.'lms_master/usersc/includes/head_tags.php')){
+		require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/head_tags.php';
 	}
 
 	if(($settings->messaging == 1) && ($user->isLoggedIn())){
@@ -170,7 +170,7 @@ else $pageTitle = '';
 	}
 	</script>
 
-	<?php require_once $abs_us_root.$us_url_root.'usersc/includes/bootstrap_corrections.php'; ?>
+	<?php require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/bootstrap_corrections.php'; ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.6.1/fingerprint2.min.js" integrity="sha256-goBybI2a+FUEO9n1gkRyIYOwLPq6fO8z192AxA9O54I=" crossorigin="anonymous"></script>
 <?php if(!isset($_SESSION['fingerprint'])) {?>
@@ -199,8 +199,8 @@ if($settings->session_manager==1) storeUser(); ?>
 	}
 
 	if ($user->isLoggedIn() && $settings->admin_verify==1) { (!reAuth()); }
-	if ($user->isLoggedIn() && isset($_SESSION['twofa']) && $_SESSION['twofa']==1 && $currentPage !== 'twofa.php') Redirect::to($us_url_root.'users/twofa.php');
-	require_once $abs_us_root.$us_url_root.'usersc/includes/timepicker.php';
+	if ($user->isLoggedIn() && isset($_SESSION['twofa']) && $_SESSION['twofa']==1 && $currentPage !== 'twofa.php') Redirect::to($us_url_root.'lms_master/users/twofa.php');
+	require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/timepicker.php';
 	?>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap-editable/css/bootstrap-editable.css" integrity="sha256-YsJ7Lkc/YB0+ssBKz0c0GTx0RI+BnXcKH5SpnttERaY=" crossorigin="anonymous" />

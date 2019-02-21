@@ -89,14 +89,14 @@ function formField($o, $v = []){
             <input type="text" class="form-control" name="<?=$o->col?>" id="<?=$o->col?>" value="<?php if($u == 1){echo $value;}elseif(!empty($_POST)){echo $_POST[$o->col];}?>">
             <?php
             //set your custom datepicker options in this file in usersc
-            include($abs_us_root.$us_url_root.'usersc/scripts/datepicker.php');
+            include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/datepicker.php');
           }
           if($o->field_type == "datetime"){?>
             <input type="text" class="form-control" name="<?=$o->col?>" id="<?=$o->col?>"
             value="<?php if($u == 1){echo $value;}elseif(!empty($_POST)){if(isset($_POST[$o->col])){echo $_POST[$o->col];}}?>">
             <?php
             //set your custom datetimepicker options in this file in usersc
-            include($abs_us_root.$us_url_root.'usersc/scripts/datetimepicker.php');
+            include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/datetimepicker.php');
           }
 
           if($o->field_type == "checkbox"){
@@ -346,7 +346,7 @@ function formField($o, $v = []){
             );
             $token = $_POST['csrf'];
             if(!Token::check($token)){
-              require_once $abs_us_root.$us_url_root.'usersc/scripts/token_error.php';
+              require_once $abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php';
             }else{
               $response['token'] = true;
             }
@@ -487,9 +487,9 @@ function formField($o, $v = []){
                 $db->query("CREATE TABLE IF NOT EXISTS $form ( $columns2 )");
                 $db->insert('us_forms',['form'=>$name]);
                 $id = $db->lastId();
-                Redirect::to($us_url_root.'users/edit_form.php?edit='.$id.'&err=Form+created!');
+                Redirect::to($us_url_root.'lms_master/users/edit_form.php?edit='.$id.'&err=Form+created!');
               }else{ //failed name check
-                Redirect::to($us_url_root.'users/admin_forms.php.?err='.$check['msg']);
+                Redirect::to($us_url_root.'lms_master/users/admin_forms.php.?err='.$check['msg']);
                 exit;
               }
             }
@@ -575,9 +575,9 @@ function formField($o, $v = []){
                     exit;
                   }
                 }
-                Redirect::to($us_url_root.'users/edit_form.php?autogen=1&edit='.$id);
+                Redirect::to($us_url_root.'lms_master/users/edit_form.php?autogen=1&edit='.$id);
               }else{ //name check failed
-                Redirect::to($us_url_root.'users/admin_forms.php.?err='.$check['msg']);
+                Redirect::to($us_url_root.'lms_master/users/admin_forms.php.?err='.$check['msg']);
                 exit;
               }
 
@@ -673,9 +673,9 @@ function formField($o, $v = []){
                 foreach($copy as $c){
                   $db->insert($new,$c);
                 }
-                Redirect::to($us_url_root.'users/edit_form.php?edit='.$id.'&err=Form+duplicated!');
+                Redirect::to($us_url_root.'lms_master/users/edit_form.php?edit='.$id.'&err=Form+duplicated!');
               }else{//name check failed
-                Redirect::to($us_url_root.'users/admin_forms.php.?err='.$check['msg']);
+                Redirect::to($us_url_root.'lms_master/users/admin_forms.php.?err='.$check['msg']);
                 exit;
               }
             }

@@ -4,9 +4,9 @@ Admin Dashboard ex. page
 */
 ?>
 
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 
 //PHP Goes Here!
@@ -54,7 +54,7 @@ if (!empty($_POST)) {
         $token = $_POST['csrf'];
 
         if(!Token::check($token)){
-            include('../usersc/scripts/token_error.php');
+            include('../lms_master/usersc/scripts/token_error.php');
         }
 
         $form_valid=FALSE; // assume the worst
@@ -299,7 +299,7 @@ $random_password = random_password();
 
 <!-- End of main content section -->
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 <script src="js/pagination/jquery.dataTables.js" type="text/javascript"></script>
@@ -361,8 +361,8 @@ $random_password = random_password();
 
 <!-- Content Ends Here -->
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

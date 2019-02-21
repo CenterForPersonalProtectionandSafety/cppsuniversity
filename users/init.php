@@ -20,7 +20,7 @@ for($i = 1; $i < $self_path_length; $i++){
 	}
 }
 
-require_once $abs_us_root.$us_url_root.'users/helpers/helpers.php';
+require_once $abs_us_root.$us_url_root.'lms_master/users/helpers/helpers.php';
 
 // Set config
 $GLOBALS['config'] = array(
@@ -67,7 +67,7 @@ $user = new User();
 //Check to see that user is verified
 if($user->isLoggedIn()){
 	if($user->data()->email_verified == 0 && $currentPage != 'verify.php' && $currentPage != 'logout.php' && $currentPage != 'verify_thankyou.php'){
-		Redirect::to('users/verify.php');
+		Redirect::to('lms_master/users/verify.php');
 	}
 }
 $timezone_string = 'America/Los_Angeles';

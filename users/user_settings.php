@@ -15,9 +15,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 
 <?php
 if (!securePage($_SERVER['PHP_SELF'])){die();}?>
@@ -27,7 +27,7 @@ if (!securePage($_SERVER['PHP_SELF'])){die();}?>
 if($user->isLoggedIn() && !checkMenu(2,$user->data()->id)){
 	if (($settings->site_offline==1) && (!in_array($user->data()->id, $master_account)) && ($currentPage != 'login.php') && ($currentPage != 'maintenance.php')){
 		$user->logout();
-		Redirect::to($us_url_root.'users/maintenance.php');
+		Redirect::to($us_url_root.'lms_master/users/maintenance.php');
 	}
 }
 
@@ -52,7 +52,7 @@ if($holdover == 'true'){
 if(!empty($_POST)) {
     $token = $_POST['csrf'];
     if(!Token::check($token)){
-				include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
+				include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
     }else {
         //Update display name
 				//if (($settings->change_un == 0) || (($settings->change_un == 2) && ($user->data()->un_changed == 1)))
@@ -73,7 +73,7 @@ if(!empty($_POST)) {
             ));
             if($validation->passed()){
                 if(($settings->change_un == 2) && ($user->data()->un_changed == 1)){
-                    Redirect::to($us_url_root.'users/user_settings.php?err=Username+has+already+been+changed+once.');
+                    Redirect::to($us_url_root.'lms_master/users/user_settings.php?err=Username+has+already+been+changed+once.');
                 }
                 $db->update('users',$userId,$fields);
                 $successes[]="Username updated.";
@@ -330,7 +330,7 @@ $userdetails=$user2->data();
                         <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
 
                         <p><input class='btn btn-primary' type='submit' value='Update' class='submit' /></p>
-                        <p><a class="btn btn-info" href="../users/account.php">Cancel</a></p>
+                        <p><a class="btn btn-info" href="../lms_master/users/account.php">Cancel</a></p>
 
                     </form>
                     <?php
@@ -349,7 +349,7 @@ $userdetails=$user2->data();
 
 
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 <script type="text/javascript">
@@ -373,4 +373,4 @@ $userdetails=$user2->data();
 		});
 </script>
 
-<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>

@@ -6,9 +6,9 @@ by the UserSpice Team at http://UserSpice.com
 */
 
 ?>
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
+<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}
 
@@ -43,13 +43,13 @@ if (Input::exists('get')) {
             if (is_numeric($itemId)) {
                 $db->deleteById('menus',$itemId);
 								logger($user->data()->id,"Menu Manager","Deleted menu $itemId");
-                Redirect::to($us_url_root.'users/admin_menu.php?menu_title='.$menu_title);
+                Redirect::to($us_url_root.'lms_master/users/admin_menu.php?menu_title='.$menu_title);
             }
             else {
-                Redirect::to($us_url_root.'users/admin_menu.php?menu_title='.$menu_title.'&err=This+menu+item+does+not+exist.');
+                Redirect::to($us_url_root.'lms_master/users/admin_menu.php?menu_title='.$menu_title.'&err=This+menu+item+does+not+exist.');
             }
 		} else {
-			Redirect::to($us_url_root.'users/admin_menu.php?menu_title='.$menu_title);
+			Redirect::to($us_url_root.'lms_master/users/admin_menu.php?menu_title='.$menu_title);
 		}
 	}
 	/*
@@ -60,7 +60,7 @@ if (Input::exists('get')) {
 }
 
 if (!$menu_items) {
-    //Redirect::to($us_url_root.'users/admin_menus.php?err=This+menu+does+not+exist.');
+    //Redirect::to($us_url_root.'lms_master/users/admin_menus.php?err=This+menu+does+not+exist.');
 }
 
 /*
@@ -163,7 +163,7 @@ Get groups and names
 </div>
 
 <!-- footers -->
-<?php require_once ABS_US_ROOT.US_URL_ROOT.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once ABS_US_ROOT.US_URL_ROOT.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 <script>
 	function oceSuccess(data) {
 		var r = JSON.parse(data);
@@ -183,4 +183,4 @@ Get groups and names
 <!-- Place any per-page javascript here -->
 
 
-<?php require_once ABS_US_ROOT.US_URL_ROOT.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once ABS_US_ROOT.US_URL_ROOT.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
