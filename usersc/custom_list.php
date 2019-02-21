@@ -54,7 +54,7 @@ if (!empty($_POST)) {
         $token = $_POST['csrf'];
 
         if(!Token::check($token)){
-            include('../usersc/scripts/token_error.php');
+            include('../lms_master/usersc/scripts/token_error.php');
         }
 
         $form_valid=FALSE; // assume the worst

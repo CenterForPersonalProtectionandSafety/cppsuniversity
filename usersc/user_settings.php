@@ -42,7 +42,7 @@ if($holdover == 'true'){
 if(!empty($_POST)) {
     $token = $_POST['csrf'];
     if(!Token::check($token)){
-				include('../usersc/scripts/token_error.php');
+				include('../lms_master/usersc/scripts/token_error.php');
     }else {
         //Update display name
 				//if (($settings->change_un == 0) || (($settings->change_un == 2) && ($user->data()->un_changed == 1)))

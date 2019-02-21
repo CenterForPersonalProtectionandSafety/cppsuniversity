@@ -470,8 +470,8 @@ if (!empty($_POST)) {
 
                                               <!-- Place any per-page javascript here -->
                                               <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
-                                              <script src="../usersc/scripts/jwerty.js"></script>
-                                              <script src="../usersc/scripts/combobox.js"></script>
+                                              <script src="../lms_master/usersc/scripts/jwerty.js"></script>
+                                              <script src="../lms_master/usersc/scripts/combobox.js"></script>
                                               <script>
                                               $(document).ready(function(){
                                                 $('.combobox').combobox();
