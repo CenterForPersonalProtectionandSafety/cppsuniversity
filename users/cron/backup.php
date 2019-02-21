@@ -16,7 +16,7 @@ $errors = $successes = [];
 $settingsQ = $db->query("Select * FROM settings");
 $settings = $settingsQ->first();
 $from = Input::get('from');
-if($from=='') $from='lms_master/users/cron_manager.php';
+if($from=='') $from='users/cron_manager.php';
 $checkQuery = $db->query("SELECT id,name FROM crons WHERE file = ? AND active = 1",array("backup.php"));
 if($checkQuery->count()==1) {
 	//Create backup destination folder: $settings->backup_dest

@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
 
@@ -39,7 +39,7 @@ while(!feof($file)){
 }
 fclose($file);
 
-//sample text: $path=('/','/lms_master/users/','/lms_master/usersc/');
+//sample text: $path=('/','/users/','/usersc/');
 //Get array of paths, with quotes removed
 $lineLength=strlen($currentLine);
 $pathString=str_replace("'","",substr($currentLine,7,$lineLength-11));
@@ -164,7 +164,7 @@ $dbpages = fetchAllPages();
 
 	<!-- Content Ends Here -->
 	<!-- footers -->
-	<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+	<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 	<!-- Place any per-page javascript here -->
 
@@ -173,7 +173,7 @@ $dbpages = fetchAllPages();
 	    $('#paginate').DataTable({"pageLength": 25,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
 	} );
 	</script>
-	<script src="../lms_master/users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-	<script src="../lms_master/users/js/pagination/dataTables.js" type="text/javascript"></script>
+	<script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+	<script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
 
-	<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+	<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

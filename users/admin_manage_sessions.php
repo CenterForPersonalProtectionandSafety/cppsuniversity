@@ -1,16 +1,16 @@
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}?>
 <?php
-if($settings->session_manager!=1) Redirect::to($us_url_root.'lms_master/users/admin.php?err=Session Manager is not enabled.');
+if($settings->session_manager!=1) Redirect::to($us_url_root.'users/admin.php?err=Session Manager is not enabled.');
 $showAllSessions = Input::get('showAllSessions');
 $errors=[];
 $successes=[];
 if (!empty($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
   }
 
   if(!empty($_POST['sessionChange'])) {
@@ -131,7 +131,7 @@ if (!empty($_POST)) {
   </div>
 </div>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js" integrity="sha256-4F7e4JsAJyLUdpP7Q8Sah866jCOhv72zU5E8lIRER4w=" crossorigin="anonymous"></script>
 <script>
 $(function () {
@@ -216,4 +216,4 @@ $(document).on("click", ".killAllSessions", function(e) {
   }
 });
 </script>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; ?>

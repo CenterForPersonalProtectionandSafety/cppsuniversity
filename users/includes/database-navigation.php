@@ -79,7 +79,7 @@ $prep=prepareMenuTree($main_nav);
                                 elseif($value['label']=='{{messages}}') {
                                     $itemString='';
                                     if($settings->messaging==1) {
-                                        $itemString='<li><a href="'.$us_url_root.'lms_master/users/messages.php"><i class="glyphicon glyphicon-envelope"></i> <span id="msgCount" class="badge" style="margin-top: -5px">';
+                                        $itemString='<li><a href="'.$us_url_root.'users/messages.php"><i class="glyphicon glyphicon-envelope"></i> <span id="msgCount" class="badge" style="margin-top: -5px">';
                                         if($msgC > 0) $itemString.= $msgC;
                                         $itemString.='</span></a></li>'; }
                                 }
@@ -88,7 +88,7 @@ $prep=prepareMenuTree($main_nav);
                                     $itemString = str_replace('{{username}}',$user->data()->username,$itemString);
                                     $itemString = str_replace('{{fname}}',$user->data()->fname,$itemString);
                                     $itemString = str_replace('{{lname}}',$user->data()->lname,$itemString);
-                                    require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/database_navigation_hooks.php';
+                                    require_once $abs_us_root.$us_url_root.'usersc/includes/database_navigation_hooks.php';
                                 }
                                 echo $itemString;
                             }

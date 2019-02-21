@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}?>
 <?php
@@ -32,9 +32,9 @@ if(!empty($_POST['uncloak'])){
 		$_SESSION['user'] = $_SESSION['cloak_from'];
 		unset($_SESSION['cloak_from']);
 		logger($from,"Cloaking","uncloaked from ".$to);
-		Redirect::to($us_url_root.'lms_master/users/admin_users.php?err=You+are+now+you!');
+		Redirect::to($us_url_root.'users/admin_users.php?err=You+are+now+you!');
 		}else{
-			Redirect::to($us_url_root.'lms_master/users/logout.php?err=Something+went+wrong.+Please+login+again');
+			Redirect::to($us_url_root.'users/logout.php?err=Something+went+wrong.+Please+login+again');
 		}
 }
 
@@ -43,7 +43,7 @@ if(!empty($_POST['uncloak'])){
 if($user->isLoggedIn() || !$user->isLoggedIn() && !checkMenu(2,$user->data()->id)){
 	if (($settings->site_offline==1) && (!in_array($user->data()->id, $master_account)) && ($currentPage != 'login.php') && ($currentPage != 'maintenance.php')){
 		$user->logout();
-		Redirect::to($us_url_root.'lms_master/users/maintenance.php');
+		Redirect::to($us_url_root.'users/maintenance.php');
 	}
 }
 $grav = get_gravatar(strtolower(trim($user->data()->email)));
@@ -63,17 +63,17 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 	<div class="col-xs-12 col-md-3">
 
 		<p><img src="<?=$grav; ?>" class="img-thumbnail" alt="Generic placeholder thumbnail"></p>
-		<p><a href="../lms_master/users/user_settings.php" class="btn btn-primary">Edit Account Info</a></p>
-		<p><a class="btn btn-primary " href="../lms_master/users/profile.php?id=<?=$get_info_id;?>" role="button">Public Profile</a></p>
+		<p><a href="../users/user_settings.php" class="btn btn-primary">Edit Account Info</a></p>
+		<p><a class="btn btn-primary " href="../users/profile.php?id=<?=$get_info_id;?>" role="button">Public Profile</a></p>
 		<?php
 		if($settings->twofa == 1){
 		$twoQ = $db->query("select twoKey from users where id = ? and twoEnabled = 0", [$userdetails->id]);
 		if($twoQ->count() > 0){ ?>
-			<p><a class="btn btn-primary " href="../lms_master/users/enable2fa.php" role="button">Manage 2 Factor Auth</a></p>
+			<p><a class="btn btn-primary " href="../users/enable2fa.php" role="button">Manage 2 Factor Auth</a></p>
 	<?php	} else { ?>
-			<p><a class="btn btn-primary " href="../lms_master/users/manage2fa.php" role="button">Manage 2 Factor Auth</a></p>
+			<p><a class="btn btn-primary " href="../users/manage2fa.php" role="button">Manage 2 Factor Auth</a></p>
 	<?php }} ?>
-	<?php if($settings->session_manager==1) {?><p><a class="btn btn-primary " href="../lms_master/users/manage_sessions.php" role="button">Manage Sessions</a></p><?php } ?>
+	<?php if($settings->session_manager==1) {?><p><a class="btn btn-primary " href="../users/manage_sessions.php" role="button">Manage Sessions</a></p><?php } ?>
 	<?php if(isset($_SESSION['cloak_to'])){ ?>
 		<form class="" action="account.php" method="post">
 			<input type="submit" name="uncloak" value="Uncloak!" class='btn btn-danger'>
@@ -97,7 +97,7 @@ $userdetails = fetchUserDetails(NULL, NULL, $get_info_id); //Fetch user details
 </div> <!-- /#page-wrapper -->
 
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 <script type="text/javascript">
@@ -106,4 +106,4 @@ $(document).ready(function(){
 });
 </script>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

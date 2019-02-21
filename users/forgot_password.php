@@ -18,12 +18,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
-if(ipCheckBan()){Redirect::to($us_url_root.'lms_master/usersc/scripts/banned.php');die();}
+if(ipCheckBan()){Redirect::to($us_url_root.'usersc/scripts/banned.php');die();}
 $error_message = null;
 $errors = array();
 $email_sent=FALSE;
@@ -31,7 +31,7 @@ $email_sent=FALSE;
 $token = Input::get('csrf');
 if(Input::exists()){
     if(!Token::check($token)){
-        include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+        include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
     }
 }
 
@@ -80,9 +80,9 @@ if ($user->isLoggedIn()) $user->logout();
 <?php
 
 if($email_sent){
-    require $abs_us_root.$us_url_root.'lms_master/users/views/_forgot_password_sent.php';
+    require $abs_us_root.$us_url_root.'users/views/_forgot_password_sent.php';
 }else{
-    require $abs_us_root.$us_url_root.'lms_master/users/views/_forgot_password.php';
+    require $abs_us_root.$us_url_root.'users/views/_forgot_password.php';
 }
 
 ?>
@@ -91,8 +91,8 @@ if($email_sent){
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <!-- footer -->
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

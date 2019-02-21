@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-require_once '../lms_master/users/init.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 
 //PHP Goes Here!
@@ -70,7 +70,7 @@ if (!empty($_POST)) {
       $token = $_POST['csrf'];
 
       if(!Token::check($token)){
-        include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+        include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
       }
 
       $form_valid=FALSE; // assume the worst
@@ -175,7 +175,7 @@ if (!empty($_POST)) {
             $addNewPermission = array('user_id' => $theNewId, 'permission_id' => 1);
             $db->insert('user_permission_matches',$addNewPermission);
             $db->insert('profiles',['user_id'=>$theNewId, 'bio'=>'']);
-            include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/during_user_creation.php');
+            include($abs_us_root.$us_url_root.'usersc/scripts/during_user_creation.php');
             if(isset($_POST['sendEmail'])) {
               $userDetails = fetchUserDetails(NULL, NULL, $theNewId);
               $params = array(
@@ -194,7 +194,7 @@ if (!empty($_POST)) {
               email($to,$subject,$body);
             }
             logger($user->data()->id,"User Manager","Added user $username.");
-            Redirect::to($us_url_root.'lms_master/users/admin_user.php?id='.$theNewId);
+            Redirect::to($us_url_root.'users/admin_user.php?id='.$theNewId);
           } catch (Exception $e) {
             die($e->getMessage());
           }
@@ -316,12 +316,12 @@ if (!empty($_POST)) {
 
         <!-- End of main content section -->
 
-        <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+        <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
         <!-- Place any per-page javascript here -->
-        <script src="../lms_master/users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../lms_master/users/js/pagination/dataTables.js" type="text/javascript"></script>
-        <script src="../lms_master/users/js/jwerty.js"></script>
+        <script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
+        <script src="../users/js/jwerty.js"></script>
         <script>
         $(document).ready(function() {
           jwerty.key('esc', function(){
@@ -379,4 +379,4 @@ if (!empty($_POST)) {
         </script>
       <?php } ?>
 
-      <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+      <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

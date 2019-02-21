@@ -17,9 +17,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */ ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
 <?php
 $query = $db->query("SELECT * FROM email");
@@ -31,7 +31,7 @@ if($user->isLoggedIn()) $user->logout();
 $token = Input::get('csrf');
 if(Input::exists()){
     if(!Token::check($token)){
-        include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+        include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
     }
 }
 
@@ -87,17 +87,17 @@ if(Input::exists('post')){
 <?php
 
 if ($email_sent){
-    require $abs_us_root.$us_url_root.'lms_master/users/views/_verify_resend_success.php';
+    require $abs_us_root.$us_url_root.'users/views/_verify_resend_success.php';
 }else{
-    require $abs_us_root.$us_url_root.'lms_master/users/views/_verify_resend.php';
+    require $abs_us_root.$us_url_root.'users/views/_verify_resend.php';
 }
 
 ?>
 </div>
 </div>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
   <!-- Place any per-page javascript here -->
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

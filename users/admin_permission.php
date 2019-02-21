@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
 $validation = new Validate();
@@ -32,7 +32,7 @@ $successes = [];
 
 //Check if selected permission level exists
 if(!permissionIdExists($permissionId)){
-Redirect::to($us_url_root.'lms_master/users/admin_permissions.php'); die();
+Redirect::to($us_url_root.'users/admin_permissions.php'); die();
 }
 
 //Fetch information specific to permission level
@@ -41,7 +41,7 @@ $permissionDetails = fetchPermissionDetails($permissionId);
 if(!empty($_POST)){
   $token = $_POST['csrf'];
 	if(!Token::check($token)){
-		include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+		include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
 	}
 
   //Delete selected permission level
@@ -52,7 +52,7 @@ if(!empty($_POST)){
         $successes[] = lang("PERMISSION_DELETIONS_SUCCESSFUL", array($deletion_count));
         $name = $permissionDetails['name'];
         logger($user->data()->id,"Permissions Manager","Deleted $name.");
-        Redirect::to($us_url_root.'lms_master/users/admin_permissions.php?msg=Permission+deleted.');
+        Redirect::to($us_url_root.'users/admin_permissions.php?msg=Permission+deleted.');
       }
       else {
         $errors[] = lang("SQL_ERROR");
@@ -173,7 +173,7 @@ $pageData = fetchAllPages();
 
 			<form name='adminPermission' action='<?=$_SERVER['PHP_SELF']?>?id=<?=$permissionId?>' method='post'>
 							<input class='btn btn-primary' type='submit' value='Update Permission' class='submit' />
-			<a class='btn btn-warning' href="../lms_master/users/admin_permissions.php">Cancel</a><br><br>
+			<a class='btn btn-warning' href="../users/admin_permissions.php">Cancel</a><br><br>
 			<table class='table'>
 			<tr><td>
 			<h3>Permission Information</h3>
@@ -309,8 +309,8 @@ $pageData = fetchAllPages();
 
     <!-- /.row -->
     <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
     <!-- Place any per-page javascript here -->
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
@@ -35,7 +35,7 @@ $userId = Input::get('id');
 $email = $db->query("SELECT * FROM email")->first();
 //Check if selected user exists
 if(!userIdExists($userId)){
-  Redirect::to($us_url_root.'lms_master/users/admin_users.php?err=That user does not exist.'); die();
+  Redirect::to($us_url_root.'users/admin_users.php?err=That user does not exist.'); die();
 }
 
 $userdetails = fetchUserDetails(NULL, NULL, $userId); //Fetch user details
@@ -44,14 +44,14 @@ $userdetails = fetchUserDetails(NULL, NULL, $userId); //Fetch user details
 if(!empty($_POST)) {
     $token = $_POST['csrf'];
     if(!Token::check($token)){
-      include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+      include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
     }else {
 
   if(!empty($_POST['delete'])){
     $deletions = $_POST['delete'];
     if ($deletion_count = deleteUsers($deletions)){
       logger($user->data()->id,"User Manager","Deleted user named $userdetails->fname.");
-                Redirect::to($us_url_root.'lms_master/users/admin_users.php?msg='.lang("ACCOUNT_DELETIONS_SUCCESSFUL", array($deletion_count)));
+                Redirect::to($us_url_root.'users/admin_users.php?msg='.lang("ACCOUNT_DELETIONS_SUCCESSFUL", array($deletion_count)));
     }
     else {
       $errors[] = lang("SQL_ERROR");
@@ -444,7 +444,7 @@ else $protectedprof = 0;
                 <div class="panel-body">
                         <center>
                                 <div class="btn-group"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#password">Password/PIN Settings</button></div>
-                                <?php if(file_exists($abs_us_root.$us_url_root.'lms_master/usersc/includes/admin_user_system_settings.php')){?>
+                                <?php if(file_exists($abs_us_root.$us_url_root.'usersc/includes/admin_user_system_settings.php')){?>
                                 <div class="btn-group"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#systems">System Settings</button></div><?php } ?>
                                 <div class="btn-group"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#permissions">Permission Settings</button></div>
                                 <div class="btn-group"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#misc">Misc Settings</button></div>
@@ -498,8 +498,8 @@ else $protectedprof = 0;
         <h4 class="modal-title">System Settings</h4>
       </div>
       <div class="modal-body">
-          <?php if(file_exists($abs_us_root.$us_url_root.'lms_master/usersc/includes/admin_user_system_settings.php')){
-          	require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/admin_user_system_settings.php';
+          <?php if(file_exists($abs_us_root.$us_url_root.'usersc/includes/admin_user_system_settings.php')){
+          	require_once $abs_us_root.$us_url_root.'usersc/includes/admin_user_system_settings.php';
           } ?>
       </div>
       <div class="modal-footer">
@@ -626,7 +626,7 @@ else $protectedprof = 0;
         <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
                 <div class="pull-right">
                         <div class="btn-group"><input class='btn btn-primary' type='submit' value='Update' class='submit' /></div>
-                        <div class="btn-group"><a class='btn btn-warning' href="../lms_master/users/admin_users.php">Cancel</a></div><br /><Br />
+                        <div class="btn-group"><a class='btn btn-warning' href="../users/admin_users.php">Cancel</a></div><br /><Br />
                 </div>
 
         </form>
@@ -638,10 +638,10 @@ else $protectedprof = 0;
 </div>
 
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
-<script src="../lms_master/users/js/jwerty.js"></script>
+<script src="../users/js/jwerty.js"></script>
 <script>
   jwerty.key('esc', function () {
     $('.modal').modal('hide');
@@ -652,4 +652,4 @@ else $protectedprof = 0;
   <script>$('#adminUser').find('input:enabled, select:enabled, textarea:enabled').attr('disabled', 'disabled');</script>
 <?php } ?>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

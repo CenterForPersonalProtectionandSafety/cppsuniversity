@@ -1,7 +1,7 @@
 <?php
-require_once '../lms_master/users/init.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 
 if(!in_array($user->data()->id,$master_account)){die();}
 if (!securePage($_SERVER['PHP_SELF'])){die();}
@@ -41,7 +41,7 @@ $edit = Input::get('edit');
 $checkQ = $db->query("SELECT * FROM us_forms WHERE id = ?",array($edit));
 $checkC = $checkQ->count();
 if($checkC < 1 && is_numeric($edit)){
-	Redirect::to($us_url_root.'lms_master/users/edit_form.php?err=Form+not+found');
+	Redirect::to($us_url_root.'users/edit_form.php?err=Form+not+found');
 }elseif(is_numeric($edit)){
 	$check = $checkQ->first();
 	$name = formatName($check->form);
@@ -66,7 +66,7 @@ if(!is_numeric($lastOrder)){
 	$lastOrder = $lastOrder + 10;
 }
 if(!empty($_POST['edit_field'])){
-	Redirect::to($us_url_root.'lms_master/users/edit_form.php?edit='.$edit.'&field='.$field);
+	Redirect::to($us_url_root.'users/edit_form.php?edit='.$edit.'&field='.$field);
 }
 
 if(!empty($_POST['create_field'])){
@@ -195,7 +195,7 @@ if(!empty($_POST['edit_this_field'])){
 
 <div id="page-wrapper">
 	<div class="container-fluid">
-			<?php require_once($abs_us_root.$us_url_root.'lms_master/users/views/_form_manager_menu.php');?>
+			<?php require_once($abs_us_root.$us_url_root.'users/views/_form_manager_menu.php');?>
 		<?php if(is_numeric($autogen)){ ?>
 			<div class="row">
 					<div class="col-xs-12">
@@ -211,9 +211,9 @@ if(!empty($_POST['edit_this_field'])){
 					<h3>Managing the "<font color="blue"><?=$check->form?></font>" form</h3>
 					<?php
 					if(!is_numeric($field)){
-					require_once($abs_us_root.$us_url_root.'lms_master/users/views/_form_create_field.php');
+					require_once($abs_us_root.$us_url_root.'users/views/_form_create_field.php');
 				}else{
-          require_once($abs_us_root.$us_url_root.'lms_master/users/views/_form_edit_field.php');
+          require_once($abs_us_root.$us_url_root.'users/views/_form_edit_field.php');
 				}
 
 					?>
@@ -229,7 +229,7 @@ if(!empty($_POST['edit_this_field'])){
 					}else{
 						displayForm($check->form,['nosubmit'=>1]);
 					}
-					require_once($abs_us_root.$us_url_root.'lms_master/users/views/_form_edit_delete_reorder.php');
+					require_once($abs_us_root.$us_url_root.'users/views/_form_edit_delete_reorder.php');
 
 } //end editing section
 					?>
@@ -243,6 +243,6 @@ if(!empty($_POST['edit_this_field'])){
 </div> <!-- /#page-wrapper -->
 
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

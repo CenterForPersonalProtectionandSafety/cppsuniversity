@@ -18,9 +18,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
 <?php
@@ -34,14 +34,14 @@ if(filter_var($ip, FILTER_VALIDATE_IP)){
 if($wl == 'whitelist'){
   logger($user->data()->id,"Setting Change","Whitelisted ".$ip);
   $db->insert('us_ip_whitelist',['ip'=>$ip]);
-  Redirect::to($us_url_root.'lms_master/users/admin_ips.php?err=New+IP+Whitelisted');
+  Redirect::to($us_url_root.'users/admin_ips.php?err=New+IP+Whitelisted');
 }else{
   logger($user->data()->id,"Setting Change","Blacklisted ".$ip);
   $db->insert('us_ip_blacklist',['ip'=>$ip]);
-  Redirect::to($us_url_root.'lms_master/users/admin_ips.php?err=New+IP+Blacklisted');
+  Redirect::to($us_url_root.'users/admin_ips.php?err=New+IP+Blacklisted');
 }
 }else{
-  Redirect::to($us_url_root.'lms_master/users/admin_ips.php?err=Invalid+IP+address');
+  Redirect::to($us_url_root.'users/admin_ips.php?err=Invalid+IP+address');
 }
 }
 
@@ -56,7 +56,7 @@ if(!empty($_POST['delete'])){
       logger($user->data()->id,"Setting Change","Deleted ".$ip->ip." from blacklist");
     $db->deleteById('us_ip_blacklist',$v);
   }
-  Redirect::to($us_url_root.'lms_master/users/admin_ips.php?err=IP(s) Deleted');
+  Redirect::to($us_url_root.'users/admin_ips.php?err=IP(s) Deleted');
 }
 
 
@@ -148,16 +148,16 @@ if(!empty($_POST['delete'])){
 
       <!-- End of main content section -->
 
-      <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+      <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
       <!-- Place any per-page javascript here -->
-      <script src="../lms_master/users/js/jwerty.js"></script>
+      <script src="../users/js/jwerty.js"></script>
       <script>
       jwerty.key('esc', function () {
         $('.modal').modal('hide');
       });
       </script>
-      <script src="/lms_master/users/js/search.js" charset="utf-8"></script>
+      <script src="/users/js/search.js" charset="utf-8"></script>
 
       <script>
     	$(document).ready(function() {
@@ -168,7 +168,7 @@ if(!empty($_POST['delete'])){
         );
     	} );
     	</script>
-    	<script src="../lms_master/users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-    	<script src="../lms_master/users/js/pagination/dataTables.js" type="text/javascript"></script>
+    	<script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+    	<script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
 
-      <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+      <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

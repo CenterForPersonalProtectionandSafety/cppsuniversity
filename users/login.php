@@ -22,15 +22,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ini_set("allow_url_fopen", 1);
 if(isset($_SESSION)){session_destroy();}
 ?>
-<?php require_once '../lms_master/users/init.php';?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+<?php require_once '../users/init.php';?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 if($settings->twofa == 1){
   $google2fa = new PragmaRX\Google2FA\Google2FA();
 }
 ?>
 <?php
-if(ipCheckBan()){Redirect::to($us_url_root.'lms_master/usersc/scripts/banned.php');die();}
+if(ipCheckBan()){Redirect::to($us_url_root.'usersc/scripts/banned.php');die();}
 $settingsQ = $db->query("SELECT * FROM settings");
 $settings = $settingsQ->first();
 $error_message = '';
@@ -41,11 +41,11 @@ if($user->isLoggedIn()) Redirect::to($us_url_root.'index.php');
 if (Input::exists()) {
   $token = Input::get('csrf');
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
   }
   //Check to see if recaptcha is enabled
   if($settings->recaptcha == 1){
-    require_once $abs_us_root.$us_url_root.'lms_master/users/includes/recaptcha.config.php';
+    require_once $abs_us_root.$us_url_root.'users/includes/recaptcha.config.php';
 
     //reCAPTCHA 2.0 check
     $response = null;
@@ -88,8 +88,8 @@ if (Input::exists()) {
             if(!empty($dest)) {
               $page=encodeURIComponent(Input::get('redirect'));
               logger($user->data()->id,"Two FA","Two FA being requested.");
-              Redirect::to($us_url_root.'lms_master/users/twofa.php?dest='.$dest.'&redirect='.$page); }
-              else Redirect::To($us_url_root.'lms_master/users/twofa.php');
+              Redirect::to($us_url_root.'users/twofa.php?dest='.$dest.'&redirect='.$page); }
+              else Redirect::To($us_url_root.'users/twofa.php');
             } else {
               # if user was attempting to get to a page before login, go there
               $_SESSION['last_confirm']=date("Y-m-d H:i:s");
@@ -97,11 +97,11 @@ if (Input::exists()) {
                 $redirect=htmlspecialchars_decode(Input::get('redirect'));
                 if(!empty($redirect) || $redirect!=='') Redirect::to($redirect);
                 else Redirect::to($dest);
-              } elseif (file_exists($abs_us_root.$us_url_root.'lms_master/usersc/scripts/custom_login_script.php')) {
+              } elseif (file_exists($abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php')) {
 
                 # if site has custom login script, use it
                 # Note that the custom_login_script.php normally contains a Redirect::to() call
-                require_once $abs_us_root.$us_url_root.'lms_master/usersc/scripts/custom_login_script.php';
+                require_once $abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php';
               } else {
                 if (($dest = Config::get('homepage')) ||
                 ($dest = 'account.php')) {
@@ -137,10 +137,10 @@ if (Input::exists()) {
             <?php
 
             if($settings->glogin==1 && !$user->isLoggedIn()){
-              require_once $abs_us_root.$us_url_root.'lms_master/users/includes/google_oauth_login.php';
+              require_once $abs_us_root.$us_url_root.'users/includes/google_oauth_login.php';
             }
             if($settings->fblogin==1 && !$user->isLoggedIn()){
-              require_once $abs_us_root.$us_url_root.'lms_master/users/includes/facebook_oauth.php';
+              require_once $abs_us_root.$us_url_root.'users/includes/facebook_oauth.php';
             }
             ?>
             <form name="login" id="login-form" class="form-signin" action="login.php" method="post">
@@ -176,18 +176,18 @@ if (Input::exists()) {
           </div>
           <div class="row">
             <div class="col-xs-6"><br>
-              <a class="pull-left" href='../lms_master/users/forgot_password.php'><i class="fa fa-wrench"></i> Forgot Password</a><br><br>
+              <a class="pull-left" href='../users/forgot_password.php'><i class="fa fa-wrench"></i> Forgot Password</a><br><br>
             </div>
             <?php if($settings->registration==1) {?>
               <div class="col-xs-6"><br>
-                <a class="pull-right" href='../lms_master/users/join.php'><i class="fa fa-plus-square"></i> <?=lang("SIGNUP_TEXT","");?></a><br><br>
+                <a class="pull-right" href='../users/join.php'><i class="fa fa-plus-square"></i> <?=lang("SIGNUP_TEXT","");?></a><br><br>
               </div><?php } ?>
             </div>
           </div>
         </div>
 
         <!-- footers -->
-        <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+        <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
         <!-- Place any per-page javascript here -->
 
@@ -199,4 +199,4 @@ if (Input::exists()) {
           }
         </script>
       <?php } ?>
-      <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+      <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

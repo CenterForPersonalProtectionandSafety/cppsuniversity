@@ -61,5 +61,5 @@ $permissions = ['email']; // Optional permissions
 $loginUrl = $helper->getLoginUrl($callback, $permissions);
 
 echo '<a href="' . htmlspecialchars($loginUrl) . '"><img align=right src="'
-.$us_url_root.'lms_master/users/images/facebook.png" alt=""/></a>';
+.$us_url_root.'users/images/facebook.png" alt=""/></a>';
 ?>

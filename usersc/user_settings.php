@@ -5,9 +5,9 @@ Custom user_settings page
 ?>
 
 <?php
-require_once '../lms_master/users/init.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
@@ -17,7 +17,7 @@ require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php
 if($user->isLoggedIn() && !checkMenu(2,$user->data()->id)){
 	if (($settings->site_offline==1) && (!in_array($user->data()->id, $master_account)) && ($currentPage != 'login.php') && ($currentPage != 'maintenance.php')){
 		$user->logout();
-		Redirect::to($us_url_root.'lms_master/users/maintenance.php');
+		Redirect::to($us_url_root.'users/maintenance.php');
 	}
 }
 
@@ -42,7 +42,7 @@ if($holdover == 'true'){
 if(!empty($_POST)) {
     $token = $_POST['csrf'];
     if(!Token::check($token)){
-				include('../lms_master/usersc/scripts/token_error.php');
+				include('../usersc/scripts/token_error.php');
     }else {
         //Update display name
 				//if (($settings->change_un == 0) || (($settings->change_un == 2) && ($user->data()->un_changed == 1)))
@@ -294,7 +294,7 @@ $userdetails=$user2->data();
 
 
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 <script type="text/javascript">
@@ -318,4 +318,4 @@ $userdetails=$user2->data();
 		});
 </script>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

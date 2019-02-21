@@ -1,10 +1,10 @@
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}?>
 <?php
 if($settings->twofa != 1){
-  Redirect::to($us_url_root.'lms_master/users/account.php?err=Sorry.Two+factor+is+not+enabled+at+this+time');
+  Redirect::to($us_url_root.'users/account.php?err=Sorry.Two+factor+is+not+enabled+at+this+time');
 }
 
 use PragmaRX\Google2FA\Google2FA;
@@ -48,7 +48,7 @@ $google2fa_url = $google2fa->getQRCodeGoogleUrl(
   </div>
 
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
 <script>
@@ -84,4 +84,4 @@ $google2fa_url = $google2fa->getQRCodeGoogleUrl(
         });
     });
 </script>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

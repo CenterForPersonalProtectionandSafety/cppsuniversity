@@ -10,7 +10,7 @@ die("You need to customize this page before using it");
 //Navigate to your userspice/users folder and simply type
 //php subscribe.php
 //and just leave this file running. It will enter all messages into the db.
-require_once $abs_us_root.$us_url_root.'lms_master/users/init.php';
+require_once $abs_us_root.$us_url_root.'users/init.php';
 //Paste your own globals config array from users/init.php here...
 $GLOBALS['config'] = array(
 	'mysql'      => array('host'         => 'localhost',
@@ -28,11 +28,11 @@ $GLOBALS['config'] = array(
 )
 );
 
-require_once $abs_us_root.$us_url_root.'lms_master/users/classes/Config.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/classes/DB.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/classes/Input.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/classes/Validate.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/classes/phpMQTT.php';
+require_once $abs_us_root.$us_url_root.'users/classes/Config.php';
+require_once $abs_us_root.$us_url_root.'users/classes/DB.php';
+require_once $abs_us_root.$us_url_root.'users/classes/Input.php';
+require_once $abs_us_root.$us_url_root.'users/classes/Validate.php';
+require_once $abs_us_root.$us_url_root.'users/classes/phpMQTT.php';
 $db = DB::getInstance();
 
 //put in your mqtt server credentials

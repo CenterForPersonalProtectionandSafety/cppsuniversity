@@ -14,6 +14,6 @@ $applied[] = $d->migration;
 $missing = array_diff($migrations,$applied);
 if(!empty($missing)){ ?>
   <div class="alert alert-danger">
-    <strong>Warning!</strong> Your database is out of date. Please <a href="../lms_master/users/update.php">click here</a> to get the latest update. Failure to do so, could cause system instability.
+    <strong>Warning!</strong> Your database is out of date. Please <a href="../users/update.php">click here</a> to get the latest update. Failure to do so, could cause system instability.
   </div>
 <?php } ?>

@@ -7,9 +7,9 @@ Custom join page
 // ini_set('display_errors', 1);
 ini_set("allow_url_fopen", 1);
 ?>
-<?php require_once '../lms_master/users/init.php';?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+<?php require_once '../users/init.php';?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 use PragmaRX\Google2FA\Google2FA;
 if($settings->twofa == 1){
 $google2fa = new Google2FA();
@@ -18,7 +18,7 @@ $google2fa = new Google2FA();
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php
-if(ipCheckBan()){Redirect::to($us_url_root.'lms_master/usersc/scripts/banned.php');die();}
+if(ipCheckBan()){Redirect::to($us_url_root.'usersc/scripts/banned.php');die();}
 if($user->isLoggedIn()) Redirect::to($us_url_root.'index.php');
 $settingsQ = $db->query("SELECT * FROM settings");
 $settings = $settingsQ->first();
@@ -52,7 +52,7 @@ $reCaptchaValid=FALSE;
 if(Input::exists()){
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
   }
         $fname = Input::get('fname');
         $lname = Input::get('lname');
@@ -248,10 +248,10 @@ if(Input::exists()){
                         $twoKey = $google2fa->generateSecretKey();
                         $db->update('users',$theNewId,['twoKey' => $twoKey]);
                         }
-                        include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/during_user_creation.php');
+                        include($abs_us_root.$us_url_root.'usersc/scripts/during_user_creation.php');
                         if($act==1) logger($theNewId,"User","Registration completed and verification email sent.");
                         if($act==0) logger($theNewId,"User","Registration completed.");
-                        Redirect::to($us_url_root.'lms_master/users/joinThankYou.php');
+                        Redirect::to($us_url_root.'users/joinThankYou.php');
                 }
 
         } //Validation and agreement checbox
@@ -264,15 +264,15 @@ if(Input::exists()){
 <?php
 if($settings->registration==1) {
   if($settings->glogin==1 && !$user->isLoggedIn()){
-    require_once $abs_us_root.$us_url_root.'lms_master/users/includes/google_oauth_login.php';
+    require_once $abs_us_root.$us_url_root.'users/includes/google_oauth_login.php';
   }
   if($settings->fblogin==1 && !$user->isLoggedIn()){
-    require_once $abs_us_root.$us_url_root.'lms_master/users/includes/facebook_oauth.php';
+    require_once $abs_us_root.$us_url_root.'users/includes/facebook_oauth.php';
   }
-  require $abs_us_root.$us_url_root.'lms_master/users/views/_join.php';
+  require $abs_us_root.$us_url_root.'users/views/_join.php';
 }
 else {
-  require $abs_us_root.$us_url_root.'lms_master/users/views/_joinDisabled.php';
+  require $abs_us_root.$us_url_root.'users/views/_joinDisabled.php';
 }
 ?>
 
@@ -280,7 +280,7 @@ else {
 </div>
 
 <!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <?php if($settings->recaptcha == 1 || $settings->recaptcha == 2){ ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -307,4 +307,4 @@ else {
 
 
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

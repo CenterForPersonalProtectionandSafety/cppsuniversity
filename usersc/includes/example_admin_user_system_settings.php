@@ -1,4 +1,4 @@
-<?php require_once '../lms_master/users/init.php'; ?>
+<?php require_once '../users/init.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php  //You can use this file to add a "System Settings" button to the admin_user.php page and add any settings you want in there. Run our PHP and HTML from here. ?>
 <?php //If you edit directly from this file don't forget  to rename it to remove the "example_" so it will be detected. ?>

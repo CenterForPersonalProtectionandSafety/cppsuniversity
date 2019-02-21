@@ -18,12 +18,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */ ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
 <?php
-if(ipCheckBan()){Redirect::to($us_url_root.'lms_master/usersc/scripts/banned.php');die();}
+if(ipCheckBan()){Redirect::to($us_url_root.'usersc/scripts/banned.php');die();}
 $new=Input::get('new');
 if($new!=1) if($user->isLoggedIn()) $user->logout();
 
@@ -51,7 +51,7 @@ if(Input::exists('get')){
 			else $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
 			$verify_success=TRUE;
 			logger($verify->data()->id,"User","Verification completed via vericode.");
-			if($new==1) Redirect::to($us_url_root.'lms_master/users/user_settings.php?msg=Email Updated Successfully');
+			if($new==1) Redirect::to($us_url_root.'users/user_settings.php?msg=Email Updated Successfully');
 		}
 	}else{
 		$errors = $validation->errors();
@@ -66,17 +66,17 @@ if(Input::exists('get')){
 <?php
 
 if ($verify_success){
-	require $abs_us_root.$us_url_root.'lms_master/users/views/_verify_success.php';
+	require $abs_us_root.$us_url_root.'users/views/_verify_success.php';
 }else{
-	require $abs_us_root.$us_url_root.'lms_master/users/views/_verify_error.php';
+	require $abs_us_root.$us_url_root.'users/views/_verify_error.php';
 }
 
 ?><br />
 </div>
 </div>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
   <!-- Place any per-page javascript here -->
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

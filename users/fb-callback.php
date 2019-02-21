@@ -1,5 +1,5 @@
 <?php
-require_once '../lms_master/users/init.php';
+require_once '../users/init.php';
 
 $db=DB::getInstance();
 
@@ -24,7 +24,7 @@ $helper = $fb->getRedirectLoginHelper();
 $_SESSION['FBRLH_state']=$_GET['state'];
 
 try {
-  $accessToken = $helper->getAccessToken(NULL,$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$us_url_root.'lms_master/users/fb-callback.php');
+  $accessToken = $helper->getAccessToken(NULL,$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$us_url_root.'users/fb-callback.php');
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   // When Graph returns an error
   echo 'Graph returned an error: ' . $e->getMessage();
@@ -130,14 +130,14 @@ if($twoQ->count()>0) {
   $_SESSION['twofa']=1;
     $page=encodeURIComponent(Input::get('redirect'));
     logger($user->data()->id,"Two FA","Two FA being requested.");
-    Redirect::To($us_url_root.'lms_master/users/twofa.php');
+    Redirect::To($us_url_root.'users/twofa.php');
   }
 
-Redirect::to($us_url_root.'lms_master/users/account.php');
+Redirect::to($us_url_root.'users/account.php');
 }else{
   if($settings->registration==0) {
     session_destroy();
-    Redirect::to($us_url_root.'lms_master/users/join.php');
+    Redirect::to($us_url_root.'users/join.php');
     die();
   } else {
     // //No Existing UserSpice User Found

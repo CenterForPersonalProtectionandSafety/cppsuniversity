@@ -1,4 +1,4 @@
-<p>Licenses for other included software are located in the /lms_master/users/licenses folder. By using this software you are agreeing to all included licenses. </p>
+<p>Licenses for other included software are located in the /users/licenses folder. By using this software you are agreeing to all included licenses. </p>
 
 <h3 style="text-align: center;">GNU GENERAL PUBLIC LICENSE</h3>
 <p style="text-align: center;">Version 3, 29 June 2007</p>

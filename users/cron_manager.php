@@ -19,9 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
 <?php
-require_once '../lms_master/users/init.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
@@ -32,7 +32,7 @@ $form_valid=TRUE;
 if (!empty($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
   }
 
   if(!empty($_POST['addCron'])) {
@@ -169,11 +169,11 @@ $count = $query->count();
 </div>
 <?php if($settings->cron_ip == 'off'){ ?>
 A cron job is an automated task which allows you to perform powerful tasks without your interaction.  Before implementing cron jobs,
-you want to do some thinking about security.  In almost all circumstances, you do not want someone to be able to type <?=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$us_url_root.'lms_master/users/cron/cron.php'?>
+you want to do some thinking about security.  In almost all circumstances, you do not want someone to be able to type <?=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$us_url_root.'users/cron/cron.php'?>
  and run a bunch of commands on your server.<br><br>
 
 The recommended way of implementing cron jobs is...<br>
-Step 1: Go into your server and set your cron job to fire off to <?=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$us_url_root.'lms_master/users/cron/cron.php'?> every few minutes.<br>
+Step 1: Go into your server and set your cron job to fire off to <?=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$us_url_root.'users/cron/cron.php'?> every few minutes.<br>
 Step 2: Go into <a href="admin_logs.php">the system logs</a> and see which ip address was rejected for trying to do a cron job.<br>
 Step 3: Then go into <a href="admin.php?tab=2#cron">the admin dashboard"</a> and set that IP address in the 'Only allow cron jobs from the following IP' box.<br>
 Step 4: Go back into your server and set your cron job for a more reasonable amount of time. Most server admins don't want you running cron jobs every few minutes. Every hour or even every day is more reasonable.
@@ -184,11 +184,11 @@ Step 4: Go back into your server and set your cron job for a more reasonable amo
 
 
 	<!-- footers -->
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
-<script src="../lms_master/users/js/jwerty.js"></script>
-<script src="../lms_master/users/js/bootstrap-editable.js"></script>
+<script src="../users/js/jwerty.js"></script>
+<script src="../users/js/bootstrap-editable.js"></script>
 <script type="text/javascript">
 $.fn.editable.defaults.mode = "inline"
 $(document).ready(function() {
@@ -206,4 +206,4 @@ $(".active").editable({
 });
 </script>
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

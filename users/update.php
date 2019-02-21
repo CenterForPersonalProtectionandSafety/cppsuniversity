@@ -1,7 +1,7 @@
 <?php
-require_once '../lms_master/users/init.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 //if (!securePage($_SERVER['PHP_SELF'])){die();}
 $count = 0;
 $updates = $db->query("SELECT * FROM updates")->results();
@@ -108,7 +108,7 @@ if(!in_array($update,$existing_updates)){
   $db->insert('updates',['migration'=>$update]);
 
   $fields = array(
-    'page'=>'lms_master/users/enable2fa.php',
+    'page'=>'users/enable2fa.php',
     'title'=>'Enable 2 Factor Auth',
     'private'=>1,
   );
@@ -125,7 +125,7 @@ if(!in_array($update,$existing_updates)){
   );
   $db->insert('permission_page_matches',$fields);
   $fields = array(
-    'page'=>'lms_master/users/disable2fa.php',
+    'page'=>'users/disable2fa.php',
     'title'=>'Enable 2 Factor Auth',
     'private'=>1,
   );
@@ -253,7 +253,7 @@ $update = 'Q3KlhjdtxE5X';
 if(!in_array($update,$existing_updates)){
 
   $fields = array(
-    'page'=>'lms_master/users/admin_forms.php',
+    'page'=>'users/admin_forms.php',
     'title'=>'Form Manager',
     'private'=>1,
   );
@@ -266,7 +266,7 @@ if(!in_array($update,$existing_updates)){
   $db->insert('permission_page_matches',$fields);
 
   $fields = array(
-    'page'=>'lms_master/users/admin_form_views.php',
+    'page'=>'users/admin_form_views.php',
     'title'=>'Form View Manager',
     'private'=>1,
   );
@@ -278,7 +278,7 @@ if(!in_array($update,$existing_updates)){
   );
 
   $fields = array(
-    'page'=>'lms_master/users/edit_form.php',
+    'page'=>'users/edit_form.php',
     'title'=>'Form Editor',
     'private'=>1,
   );
@@ -318,9 +318,9 @@ if(!in_array($update,$existing_updates)){
       ADD COLUMN admin_verify tinyint(1) NOT NULL,
       ADD COLUMN admin_verify_timeout int(9) NOT NULL");
       $db->query("UPDATE settings SET admin_verify=1,settings.admin_verify_timeout=120 WHERE id=1");
-      $db->insert('pages',['page' => 'lms_master/users/admin_pin.php','title' => 'Verification PIN Set','re_auth'=>0,'private'=>1]);
+      $db->insert('pages',['page' => 'users/admin_pin.php','title' => 'Verification PIN Set','re_auth'=>0,'private'=>1]);
       $db->insert('permission_page_matches',['permission_id' => 1,'page_id' => $db->lastId()]);
-      $db->insert('pages',['page' => 'lms_master/users/manage2fa.php','title' => 'Manage Two FA','re_auth'=>0,'private'=>1]);
+      $db->insert('pages',['page' => 'users/manage2fa.php','title' => 'Manage Two FA','re_auth'=>0,'private'=>1]);
       $db->insert('permission_page_matches',['permission_id' => 1,'page_id' => $db->lastId()]);
       logger(1,"System Updates","Added pin to users, admin_verify and admin_verify_timeout to settings");
       logger(1,"System Updates","Added admin_pin page to pages table");
@@ -343,7 +343,7 @@ if(!in_array($update,$existing_updates)){
 
 $update = '37wvsb5BzymK';
 if(!in_array($update,$existing_updates)){
-  $db->query("UPDATE pages SET private=1 WHERE page=? AND private=2",['lms_master/users/disable2fa.php']);
+  $db->query("UPDATE pages SET private=1 WHERE page=? AND private=2",['users/disable2fa.php']);
   if($db->count()>0) logger(1,"System Updates","Fixed private status on users/disable2fa.php");
   $db->insert('updates',['migration'=>$update]);
   logger(1,"System Updates","Update $update successfully deployed.");
@@ -534,7 +534,7 @@ if(!in_array($update,$existing_updates)){
           $error++;
           $errors[] = $errorString;
         }
-      $db->insert('pages',['page'=>'lms_master/users/manage_sessions.php','title'=>'Session Manage','private'=>1,'re_auth'=>0]);
+      $db->insert('pages',['page'=>'users/manage_sessions.php','title'=>'Session Manage','private'=>1,'re_auth'=>0]);
       if(!$db->error()) {
         $lastId=$db->lastId();
         logger(1,"System Updates","Added users/manage_sessions.php to pages table.");
@@ -552,7 +552,7 @@ if(!in_array($update,$existing_updates)){
         $error++;
         $errors[] = $errorString;
       }
-      $db->insert('pages',['page'=>'lms_master/users/admin_manage_sessions.php','title'=>'Session Manage','private'=>1,'re_auth'=>1]);
+      $db->insert('pages',['page'=>'users/admin_manage_sessions.php','title'=>'Session Manage','private'=>1,'re_auth'=>1]);
       if(!$db->error()) {
         $lastId=$db->lastId();
         logger(1,"System Updates","Added users/admin_manage_sessions.php to pages table.");

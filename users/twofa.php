@@ -18,14 +18,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
-<?php require_once '../lms_master/users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php'; ?>
+<?php require_once '../users/init.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
-<?php if(!$user->isLoggedIn()) Redirect::to($us_url_root.'lms_master/users/login.php'); ?>
-<?php if(!$settings->twofa==1) Redirect::to($us_url_root.'lms_master/users/account.php'); ?>
-<?php if(!$_SESSION['twofa']==1) Redirect::to($us_url_root.'lms_master/users/account.php'); ?>
+<?php if(!$user->isLoggedIn()) Redirect::to($us_url_root.'users/login.php'); ?>
+<?php if(!$settings->twofa==1) Redirect::to($us_url_root.'users/account.php'); ?>
+<?php if(!$_SESSION['twofa']==1) Redirect::to($us_url_root.'users/account.php'); ?>
 <?php
 $errors = $successes = [];
 $form_valid=TRUE;
@@ -41,8 +41,8 @@ if(isset($_SESSION['fingerprint']) && $_SESSION['fingerprint']!='' && !is_null($
       if(!empty($redirect) || $redirect!=='') Redirect::to($redirect);
       else Redirect::to($dest);
     }
-    elseif (file_exists($abs_us_root.$us_url_root.'lms_master/usersc/scripts/custom_login_script.php')) {
-      require_once $abs_us_root.$us_url_root.'lms_master/usersc/scripts/custom_login_script.php';
+    elseif (file_exists($abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php')) {
+      require_once $abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php';
     }
     else {
       if (($dest = Config::get('homepage')) ||
@@ -57,7 +57,7 @@ if(isset($_SESSION['fingerprint']) && $_SESSION['fingerprint']!='' && !is_null($
 if (!empty($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
   }
 
   if(!empty($_POST['verifyTwo']) && $settings->twofa == 1) {
@@ -85,8 +85,8 @@ if (!empty($_POST)) {
             if(!empty($redirect) || $redirect!=='') Redirect::to($redirect);
             else Redirect::to($dest);
           }
-          elseif (file_exists($abs_us_root.$us_url_root.'lms_master/usersc/scripts/custom_login_script.php')) {
-            require_once $abs_us_root.$us_url_root.'lms_master/usersc/scripts/custom_login_script.php';
+          elseif (file_exists($abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php')) {
+            require_once $abs_us_root.$us_url_root.'usersc/scripts/custom_login_script.php';
           }
           else {
             if (($dest = Config::get('homepage')) ||
@@ -100,7 +100,7 @@ if (!empty($_POST)) {
         elseif($twoPassed==false) {
           if(isset($_SESSION['twofa_count']) && $_SESSION['twofa_count']==3) {
             logger($user->data()->id,"Two FA","3 failed verification attempts, logging out");
-            Redirect::to('../lms_master/users/logout.php');
+            Redirect::to('../users/logout.php');
           }
           if($twoCode=='' || empty($twoCode)) $errors[] = "<strong>Login Failed</strong> Two Factor Auth Code was not present. Please try again.";
           else $errors[] = "<strong>Login Failed</strong> Two Factor Auth Code was invalid. Please try again.";
@@ -150,8 +150,8 @@ $redirect=Input::get('redirect');
 </div>
     <!-- End of main content section -->
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
     <!-- Place any per-page javascript here -->
 
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>

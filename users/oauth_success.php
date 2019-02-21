@@ -19,20 +19,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ?>
 <?php
-require_once '../lms_master/users/init.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 ?>
 <div id="page-wrapper">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12">
 				<h3 align="center">You have successfully logged in...redirecting now.</h3>
-				<?php require_once $abs_us_root.$us_url_root.'lms_master/usersc/includes/oauth_success_redirect.php';?>
-				<?=Redirect::to($us_url_root.'lms_master/users/account.php'); ?>
+				<?php require_once $abs_us_root.$us_url_root.'usersc/includes/oauth_success_redirect.php';?>
+				<?=Redirect::to($us_url_root.'users/account.php'); ?>
 			</div>
 		</div>
 	</div>
 </div>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; ?>
+<?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; ?>

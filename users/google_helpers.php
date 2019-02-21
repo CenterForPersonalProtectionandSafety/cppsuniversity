@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-require_once $abs_us_root.$us_url_root.'lms_master/users/src/Google/Google_Client.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/src/Google/contrib/Google_Oauth2Service.php';
+require_once $abs_us_root.$us_url_root.'users/src/Google/Google_Client.php';
+require_once $abs_us_root.$us_url_root.'users/src/Google/contrib/Google_Oauth2Service.php';
 $settingsQ = $db->query('SELECT * FROM settings');
 $settings = $settingsQ->first();
 if ($settings->glogin==0){

@@ -21,14 +21,14 @@ Special thanks to user Brandin for the mods!
 */
 ?>
 <?php
-require_once '../lms_master/users/init.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'lms_master/users/includes/navigation.php';
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/header.php';
+require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();}
 if($settings->messaging != 1){
-  Redirect::to($us_url_root.'lms_master/users/admin.php?err=Messaging+is+disabled');
+  Redirect::to($us_url_root.'users/admin.php?err=Messaging+is+disabled');
 }
 $validation = new Validate();
 $errors = [];
@@ -38,7 +38,7 @@ $successes = [];
 if (!empty($_POST)) {
   $token = $_POST['csrf'];
   if(!Token::check($token)){
-    include($abs_us_root.$us_url_root.'lms_master/usersc/scripts/token_error.php');
+    include($abs_us_root.$us_url_root.'usersc/scripts/token_error.php');
   }
   $action = Input::get('action');
   if ($action=="archive" && isset($_POST['checkbox'])){
@@ -403,12 +403,12 @@ if (!empty($_POST)) {
 
 
                           <!-- footers -->
-                          <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
+                          <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
                           <!-- Place any per-page javascript here -->
                           <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
-                          <script src="../lms_master/usersc/scripts/jwerty.js"></script>
-                          <script src="../lms_master/usersc/scripts/combobox.js"></script>
+                          <script src="../usersc/scripts/jwerty.js"></script>
+                          <script src="../usersc/scripts/combobox.js"></script>
                           <script>
                           $(document).ready(function(){
                             $('.combobox').combobox();
@@ -438,6 +438,6 @@ if (!empty($_POST)) {
                             );
                           } );
                           </script>
-                          <script src="../lms_master/users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-                          <script src="../lms_master/users/js/pagination/dataTables.js" type="text/javascript"></script>
-                          <?php require_once $abs_us_root.$us_url_root.'lms_master/users/includes/html_footer.php'; // currently just the closing /body and /html ?>
+                          <script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+                          <script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
+                          <?php require_once $abs_us_root.$us_url_root.'users/includes/html_footer.php'; // currently just the closing /body and /html ?>
