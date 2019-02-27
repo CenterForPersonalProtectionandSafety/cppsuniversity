@@ -693,6 +693,34 @@ if(!in_array($update,$existing_updates)){
     }
   }
 
+$update = 'zL1gbKG14YTL';
+if(!in_array($update,$existing_updates)){
+  $db->query("CREATE TABLE `us_announcements` (
+  `id` int(11) NOT NULL,
+  `dismissed` int(11) NOT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `ignore` varchar(50) DEFAULT NULL,
+  `class` varchar(50) DEFAULT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+    if($db->error()){dump($db->errorInfo());}
+
+  $db->query("ALTER TABLE `us_announcements`
+  ADD PRIMARY KEY (`id`);
+  ");
+    if($db->error()){dump($db->errorInfo());}
+
+  $db->query("ALTER TABLE `us_announcements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;");
+    if($db->error()){dump($db->errorInfo());}
+
+  $db->insert('updates',['migration'=>$update]);
+  logger(1,"System Updates","Update $update successfully deployed.");
+  echo "Applied update ".$update."<br>";
+ $count++;
+}
+
 //UPDATE TEMPLATE
 // $update = '';
 // if(!in_array($update,$existing_updates)){
