@@ -35,7 +35,7 @@ if(isset($user) && $user->isLoggedIn()){
                 <img class="img-responsive" src="/usersc/images/wls.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_wls == 1){ ?>
-                <img class="img-responsive" src="/usersc/images/wls_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/wls_watched.png" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">
@@ -56,10 +56,10 @@ if(isset($user) && $user->isLoggedIn()){
         <div class="row indexrow">
             <div class="previewcol col-md-4">
                 <?php if ($user->data()->complete_tier2 == 0){ ?>
-                <img class="img-responsive" src="/usersc/images/tier2_new.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/tier2.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_tier2 == 1){ ?>
-                <img class="img-responsive" src="/usersc/images/tier2_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/tier2_watched.png" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">
@@ -83,7 +83,7 @@ if(isset($user) && $user->isLoggedIn()){
                 <img class="img-responsive" src="/usersc/images/bl.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_bl == 1){ ?>
-                <img class="img-responsive" src="/usersc/images/bl_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/bl_watched.png" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">
@@ -108,7 +108,7 @@ if(isset($user) && $user->isLoggedIn()){
                 <img class="img-responsive" src="/usersc/images/tier3.jpg" alt="Generic placeholder image">
                 <?php } ?>
                 <?php if ($user->data()->complete_tier3 == 1){ ?>
-                <img class="img-responsive" src="/usersc/images/tier3_watched.jpg" alt="Generic placeholder image">
+                <img class="img-responsive" src="/usersc/images/tier3_watched.png" alt="Generic placeholder image">
                 <?php } ?>
             </div>
             <div class="previewcol col-md-8">

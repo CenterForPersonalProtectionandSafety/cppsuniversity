@@ -182,7 +182,7 @@ body {
 }
 
 .tier2banner {
-    background: url(/usersc/images/tier2_banner_new_blue.jpg) no-repeat center center;
+    background: url(/usersc/images/tier2_banner.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -192,7 +192,7 @@ body {
 }
 
 .tier3banner {
-    background: url(/usersc/images/tier3bannerv2.jpg) no-repeat center center;
+    background: url(/usersc/images/tier3banner.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
@@ -202,7 +202,7 @@ body {
 }
 
 .wlsbanner {
-    background: url(/usersc/images/wlsbanner_v2.jpg) no-repeat center center;
+    background: url(/usersc/images/wls_banner.jpg) no-repeat center center;
     -webkit-background-size: 100% 100%;
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
