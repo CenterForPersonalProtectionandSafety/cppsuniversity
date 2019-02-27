@@ -44,9 +44,11 @@ $settings = $db->query("SELECT * FROM settings")->first();
     global $abs_us_root;
     global $us_url_root;
     if(file_exists($abs_us_root.$us_url_root.'usersc/includes/admin/'.$file)){
-      $path = $abs_us_root.$us_url_root.'usersc/admin/'.$file;
-    }else{
+      $path = $abs_us_root.$us_url_root.'usersc/includes/admin/'.$file;
+    }elseif(file_exists($abs_us_root.$us_url_root.'users/views/'.$file)){
       $path = $abs_us_root.$us_url_root.'users/views/'.$file;
+    }else{
+      $path = $abs_us_root.$us_url_root.'users/views/_admin_dashboard.php';
     }
     return $path;
   }
@@ -191,10 +193,12 @@ $settings = $db->query("SELECT * FROM settings")->first();
       include($path);
       break;
     default:
-    if($view != ''){
-    logger($user->data()->id,"Errors","Tried to visit unsupported view ($view) in admin.php");
-    }
+    if($view == ''){
     include($abs_us_root.$us_url_root.'users/views/_admin_dashboard.php');
+  }else{
+    $path = usView($view.".php");
+    include($path);
+  }
     }
 ?>
 <p align="center">
@@ -323,7 +327,7 @@ $settings = $db->query("SELECT * FROM settings")->first();
           $('#menuToggle').on('click', function() {
             $('body').toggleClass('open');
 			$(".dropdown-toggle").dropdown('toggle');
-			
+
           });
 
           $('.search-trigger').on('click', function() {

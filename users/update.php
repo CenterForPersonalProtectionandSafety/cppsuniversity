@@ -38,6 +38,54 @@ if(!in_array($update,$existing_updates)){
  $count++;
 }
 
+$update = '4vsCCmI9CuNZ';
+if(!in_array($update,$existing_updates)){
+  $db->query("UPDATE users SET language = 'en-US'");
+  $fields = array(
+    'default_language'=>"en-US",
+    'allow_language'=>0,
+  );
+  $db->update('settings',1,$fields);
+  logger(1,"System Updates","Update $update successfully deployed.");
+  echo "Applied update ".$update."<br>";
+  $db->insert('updates',['migration'=>$update]);
+ $count++;
+}
+
+$update = 'B9t6He7qmFXa';
+if(!in_array($update,$existing_updates)) {
+  $db->query("SELECT ip FROM logs LIMIT 1");
+  if(!$db->error()) {
+    $db->insert('updates',['migration'=>$update]);
+    if(!$db->error()) {
+      logger(1,"System Updates","Update $update: No change required");
+      logger(1,"System Updates","Update $update: Successfully deployed");
+      echo "Applied update ".$update."<br>";
+      $count++;
+    } else {
+      logger(1,"System Updates","Failed to apply update $update, Error: ".$db->errorString());
+      echo "Failed to apply update ".$update."<br>";
+    }
+  } else {
+    $db->query("ALTER TABLE logs ADD COLUMN ip varchar(75) NULL");
+    if(!$db->error()) {
+      $db->insert('updates',['migration'=>$update]);
+      if(!$db->error()) {
+        logger(1,"System Updates","Update $update: Added column ip to logs table");
+        logger(1,"System Updates","Update $update: Successfully deployed");
+        echo "Applied update ".$update."<br>";
+        $count++;
+      } else {
+        logger(1,"System Updates","Failed to apply update $update, Error: ".$db->errorString());
+        echo "Failed to apply update ".$update."<br>";
+      }
+    } else {
+      logger(1,"System Updates","Failed to apply update $update, Error: ".$db->errorString());
+      echo "Failed to apply update ".$update."<br>";
+    }
+  }
+}
+
 //UPDATE TEMPLATE
 // $update = '';
 // if(!in_array($update,$existing_updates)){
