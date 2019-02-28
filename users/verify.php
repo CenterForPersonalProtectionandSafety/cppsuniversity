@@ -65,8 +65,9 @@ if(Input::exists('get')){
 			else $verify->update(array('email_verified' => 1,'vericode' => randomstring(15),'vericode_expiry' => date("Y-m-d H:i:s")),$verify->data()->id);
 			$verify_success=TRUE;
 			logger($verify->data()->id,"User","Verification completed via vericode.");
-			if($new==1) Redirect::to($us_url_root.'users/user_settings.php?msg=Email Updated Successfully');
+			if($new==1){Redirect::to($us_url_root.'users/user_settings.php?msg=Email Updated Successfully');}
 		}
+	}
 	}else{
 		$errors = $validation->errors();
 	}

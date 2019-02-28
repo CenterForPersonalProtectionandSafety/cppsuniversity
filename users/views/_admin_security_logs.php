@@ -59,7 +59,7 @@ if(!empty($_POST)){
 
   if(!empty($_POST['clear'])){
     $db->query("TRUNCATE TABLE audit");
-    Redirect::to("users/admin.php?view=security_logs&err=All+events+have+been+deleted");
+    Redirect::to($us_url_root.'users/admin.php?view=security_logs&err=All+events+have+been+deleted');
   }
 }
 ?>
@@ -146,4 +146,3 @@ if(!empty($_POST)){
       $('#paginate').DataTable({"pageLength": 25,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
     } );
   </script>
-  

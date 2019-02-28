@@ -18,7 +18,11 @@
     <strong>Please note:</strong> Social logins require that you do some configuration on your own with Google and/or Facebook.It is strongly recommended that you  <a href="http://www.userspice.com/documentation-social-logins/" target="_blank"><font color="blue">check the documentation at UserSpice.com.</font></a><br><br>
     <div class="row">
       <div class="col-sm-6">
-        <!-- left -->
+	  <div class="card no-padding">
+		<div class="card-header"><h3>Google Login</h3></div>
+		<div class="card-body">
+
+		<!-- left -->
         <div class="form-group">
           <label for="glogin">Enable Google Login</label>
           <span style="float:right;">
@@ -49,11 +53,19 @@
           <label for="gredirect">Google Redirect URL (Path to oauth_success.php)</label>
           <input type="text" class="form-control ajxtxt" data-desc="Redirect URL"  name="gredirect" id="gredirect" value="<?=$settings->gredirect?>">
         </div>
+
+		</div>
+		</div>
+
       </div>
 
 
       <div class="col-sm-6">
-        <!-- right -->
+	  <div class="card no-padding">
+		<div class="card-header"><h3>Facebook Login</h3></div>
+		<div class="card-body">
+
+		<!-- right -->
 
         <div class="form-group">
           <label for="fblogin">Enable Facebook Login</label>
@@ -81,15 +93,19 @@
           <input type="text" class="form-control ajxtxt" data-desc="Facebook Callback URL" name="fbcallback" id="fbcallback" value="<?=$settings->fbcallback?>">
         </div>
 
-        <div class="form-group">
-          <label for="graph_ver">Facebook Graph Version - Formatted as v2.2</label>
+		<div class="form-group">
+          <label for="graph_ver">Facebook Graph Version - Formatted as v3.2</label>
           <input type="text" class="form-control ajxtxt" data-desc="Facebook Graph Version" name="graph_ver" id="graph_ver" value="<?=$settings->graph_ver?>">
         </div>
 
-        <div class="form-group">
+		<div class="form-group">
           <label for="finalredir">Redirect After Facebook Login</label>
           <input type="text" class="form-control ajxtxt" data-desc="Facebook Redirect" name="finalredir" id="finalredir" value="<?=$settings->finalredir?>">
         </div>
+
+		</div>
+		</div>
+
       </div>
 
     </div>
