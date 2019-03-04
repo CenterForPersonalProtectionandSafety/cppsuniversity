@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="">
-              <a href="#" style="pointer-events: none; cursor: default;" ><?php echo echousername($user->data()->id);?></a>
+              <a href="#" style="pointer-events: none; cursor: default;" ><i class="fa fa-fw fa-user"></i><?php echo echousername($user->data()->id);?></a>
             </li>
             <li>
               <a href="<?=$us_url_root?>users/logout.php">Logout</a>
@@ -40,16 +40,16 @@
           <ul class="nav navbar-nav navbar-right">
             <!-- Dropdown menu for user logged in -->
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options </a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-cog"> Options</a>
               <ul class="dropdown-menu">
 
                 <?php if (checkMenu(2,$user->data()->id)){  //Links for permission level 2 (Superuser) ?>
-                <li><a href="<?=$us_url_root?>users/admin.php">Admin Dashboard</a></li>
-                <li><a href="<?=$us_url_root?>users/admin.php?view=users">User Management</a></li>
-                <li><a href="<?=$us_url_root?>users/admin.php?view=permissions">User Permissions</a></li>
-                <li><a href="<?=$us_url_root?>users/admin.php?view=pages">System Pages</a></li>
-                <li><a href="<?=$us_url_root?>users/admin.php?view=messages">Messages Admin</a></li>
-                <li><a href="<?=$us_url_root?>users/admin.php?view=logs">System Logs</a></li>
+                <li><a href="<?=$us_url_root?>users/admin.php"><i class="fa fa-fw fa-cogs"></i> Admin Dashboard</a></li>
+                <li><a href="<?=$us_url_root?>users/admin.php?view=users"><i class="fa fa-user"></i> User Management</a></li>
+                <li><a href="<?=$us_url_root?>users/admin.php?view=permissions"><i class="fa fa-lock"></i> User Permissions</a></li>
+                <li><a href="<?=$us_url_root?>users/admin.php?view=pages"><i class="fa fa-wrench"></i> System Pages</a></li>
+                <li><a href="<?=$us_url_root?>users/admin.php?view=messages"><i class="fa fa-envelope"></i> Messages Admin</a></li>
+                <li><a href="<?=$us_url_root?>users/admin.php?view=logs"><i class="fa fa-search"></i> System Logs</a></li>
                 <li role="separator" class="divider"></li>
                 <?php } // if user is logged in ?>
 
