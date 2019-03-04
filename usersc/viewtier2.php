@@ -7,7 +7,7 @@ SCORM Player - Tier 2
 <?php
 require_once '../users/init.php';
 require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
 ?>
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
@@ -572,7 +572,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
                 initTimeout = 0;
                 timeoutErrorDisplayed = false;
                 //            var launchFileAltVal = $('launchFileAlt').value;
-                var launchFileAltVal = 'SCORM/Tier2/index_lms.html';
+                var launchFileAltVal = '../SCORM/Tier2/index_lms.html';
                 //            var cookieNameAltVal = $('cookieNameAlt').value;
                 if(launchFileAltVal.length > 0)
                 {
