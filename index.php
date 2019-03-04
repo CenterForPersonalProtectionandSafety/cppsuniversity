@@ -2,7 +2,7 @@
 
 require_once 'users/init.php';
 require_once $abs_us_root.$us_url_root.'users/includes/header.php';
-require_once $abs_us_root.$us_url_root.'users/includes/navigation.php';
+require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
 if (!securePage($_SERVER['PHP_SELF'])){die();}
 if(isset($user) && $user->isLoggedIn()){
 }
@@ -20,14 +20,7 @@ if(isset($user) && $user->isLoggedIn()){
             <p class="indexdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
     </div>
-    <?php if (checkMenu(3,$user->data()->id)){ //Links for permission level 2 (default admin) ?>
-    <div class="container-fluid indexbaradmin1">
-        <div class="text-center">
-            <h2 class="indexdashboard">Admin Dashboard</h2>
-            <a href="/usersc/custom_list.php" target="_blank" class="button is-white mybutton">TAKE ME TO USER LIST</a>
-        </div>
-    </div>
-    <?php } //is user an admin ?>
+
     <div class="container-fluid indexbar3">
         <div class="row indexrow">
             <div class="previewcol col-md-4">
