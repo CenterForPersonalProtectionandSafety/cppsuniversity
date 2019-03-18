@@ -33,6 +33,7 @@ if(isset($user) && $user->isLoggedIn()){
       <?php //echo $abs_us_root.$us_url_root.'usersc/Modules/BL_Module.php';?>
 
     -->
+</div> <!-- /.wrapper -->
 
     <!-- Include the When Lightning Strikes Module -->
     <?php include $abs_us_root.$us_url_root.'usersc/modules/WLS_Module.php'; ?>
@@ -46,8 +47,6 @@ if(isset($user) && $user->isLoggedIn()){
     <!-- Include the Beyond Lockdown Module -->
     <?php include $abs_us_root.$us_url_root.'usersc/modules/BL_Module.php'; ?>
 
-
-</div> <!-- /.wrapper -->
 
 
 
