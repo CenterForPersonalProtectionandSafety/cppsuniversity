@@ -6,8 +6,8 @@ Admin Dashboard ex. page
 
 <?php require_once '../users/init.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
-if (!securePage($_SERVER['PHP_SELF'])){die();}
+<?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php'; ?>
+<?php if (!securePage($_SERVER['PHP_SELF'])){die();}
 
 //PHP Goes Here!
 $errors = $successes = [];
@@ -227,16 +227,16 @@ $random_password = random_password();
                                             <td><?=$v1->fname?> <?=$v1->lname?></td>
                                             <td><?=$v1->email?></td>
                                             <td><?php if($v1->last_login != 0) { echo $v1->last_login; } else {?> <i>Never</i> <?php }?></td>
-                                            
+
 <!--
                                             <td><?=$v1->complete_tier2?></td>
                                             <td><?=$v1->complete_tier3?></td>
 -->
-                                            
+
                                             <td><?php if($v1->complete_tier2==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
-                                            
+
                                             <td><?php if($v1->complete_tier3==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
-                                            
+
                                             <td><?php if($v1->complete_wls==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
                                         </tr>
                                         <?php } ?>
