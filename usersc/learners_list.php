@@ -13,40 +13,42 @@ Admin Dashboard ex. page
   $learners_query = $db->query("SELECT * FROM users WHERE id IN (SELECT user_id FROM user_permission_matches WHERE permission_id = 1)");
   $userData = $learners_query->results();
 
-  if($_GET['csvButton']){exportUsers();}
+  //var_dump($learners_query);
 
-  function exportUsers() {
-    $query = $db->query("SELECT * FROM users WHERE id IN (SELECT user_id FROM user_permission_matches WHERE permission_id = 1)");
-
-    if($query->num_rows > 0){
-        $delimiter = ",";
-        $filename = "usersCompleted_" . date('Y-m-d') . ".csv";
-
-        //create a file pointer
-        $f = fopen('php://memory', 'w');
-
-        //set column headers
-        $fields = array('Name', 'Email', 'Last-Sign-In', 'WPV', 'EGML', 'WLS', 'BL');
-        fputcsv($f, $fields, $delimiter);
-
-        //output each row of the data, format line as csv and write to file pointer
-        while($row = $query->fetch_assoc()){
-            $lineData = array($row['fname'], $row['email'], $row['last_login'], $row['complete_tier2'], $row['complete_tier3'], $row['complete_wls'], $row['complete_bl']);
-            fputcsv($f, $lineData, $delimiter);
-        }
-
-        //move back to beginning of file
-        fseek($f, 0);
-
-        //set headers to download file rather than displayed
-        header('Content-Type: text/csv');
-        header('Content-Disposition: attachment; filename="' . $filename . '";');
-
-        //output all remaining data on a file pointer
-        fpassthru($f);
-      }
-    exit;
-  }
+  // if($_GET['csvButton']){exportUsers();}
+  //
+  // function exportUsers() {
+  //   $query = $db->query("SELECT * FROM users WHERE id IN (SELECT user_id FROM user_permission_matches WHERE permission_id = 1)");
+  //
+  //   if($query->num_rows > 0){
+  //       $delimiter = ",";
+  //       $filename = "usersCompleted_" . date('Y-m-d') . ".csv";
+  //
+  //       //create a file pointer
+  //       $f = fopen('php://memory', 'w');
+  //
+  //       //set column headers
+  //       $fields = array('Name', 'Email', 'Last-Sign-In', 'WPV', 'EGML', 'WLS', 'BL');
+  //       fputcsv($f, $fields, $delimiter);
+  //
+  //       //output each row of the data, format line as csv and write to file pointer
+  //       while($row = $query->fetch_assoc()){
+  //           $lineData = array($row['fname'], $row['email'], $row['last_login'], $row['complete_tier2'], $row['complete_tier3'], $row['complete_wls'], $row['complete_bl']);
+  //           fputcsv($f, $lineData, $delimiter);
+  //       }
+  //
+  //       //move back to beginning of file
+  //       fseek($f, 0);
+  //
+  //       //set headers to download file rather than displayed
+  //       header('Content-Type: text/csv');
+  //       header('Content-Disposition: attachment; filename="' . $filename . '";');
+  //
+  //       //output all remaining data on a file pointer
+  //       fpassthru($f);
+  //     }
+  //   exit;
+  // }
 
 ?>
 
@@ -63,7 +65,11 @@ Admin Dashboard ex. page
             <div class="col-md-12">
               <div class="row">
                   <hr />
-                  <button type="button" class="btn btn-success" onClick='location.href="?csvButton"'>Export Users</button>
+
+                    <form class="" action="/usersc/export.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                      <input type="submit" name="Export" class="btn btn-success" value="Export to CSV"/>
+                    </form>
+
                   <div class="row">
                       <div class="col-xs-12">
                           <div class="alluinfo">&nbsp;</div>
@@ -113,12 +119,8 @@ Admin Dashboard ex. page
 <!-- Place any per-page javascript here -->
 <script src="js/pagination/jquery.dataTables.js" type="text/javascript"></script>
 <script src="js/pagination/dataTables.js" type="text/javascript"></script>
-<script src="js/jwerty.js"></script>
 <script>
     $(document).ready(function() {
-        jwerty.key('esc', function(){
-            $('.modal').modal('hide');
-        });
         $('#paginate').DataTable({"pageLength": 25,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
 
         $('.password_view_control').hover(function () {
