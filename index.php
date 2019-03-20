@@ -22,6 +22,10 @@ if(isset($user) && $user->isLoggedIn()){
         </div>
     </div>
 
+    <div class="container-fluid indexbar2">
+        <a href="/usersc/learners_list.php" class="btn btn-info" role="button">Learners List</a>
+    </div>
+
     <!--
 
       <?php //echo $abs_us_root.$us_url_root.'usersc/Modules/WLS_Module.php';?>
