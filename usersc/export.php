@@ -19,11 +19,9 @@
     $query = $db->query("SELECT * FROM users WHERE id IN (SELECT user_id FROM user_permission_matches WHERE permission_id = 1)");
     $userData = $learners_query->results();
 
-    while($row = mysqli_fetch_assoc($query)){
-      fputcsv($output, $row);
+    foreach ($userData as $person) {
+      fputcsv($output, array($person->fname, $person->lname, $person->email, $person->last_login, $person->complete_tier2, $person->complete_tier3, $person->complete_wls, $person->complete_bl));
     }
-
-    foreach ($userData as $v1) {
 
     fclose($output);
   }
