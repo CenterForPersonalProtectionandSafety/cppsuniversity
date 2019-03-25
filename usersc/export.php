@@ -1,4 +1,3 @@
-
 <?php require_once '../users/init.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
 <?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php'; ?>
@@ -17,40 +16,39 @@
     fputcsv($output, array('Name', 'Email', 'Last-Sign-In', 'WPV', 'EGML', 'WLS', 'BL'));
 
     $query = $db->query("SELECT * FROM users WHERE id IN (SELECT user_id FROM user_permission_matches WHERE permission_id = 1)");
-    $userData = $learners_query->results();
+    $userData = $query->results();
 
+
+    // Loop through query and to convert 0's and 1's into complete / incomplete statements for CSV
     foreach ($userData as $person) {
-      fputcsv($output, array($person->fname, $person->lname, $person->email, $person->last_login, $person->complete_tier2, $person->complete_tier3, $person->complete_wls, $person->complete_bl));
+
+      if($person->complete_tier2==0){
+        $tier2 = "incomplete";
+      }else {
+        $tier2 = "complete";
+      }
+
+      if($person->complete_tier3==0){
+        $tier3 = "incomplete";
+      }else {
+        $tier3 = "complete";
+      }
+
+      if($person->complete_wls==0){
+        $wls = "incomplete";
+      }else {
+        $wls = "complete";
+      }
+
+      if($person->complete_bl==0){
+        $bl = "incomplete";
+      }else {
+        $bl = "complete";
+      }
+
+      fputcsv($output, array($person->fname . " " . $person->lname, $person->email, $person->last_login, $tier2, $tier3, $wls, $bl));
     }
-
-    fclose($output);
+      fclose($output);
   }
-
-  // if(isset($_POST["Export"])){
-  //     $query = $db->query("SELECT * FROM users WHERE id IN (SELECT user_id FROM user_permission_matches WHERE permission_id = 1)");
-  //
-  //     if($query->num_rows > 0){
-  //         $delimiter = ",";
-  //         $filename = "usersCompleted_" . date('Y-m-d') . ".csv";
-  //         //create a file pointer
-  //         $f = fopen('php://memory', 'w');
-  //         //set column headers
-  //         $fields = array('Name', 'Email', 'Last-Sign-In', 'WPV', 'EGML', 'WLS', 'BL');
-  //         fputcsv($f, $fields, $delimiter);
-  //         //output each row of the data, format line as csv and write to file pointer
-  //         while($row = $query->fetch_assoc()){
-  //             $lineData = array($row['fname'], $row['email'], $row['last_login'], $row['complete_tier2'], $row['complete_tier3'], $row['complete_wls'], $row['complete_bl']);
-  //             fputcsv($f, $lineData, $delimiter);
-  //         }
-  //         //move back to beginning of file
-  //         fseek($f, 0);
-  //         //set headers to download file rather than displayed
-  //         header('Content-Type: text/csv');
-  //         header('Content-Disposition: attachment; filename="' . $filename . '";');
-  //         //output all remaining data on a file pointer
-  //         fclose($f);
-  //       }
-  //     exit;
-  // }
 
 ?>
