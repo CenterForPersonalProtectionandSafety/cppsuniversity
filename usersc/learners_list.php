@@ -117,8 +117,8 @@ Admin Dashboard ex. page
 <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
 
 <!-- Place any per-page javascript here -->
-<script src="js/pagination/jquery.dataTables.js" type="text/javascript"></script>
-<script src="js/pagination/dataTables.js" type="text/javascript"></script>
+<script src="../users/js/pagination/jquery.dataTables.js" type="text/javascript"></script>
+<script src="../users/js/pagination/dataTables.js" type="text/javascript"></script>
 <script>
     $(document).ready(function() {
         $('#paginate').DataTable({"pageLength": 25,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
