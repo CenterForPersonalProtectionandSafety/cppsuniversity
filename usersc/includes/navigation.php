@@ -71,7 +71,7 @@ if($settings->navigation_type==0) {
                 <?php } // if user is logged in ?>
 
                 <?php if (checkMenu(3,$user->data()->id)){  //Links for permission level 3 (Managers) ?>
-                <li><a href="<?=$us_url_root?>usersc/custom_list.php"><i class="fa fa-user"></i> Manager User List</a></li>
+                <li><a href="<?=$us_url_root?>usersc/learners_list.php"><i class="fa fa-user"></i> Learners List</a></li>
                 <li role="separator" class="divider"></li>
                 <?php } // if user is logged in ?>
 

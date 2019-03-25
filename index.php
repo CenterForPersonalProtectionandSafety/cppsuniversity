@@ -21,11 +21,6 @@ if(isset($user) && $user->isLoggedIn()){
             <p class="indexdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
     </div>
-
-    <div class="container-fluid indexbar2">
-        <a href="/usersc/learners_list.php" class="btn btn-info" role="button">Learners List</a>
-    </div>
-
     <!--
 
       <?php //echo $abs_us_root.$us_url_root.'usersc/Modules/WLS_Module.php';?>
