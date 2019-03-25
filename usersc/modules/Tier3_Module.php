@@ -1,5 +1,9 @@
-
-
+<?php
+/*
+Tier 3 Module
+Only for managers
+*/
+?>
 <?php if (checkMenu(3,$user->data()->id)){ //Links for permission (level 3 Manager) ?>
 <div class="container-fluid moduleColorOdd">
     <div class="row">

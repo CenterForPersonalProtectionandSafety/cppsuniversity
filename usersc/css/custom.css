@@ -94,14 +94,14 @@ body {
 }
 
 .moduleColorOdd {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 32px;
+    padding-bottom: 32px;
     background-color: white;
 }
 
 .moduleColorEven {
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 32px;
+    padding-bottom: 32px;
     background-color: #f3f3f3;
 }
 

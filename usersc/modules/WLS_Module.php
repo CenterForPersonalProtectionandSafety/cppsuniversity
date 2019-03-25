@@ -1,5 +1,8 @@
-
-
+<?php
+/*
+When Lightning Strikes Module
+*/
+?>
 <div class="container-fluid moduleColorOdd">
     <div class="row">
         <div class="previewcol col-md-4">

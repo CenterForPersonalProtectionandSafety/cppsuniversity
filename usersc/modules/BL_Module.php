@@ -1,3 +1,8 @@
+<?php
+/*
+BL Module
+*/
+?>
 <div class="container-fluid moduleColorEven">
     <div class="row">
         <div class="previewcol col-md-4">
