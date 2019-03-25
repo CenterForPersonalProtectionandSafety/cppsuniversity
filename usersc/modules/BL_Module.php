@@ -10,7 +10,7 @@
         </div>
         <div class="previewcol col-md-8">
             <h1 class="previewtitle">Beyond Lockdown</h1>
-            <p class="previewdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="previewdescription">CPPS has produced a new 15-minute video program, “Beyond Lockdown – Preventing and Responding to Extreme School Violence” This 15-minute program pulls from guidance from the FBI, Secret Service and Department of Education to educate students, parents, teachers and staff how to recognize warning signs that a student may be progressing towards violence, and how to respond effectively if violence does erupt.</p>
             <a href="/usersc/BL_page.php" target="" class="button is-white mybutton">
                 <?php if ($user->data()->complete_bl == 0){ ?>
                 TAKE ME TO COURSE

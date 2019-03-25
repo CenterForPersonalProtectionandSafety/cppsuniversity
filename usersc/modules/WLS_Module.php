@@ -12,7 +12,7 @@
         </div>
         <div class="previewcol col-md-8">
             <h1 class="previewtitle">When Lightning Strikes</h1>
-            <p class="previewdescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="previewdescription">CPPS has created this latest program to prepare any individual to become situationally aware of their surroundings, pick up on early indicators that something might be wrong, and respond effectively if “Lightning Does Strike” and they find themselves in an Extreme Violence event.</p>
             <a href="/usersc/wls_page.php" target="" class="button is-white mybutton">
                 <?php if ($user->data()->complete_wls == 0){ ?>
                 TAKE ME TO VIDEO
