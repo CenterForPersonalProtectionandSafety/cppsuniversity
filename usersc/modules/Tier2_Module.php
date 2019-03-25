@@ -1,7 +1,7 @@
 
 
-<div class="container-fluid indexbar3">
-    <div class="row indexrow">
+<div class="container-fluid moduleColorEven">
+    <div class="row">
         <div class="previewcol col-md-4">
             <?php if ($user->data()->complete_tier2 == 0){ ?>
             <img class="img-responsive" src="/usersc/images/tier2.jpg" alt="Generic placeholder image">
@@ -21,7 +21,7 @@
               <li>Understand key strategies for de-escalating tense situations in the workplace</li>
             </ul>
             <br>
-            <a href="/usersc/tier2page.php" target="" class="button is-white mybutton">
+            <a href="/usersc/tier2page.php" target="" class="button is-white moduleButton">
                 <?php if ($user->data()->complete_tier2 == 0){ ?>
                 TAKE ME TO COURSE
                 <?php } ?>

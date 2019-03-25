@@ -25,7 +25,7 @@ body {
     text-align: center;
 }
 
-.mybutton {
+.moduleButton {
     font-family: Arial;
     color: #ffffff;
     font-size: 15px;
@@ -34,13 +34,13 @@ body {
     text-decoration: none;
 }
 
-.mybutton:hover {
+.moduleButton:hover {
     background: #3085ba;
     text-decoration: none;
     color: white;
 }
 
-.mybutton:focus {
+.moduleButton:focus {
     background: #3085ba;
     text-decoration: none;
     color: white;
@@ -87,15 +87,22 @@ body {
     font-weight: 600;
 }
 
-.indexbar1 {
+.descriptionBanner {
     padding-top: 16px;
     padding-bottom: 16px;
+    background-color: #551503;
 }
 
-.indexbar2 {
+.moduleColorOdd {
     padding-top: 16px;
-    padding-bottom: 12px;
-    background-color: #551503;
+    padding-bottom: 16px;
+    background-color: white;
+}
+
+.moduleColorEven {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #f3f3f3;
 }
 
 .indexdescription {
@@ -114,23 +121,6 @@ body {
     color: black;
     margin-bottom: 32px;
     text-align: justify;
-}
-
-.indexbar3 {
-    padding-top: 32px;
-    padding-bottom: 16px;
-    background-color: white;
-}
-
-.indexbar4 {
-    padding-top: 16px;
-    padding-bottom: 32px;
-    background-color: white;
-}
-
-.indexrow {
-    margin-left: 16px;
-    margin-right: 16px;
 }
 
 .previewtitle {

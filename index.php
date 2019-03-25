@@ -10,13 +10,13 @@ if(isset($user) && $user->isLoggedIn()){
 
 
 <div id="page-wrapper">
-    <div class="container-fluid indexbar1">
+    <div class="container-fluid">
         <div class="text-center">
             <p class="indexwelcometo">WELCOME TO</p>
             <img src="/usersc/images/universitylogo.png" alt="..." class="">
         </div>
     </div>
-    <div class="container-fluid indexbar2">
+    <div class="container-fluid descriptionBanner">
         <div class="text-left">
             <p class="indexdescription">CPPS is the leading developer and provider of scalable training and consulting solutions in the U.S. for Workplace Violence Prevention, Active Shooter Response, and International Travel Safety. CPPS has worked together with thousands of organizations–large and small–to include over 50% of Fortune 100 corporations, over 1600 colleges and universities; 2000 hospitals and many of the largest non-profit/charitable organizations in the U.S.</p>
         </div>
