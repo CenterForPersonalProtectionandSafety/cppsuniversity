@@ -4,7 +4,7 @@ BL Module
 */
 ?>
 <article class="card">
-    <a href="#">
+    <a href="/usersc/BL_page.php">
         <picture class="thumbnail">
             <?php if ($user->data()->complete_bl == 0){ ?>
             <img src="/usersc/images/bl.jpg" alt="Beyond Lockdown">

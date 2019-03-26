@@ -6,7 +6,7 @@ Only for managers
 ?>
 <?php if (checkMenu(3,$user->data()->id)){ //Links for permission (level 3 Manager) ?>
   <article class="card">
-      <a href="#">
+      <a href="/usersc/tier3page.php">
           <picture class="thumbnail">
             <?php if ($user->data()->complete_tier3 == 0){ ?>
             <img src="/usersc/images/tier3.jpg" alt="Tier 3">
