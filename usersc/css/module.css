@@ -132,7 +132,7 @@ big {
 	color: white;
 }
 
-img {
+.module-img{
 	display: block;
 	border: 0;
 	width: 100%;
@@ -187,6 +187,11 @@ img {
     background: #3085ba;
     text-decoration: none;
     color: white;
+}
+
+article:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
 }
 
 /* Flexbox stuff */

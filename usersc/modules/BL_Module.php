@@ -7,10 +7,10 @@ BL Module
     <a href="/usersc/BL_page.php">
         <picture class="thumbnail">
             <?php if ($user->data()->complete_bl == 0){ ?>
-            <img src="/usersc/images/bl.jpg" alt="Beyond Lockdown">
+            <img class-"module-img" src="/usersc/images/bl.jpg" alt="Beyond Lockdown">
             <?php } ?>
             <?php if ($user->data()->complete_bl == 1){ ?>
-            <img src="/usersc/images/bl_watched.png" alt="Beyond Lockdown Watched">
+            <img class-"module-img" src="/usersc/images/bl_watched.png" alt="Beyond Lockdown Watched">
             <?php } ?>
         </picture>
         <div class="card-content">

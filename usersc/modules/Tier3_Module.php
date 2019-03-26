@@ -9,10 +9,10 @@ Only for managers
       <a href="/usersc/tier3page.php">
           <picture class="thumbnail">
             <?php if ($user->data()->complete_tier3 == 0){ ?>
-            <img src="/usersc/images/tier3.jpg" alt="Tier 3">
+            <img class-"module-img" src="/usersc/images/tier3.jpg" alt="Tier 3">
             <?php } ?>
             <?php if ($user->data()->complete_tier3 == 1){ ?>
-            <img src="/usersc/images/tier3_watched.png" alt="Tier 3 Watched">
+            <img class-"module-img" src="/usersc/images/tier3_watched.png" alt="Tier 3 Watched">
             <?php } ?>
           </picture>
           <div class="card-content">

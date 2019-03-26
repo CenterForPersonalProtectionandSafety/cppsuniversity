@@ -7,10 +7,10 @@ When Lightning Strikes Module
     <a href="/usersc/wls_page.php">
         <picture class="thumbnail">
             <?php if ($user->data()->complete_wls == 0){ ?>
-            <img src="/usersc/images/wls.jpg" alt="When Lightning Strikes">
+            <img class-"module-img" src="/usersc/images/wls.jpg" alt="When Lightning Strikes">
             <?php } ?>
             <?php if ($user->data()->complete_wls == 1){ ?>
-            <img src="/usersc/images/wls_watched.png" alt="When Lightning Strikes Watched">
+            <img class-"module-img" src="/usersc/images/wls_watched.png" alt="When Lightning Strikes Watched">
             <?php } ?>
         </picture>
         <div class="card-content">
