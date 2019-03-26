@@ -1,20 +1,20 @@
-.navbar-inverse {
+/* .navbar-inverse {
     background-color: #00315c;
     border-color: #00315c;
-}
+} */
 
 body {
     /*background-color: #00315c;*/
     background-color: white;
 }
 
-.navbar-inverse .navbar-nav>li>a {
+/* .navbar-inverse .navbar-nav>li>a {
     color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus{
     color: #3bb4ff;
-}
+} */
 
 .myrow {
     margin-top: 100px;
