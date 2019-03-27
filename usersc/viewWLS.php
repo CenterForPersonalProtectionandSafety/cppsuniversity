@@ -25,7 +25,7 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
     function scormIsComplete() {
         //my code goes here
         jQuery.ajax({
-            url:"wls_iscomplete.php",
+            url:"iscomplete/wls_iscomplete.php",
             method:"POST",
             success: function() {
                 console.log('success');
@@ -41,7 +41,7 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
 
     function scormSaveTime(mytime) {
         jQuery.ajax({
-            url:"wls_savetime.php",
+            url:"savetime/wls_savetime.php",
             method:"POST",
             data:{mybookmark:mytime},
             success: function() {
@@ -56,7 +56,7 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
     function scormGetTime() {
         //my code goes here
         var mytime = jQuery.ajax({
-            url:"wls_gettime.php",
+            url:"gettime/wls_gettime.php",
             method:"POST",
             async: false,
             success: function() {
