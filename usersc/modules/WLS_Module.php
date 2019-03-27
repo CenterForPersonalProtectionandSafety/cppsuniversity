@@ -4,7 +4,7 @@ When Lightning Strikes Module
 */
 ?>
 <article class="card">
-    <a href="/usersc/wls_page.php">
+    <a href="/usersc/viewWLS.php">
         <picture class="thumbnail">
             <?php if ($user->data()->complete_wls == 0){ ?>
             <img class-"module-img" src="/usersc/images/wls.jpg" alt="When Lightning Strikes">

@@ -4,7 +4,7 @@ Tier 2 Module
 */
 ?>
 <article class="card">
-    <a href="/usersc/tier2page.php">
+    <a href="/usersc/viewtier2.php">
         <picture class="thumbnail">
           <?php if ($user->data()->complete_tier2 == 0){ ?>
           <img class-"module-img" src="/usersc/images/tier2.jpg" alt="Generic placeholder image">
