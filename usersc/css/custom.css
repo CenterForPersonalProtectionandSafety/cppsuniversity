@@ -1,28 +1,6 @@
-/* .navbar-inverse {
-    background-color: #00315c;
-    border-color: #00315c;
-} */
-
 body {
     /*background-color: #00315c;*/
     background-color: white;
-}
-
-/* .navbar-inverse .navbar-nav>li>a {
-    color: #ffffff;
-}
-
-.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus{
-    color: #3bb4ff;
-} */
-
-.myrow {
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
-
-.justifybutton {
-    text-align: center;
 }
 
 .moduleButton {
@@ -58,11 +36,6 @@ body {
     margin-bottom: 64px;
 }
 
-.img-course {
-    width: 300px;
-    height: auto;
-}
-
 .loginbottomspace {
     margin-bottom: 136px;
 }
@@ -75,16 +48,10 @@ body {
     margin-bottom: 32px;
 }
 
-.indexwelcometo {
+.welcomeTitle {
     font-size: 22px;
     margin-bottom: 0px;
     font-weight: 500;
-}
-
-.indextitle {
-    font-size: 100px;
-    margin-top: -8px;
-    font-weight: 600;
 }
 
 .descriptionBanner {
@@ -105,10 +72,7 @@ body {
     background-color: #f3f3f3;
 }
 
-.indexdescription {
-    padding-left: 100px;
-    padding-right: 100px;
-    font-size: 16px;
+.descriptionContent {
     margin-top: 16px;
     margin-bottom: 10px;
     color: white;
