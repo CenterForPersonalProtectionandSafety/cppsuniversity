@@ -9,12 +9,12 @@ Landing page for Tier3
 <?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
-<div id="page-wrapper" class="pagetier2">
+<div id="page-wrapper" class="modulePage">
     <div class="jumbotron jumbotron-fluid blbanner">
         <div class="container">
-            <h1 class=tier2display>Beyond Lockdown</h1>
-            <h1 class=tier2display2>Enhanced Guidence for</h1>
-            <h1 class=tier2display3>Administrators Teachers Counselors</h1>
+            <h1 class=pageTitle>Beyond Lockdown</h1>
+            <h1 class=pageTitleRow1>Enhanced Guidence for</h1>
+            <h1 class=pageTitleRow2>Administrators Teachers Counselors</h1>
         </div>
     </div>
     <div class="container-fluid indexbarplay">

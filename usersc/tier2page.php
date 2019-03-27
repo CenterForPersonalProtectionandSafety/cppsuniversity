@@ -9,11 +9,11 @@ Landing page for Tier2
 <?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
-<div id="page-wrapper" class="pagetier2">
+<div id="page-wrapper" class="modulePage">
     <div class="jumbotron jumbotron-fluid tier2banner">
         <div class="container">
-            <h1 class=tier2display>Workplace Violence Prevention and Response</h1>
-            <h1 class=tier2display2>FOR EMPLOYEES</h1>
+            <h1 class=pageTitle>Workplace Violence Prevention and Response</h1>
+            <h1 class=pageTitleRow1>FOR EMPLOYEES</h1>
         </div>
     </div>
     <div class="container-fluid indexbarplay">

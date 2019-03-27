@@ -9,11 +9,11 @@ WLS Video Landing Page
 <?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php'; ?>
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
-<div id="page-wrapper" class="pagetier2">
+<div id="page-wrapper" class="modulePage">
     <div class="jumbotron jumbotron-fluid wlsbanner">
         <div class="container">
-            <h1 class=tier2display></h1>
-            <h1 class=tier2display2>When Lightning Strikes</h1>
+            <h1 class=pageTitle>When Lightning Strikes</h1>
+            <h1 class=pageTitleRow1></h1>
         </div>
     </div>
     <div class="container-fluid indexbarplay">
