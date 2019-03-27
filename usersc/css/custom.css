@@ -87,49 +87,6 @@ body {
     text-align: justify;
 }
 
-.previewtitle {
-    font-size: 22px;
-    margin-top: -2px;
-    font-weight: 600;
-}
-
-.previewdescription {
-    margin-bottom: 16px;
-    font-size: 14px;
-    margin-top: 0px;
-}
-
-.previewcol {
-    float:none;
-    display:inline-block;
-    vertical-align:middle;
-    margin-right:-4px;
-}
-
-.indexbtwnspace {
-    padding-bottom: 16px;
-    background-color: #f2f2f2;
-}
-
-.indexbaradmin1 {
-    padding-top: 10px;
-    padding-bottom: 16px;
-    background-color: #f2f2f2;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-
-.indexbaradmin-row {
-    margin-left: -6px;
-}
-
-.indexdashboard {
-    font-weight: 600;
-    margin-top: 0px;
-    margin-bottom: 6px;
-    font-size: 22px;
-}
-
 .viewcoursep {
     margin-top: 64px;
     margin-bottom: 64px;
@@ -175,11 +132,11 @@ body {
     margin-bottom: 0;
 }
 
-.pagetier2 {
+.modulePage {
     padding-top: 0 !important;
 }
 
-.tier2display {
+.pageTitle {
     margin-top:240px;
     font-weight: 600;
     font-size: 32px !important;
@@ -187,7 +144,7 @@ body {
     color: white !important;
 }
 
-.tier2display2 {
+.pageTitleRow1 {
     font-weight: 600;
     font-size: 83px !important;
     margin-top: 0;
@@ -195,7 +152,7 @@ body {
     color: white !important;
 }
 
-.tier2display3 {
+.pageTitleRow2 {
     font-weight: 600;
     font-size: 83px !important;
     margin-top: -16px;
@@ -214,27 +171,6 @@ body {
     margin-bottom: 32px;
 }
 
-.row-card-left {
-    padding-left: 16px;
-    padding-right: 8px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    background-color: #f6f6f6;
-    margin-right: 0px;
-}
-
-.row-card-right {
-    padding-left: 8px;
-    padding-right: 16px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    background-color: #f6f6f6;
-    margin-left: 0px;
-}
-
-.index-logo {
-    margin-left: 16px;
-}
 
 /* ---- usersc/login.php ---- */
 
