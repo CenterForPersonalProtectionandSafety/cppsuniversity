@@ -4,21 +4,21 @@ require_once 'users/init.php';
 require_once $abs_us_root.$us_url_root.'users/includes/header.php';
 require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
 if (!securePage($_SERVER['PHP_SELF'])){die();}
-if(isset($user) && $user->isLoggedIn()){
-}
+if(isset($user) && $user->isLoggedIn()){}
+
 ?>
 
 <link rel="stylesheet" type="text/css" href="usersc/css/module.css">
 
 <div class="container-fluid">
     <div class="text-center">
-        <p class="indexwelcometo">WELCOME TO</p>
+        <p class="welcomeTitle">WELCOME TO</p>
         <img src="/usersc/images/universitylogo.png" alt="..." class="">
     </div>
 </div>
 <div class="container-fluid descriptionBanner">
-    <div class="text-left">
-        <p class="indexdescription">CPPS is the leading developer and provider of scalable training and consulting solutions in the U.S. for Workplace Violence Prevention, Active Shooter Response, and International Travel Safety. CPPS has worked together with thousands of organizations–large and small–to include over 50% of Fortune 100 corporations, over 1600 colleges and universities; 2000 hospitals and many of the largest non-profit/charitable organizations in the U.S.</p>
+    <div class="text-center">
+        <p class="descriptionContent">CPPS is the leading developer and provider of scalable training and consulting solutions in the U.S. for Workplace Violence Prevention, Active Shooter Response, and International Travel Safety. CPPS has worked together with thousands of organizations–large and small–to include over 50% of Fortune 100 corporations, over 1600 colleges and universities; 2000 hospitals and many of the largest non-profit/charitable organizations in the U.S.</p>
     </div>
 </div>
 <br>
