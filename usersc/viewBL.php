@@ -20,9 +20,12 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
             <h1 class=pageTitleRow2>Administrators Teachers Counselors</h1>
         </div>
     </div>
-    <div class="container-fluid indexbarplay">
+    <div class="container-fluid">
         <div class="text-center">
             <h2 class="viewcoursep">Please do not close this tab until finished.</h2>
+        </div>
+        <div class="container">
+          <a href="<?php $abs_us_root.$us_url_root . "index.php" ?>" class="btn btn-primary" role="button">Return Home</a>
         </div>
     </div>
 </div><!-- /.wrapper -->
