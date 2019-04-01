@@ -18,7 +18,25 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
             <p class="viewcoursep">Do not close this tab until finished.</p>
         </div>
     </div> <!-- /.container -->
-</div> <!-- /.wrapper -->
+</div>
+
+<div id="page-wrapper" class="modulePage" onload="Utils.launchSCO(); return false;">
+    <div class="jumbotron jumbotron-fluid blbanner">
+        <div class="container">
+            <h1 class=pageTitle>Beyond Lockdown</h1>
+            <h1 class=pageTitleRow1>Enhanced Guidence for</h1>
+            <h1 class=pageTitleRow2>Administrators Teachers Counselors</h1>
+        </div>
+    </div>
+    <div class="container-fluid indexbarplay">
+        <div class="text-left">
+            <p class="viewcoursep">Please do not close this tab until finished.</p>
+        </div>
+        <div class="text-center">
+            <a href="/usersc/viewBL.php" target="_blank" class="button is-white moduleButton">PLAY COURSE</a>
+        </div>
+    </div>
+</div><!-- /.wrapper -->
 
 <!-- Place any per-page javascript here -->
 <script>
