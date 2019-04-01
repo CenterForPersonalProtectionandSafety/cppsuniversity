@@ -4,7 +4,7 @@ Tier 3 Module
 Only for managers
 */
 ?>
-<?php if (checkMenu(3,$user->data()->id)){ //Links for permission (level 3 Manager) ?>
+<?php //if (checkMenu(3,$user->data()->id)){ //Links for permission (level 3 Manager) ?>
   <article class="card">
       <a href="/usersc/viewtier3.php">
           <picture class="thumbnail">
@@ -21,4 +21,4 @@ Only for managers
           </div><!-- .card-content -->
       </a>
   </article><!-- .card -->
-<?php } //is user an admin ?>
+<?php //} //is user an admin ?>
