@@ -21,11 +21,8 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
         </div>
     </div>
     <div class="container-fluid indexbarplay">
-        <div class="text-left">
-            <p class="viewcoursep">Please do not close this tab until finished.</p>
-        </div>
         <div class="text-center">
-            <a href="/usersc/viewBL.php" target="_blank" class="button is-white moduleButton">PLAY COURSE</a>
+            <h2 class="viewcoursep">Please do not close this tab until finished.</h2>
         </div>
     </div>
 </div><!-- /.wrapper -->
