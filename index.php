@@ -24,27 +24,29 @@ if(isset($user) && $user->isLoggedIn()){}
 </div>
 <br>
 
-<div class="wrapper">
+<div class="centered">
+  <section class="cards">
+      <?php
+        // -- original card
+        //Include the When Lightning Strikes Module
+        include $abs_us_root.$us_url_root.'usersc/modules/original_card/WLS_Module.php';
+
+        //Include the Tier 2 Module
+        include $abs_us_root.$us_url_root.'usersc/modules/original_card/Tier2_Module.php';
+
+        //Include the Tier 3 Module
+        if (checkMenu(3,$user->data()->id)){
+          include $abs_us_root.$us_url_root.'usersc/modules/original_card/Tier3_Module.php';
+        }
+
+        //Include the Beyond Lockdown Module
+        include $abs_us_root.$us_url_root.'usersc/modules/original_card/BL_Module.php';
+      ?>
+  </section>
+</div>
+
+<!-- <div class="wrapper">
   <?php
-
-    // -- original card
-    //Include the When Lightning Strikes Module
-    include $abs_us_root.$us_url_root.'usersc/modules/original_card/WLS_Module.php';
-
-    //Include the Tier 2 Module
-    include $abs_us_root.$us_url_root.'usersc/modules/original_card/Tier2_Module.php';
-
-    //Include the Tier 3 Module
-    if (checkMenu(3,$user->data()->id)){
-      include $abs_us_root.$us_url_root.'usersc/modules/original_card/Tier3_Module.php';
-    }
-
-    //Include the Beyond Lockdown Module
-    include $abs_us_root.$us_url_root.'usersc/modules/original_card/BL_Module.php';
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
     // // -- card_flip
     // //Include the When Lightning Strikes Module
     // include $abs_us_root.$us_url_root.'usersc/modules/card_flip/WLS_Module.php';
@@ -60,7 +62,7 @@ if(isset($user) && $user->isLoggedIn()){}
     // //Include the Beyond Lockdown Module
     // include $abs_us_root.$us_url_root.'usersc/modules/card_flip/BL_Module.php';
   ?>
-</div>
+</div> -->
 
 <!-- footers -->
 <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
