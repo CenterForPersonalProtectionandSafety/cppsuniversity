@@ -8,7 +8,7 @@ if(isset($user) && $user->isLoggedIn()){}
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="usersc/css/card.css">
+<link rel="stylesheet" type="text/css" href="usersc/css/card-flip.css">
 
 <div class="container-fluid">
     <div class="text-center">
@@ -22,29 +22,24 @@ if(isset($user) && $user->isLoggedIn()){}
     </div>
 </div>
 <br>
-<div class="centered">
-    <section class="cards">
 
-      <?php
-        //Include the When Lightning Strikes Module
-        include $abs_us_root.$us_url_root.'usersc/modules/WLS_Module.php';
+<div class="wrapper">
+  <?php
+    //Include the When Lightning Strikes Module
+    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/WLS_Module.php';
 
-        //Include the Tier 2 Module
-        include $abs_us_root.$us_url_root.'usersc/modules/Tier2_Module.php';
+    //Include the Tier 2 Module
+    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/Tier2_Module.php';
 
-        //Include the Tier 3 Module
-        if (checkMenu(3,$user->data()->id)){
-          include $abs_us_root.$us_url_root.'usersc/modules/Tier3_Module.php';
-        }
+    //Include the Tier 3 Module
+    if (checkMenu(3,$user->data()->id)){
+      include $abs_us_root.$us_url_root.'usersc/modules/card_flip/Tier3_Module.php';
+    }
 
-        //Include the Beyond Lockdown Module
-        include $abs_us_root.$us_url_root.'usersc/modules/BL_Module.php';
-      ?>
-
-    </section><!-- .cards -->
-
-</div><!-- .centered -->
-
+    //Include the Beyond Lockdown Module
+    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/BL_Module.php';
+  ?>
+</div>
 
 <!-- footers -->
 <?php require_once $abs_us_root.$us_url_root.'users/includes/page_footer.php'; // the final html footer copyright row + the external js calls ?>
