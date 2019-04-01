@@ -25,17 +25,21 @@ if(isset($user) && $user->isLoggedIn()){}
 <div class="centered">
     <section class="cards">
 
-      <!-- Include the When Lightning Strikes Module -->
-      <?php include $abs_us_root.$us_url_root.'usersc/modules/WLS_Module.php'; ?>
+      <?php
+        //Include the When Lightning Strikes Module
+        include $abs_us_root.$us_url_root.'usersc/modules/WLS_Module.php';
 
-      <!-- Include the Tier 2 Module -->
-      <?php include $abs_us_root.$us_url_root.'usersc/modules/Tier2_Module.php'; ?>
+        //Include the Tier 2 Module
+        include $abs_us_root.$us_url_root.'usersc/modules/Tier2_Module.php';
 
-      <!-- Include the Tier 3 Module -->
-      <?php include $abs_us_root.$us_url_root.'usersc/modules/Tier3_Module.php'; ?>
+        //Include the Tier 3 Module
+        if (checkMenu(3,$user->data()->id)){
+          include $abs_us_root.$us_url_root.'usersc/modules/Tier3_Module.php';
+        }
 
-      <!-- Include the Beyond Lockdown Module -->
-      <?php include $abs_us_root.$us_url_root.'usersc/modules/BL_Module.php'; ?>
+        //Include the Beyond Lockdown Module
+        include $abs_us_root.$us_url_root.'usersc/modules/BL_Module.php';
+      ?>
 
     </section><!-- .cards -->
 
