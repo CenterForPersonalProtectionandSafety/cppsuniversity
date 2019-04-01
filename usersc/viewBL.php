@@ -25,7 +25,7 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
             <h2 class="viewcoursep">Please do not close this tab until finished.</h2>
         </div>
         <div class="container">
-          <a href="<?php $abs_us_root.$us_url_root . "index.php" ?>" class="btn btn-primary" role="button">Return Home</a>
+          <a href="<?php $abs_us_root.$us_url_root . "/index.php" ?>" class="btn btn-primary" role="button">Return Home</a>
         </div>
     </div>
 </div><!-- /.wrapper -->
