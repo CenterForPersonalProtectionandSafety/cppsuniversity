@@ -12,14 +12,6 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
-<div id="page-wrapper" onload="Utils.launchSCO(); return false;">
-    <div class="container-fluid">
-        <div class="text-center">
-            <p class="viewcoursep">Do not close this tab until finished.</p>
-        </div>
-    </div> <!-- /.container -->
-</div>
-
 <div id="page-wrapper" class="modulePage" onload="Utils.launchSCO(); return false;">
     <div class="jumbotron jumbotron-fluid blbanner">
         <div class="container">
