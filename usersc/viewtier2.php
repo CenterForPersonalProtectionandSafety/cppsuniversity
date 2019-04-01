@@ -12,14 +12,22 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
 
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
-<div id="page-wrapper" onload="Utils.launchSCO(); return false;">
-    <div class="container-fluid">
-        <div class="text-center">
-            <p class="viewcoursep">Do not close this tab until finished.</p>
-        </div>
-    </div> <!-- /.container -->
-</div> <!-- /.wrapper -->
+<!-- Page Content -->
+<div id="page-wrapper" class="modulePage" onload="Utils.launchSCO(); return false;">
+  <div class="container-fluid">
+      <div class="text-center">
+          <img src="/usersc/images/universitylogo.png" alt="..." class="">
+      </div>
+  </div>
+  <div class="container-fluid">
+      <div class="text-center">
+          <h2 class="viewcoursep">Please do not close this tab until finished with course.</h2>
+          <a href="../index.php" class="btn btn-primary" role="button">Return Home</a>
+      </div>
+  </div>
+</div>
 
+<!-- Javascript to link times to databse (ie isComplete, getTime, saveTime) -->
 <!-- Place any per-page javascript here -->
 <script>
     function scormIsComplete() {
