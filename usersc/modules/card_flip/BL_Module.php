@@ -6,16 +6,14 @@ BL Module
 <div class="card">
     <input type="checkbox" id="card1" class="more" aria-hidden="true">
     <div class="content">
-        <div class="front" style="background-image: url('https://images.unsplash.com/photo-1529408686214-b48b8532f72c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=986e2dee5c1b488d877ad7ba1afaf2ec&auto=format&fit=crop&w=1350&q=80')">
+        <?php if ($user->data()->complete_bl == 0){ ?>
+        <div class="front" style="background-image: url('/usersc/images/bl.jpg')">
+        <?php } ?>
+        <?php if ($user->data()->complete_bl == 1){ ?>
+        <div class="front" style="background-image: url('/usersc/images/bl_watched.png')">
+        <?php } ?>
             <div class="inner">
-                <h2>Cozy apartment</h2>
-                <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </div>
+                <h2>Beyond Lockdown</h2>
                 <label for="card1" class="button" aria-hidden="true">
                     Details
                 </label>
@@ -23,45 +21,16 @@ BL Module
         </div>
         <div class="back">
             <div class="inner">
-                <div class="info">
-                    <span>5</span>
-                    <div class="icon">
-                        <i class="fas fa-users"></i>
-                        <span>people</span>
-                    </div>
-                </div>
-                <div class="info">
-                    <span>4</span>
-                    <div class="icon">
-                        <i class="fas fa-door-open"></i>
-                        <span>rooms</span>
-                    </div>
-                </div>
-                <div class="info">
-                    <span>3</span>
-                    <div class="icon">
-                        <i class="fas fa-bed"></i>
-                        <span>beds</span>
-                    </div>
-                </div>
-                <div class="info">
-                    <span>1</span>
-                    <div class="icon">
-                        <i class="fas fa-bath"></i>
-                        <span>bath</span>
-                    </div>
-                </div>
                 <div class="description">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae, accusamus.</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates earum nostrum ipsam
-                        ullam, reiciendis nam consectetur? Doloribus voluptate architecto possimus perferendis
-                        tenetur nemo amet temporibus, enim soluta nam, debitis.</p>
+                  <h4>Beyond Lockdown</h4>
+                  <p>CPPS has produced a new 15-minute video program, “Beyond Lockdown – Preventing and Responding to Extreme School Violence” This 15-minute program pulls from guidance from the FBI, Secret Service and Department of Education to educate students, parents, teachers and staff how to recognize warning signs that a student may be progressing towards violence, and how to respond effectively if violence does erupt.</p>
                 </div>
-                <div class="location">Warsaw, Poland</div>
-                <div class="price">38€ / day</div>
                 <label for="card1" class="button return" aria-hidden="true">
-                    <i class="fas fa-arrow-left"></i>
+                    <i class="fa fa-arrow-left"></i>
                 </label>
+                <a href="/usersc/viewBL.php" class="button return button-play" aria-hidden="true">
+                  <i class="fa fa-play"></i>
+                </a>
             </div>
         </div>
     </div>
