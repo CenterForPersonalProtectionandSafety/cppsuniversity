@@ -1,10 +1,30 @@
-<?php require_once '../users/init.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'users/includes/navigation.php'; ?>
-<?php if (!securePage($_SERVER['PHP_SELF'])){die();}?>
 <?php
+// This is a user-facing page
+/*
+UserSpice 4
+An Open Source PHP User Management System
+by the UserSpice Team at http://UserSpice.com
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+require_once '../users/init.php';
+require_once $abs_us_root.$us_url_root.'users/includes/template/prep.php';
+
+if (!securePage($_SERVER['PHP_SELF'])){die();}
 if($settings->twofa != 1){
-  Redirect::to($us_url_root.'users/account.php?err=Sorry.Two+factor+is+not+enabled+at+this+time');
+  $msg = lang("REDIR_2FA");
+  Redirect::to($us_url_root.'users/account.php?err='.$msg);
 }
 
 use PragmaRX\Google2FA\Google2FA;
@@ -18,26 +38,29 @@ $google2fa_url = $google2fa->getQRCodeGoogleUrl(
     $twoUser->email,
     $twoUser->twoKey
 );
+
+$msg1 = lang("REDIR_2FA_VER");
+$msg2 = lang("2FA_FAIL");
 ?>
 
 <div id="page-wrapper">
   <div class="container">
     <div class="well">
       <div class="row">
-      	<div class="col-xs-12 col-md-3">
-              <p><a href="account.php" class="btn btn-primary">Account Home</a></p>
+      	<div class="col-sm-12 col-md-3">
+              <p><a href="account.php" class="btn btn-primary"><?=lang("ACCT_HOME")?></a></p>
 
           </div>
-          <div class="col-xs-12 col-md-9">
-              <h1>Manage 2-Factor</h1>
-              <p>Scan this QR code with your authenticator app or input the key: <b><?php echo $twoUser->twoKey; ?></b></p>
+          <div class="col-sm-12 col-md-9">
+              <h1><?=lang("GEN_MANAGE")?> <?=lang("2FA");?></h1>
+              <p><?=lang("2FA_SCAN")?>: <b><?php echo $twoUser->twoKey; ?></b></p>
               <p><img src="<?php echo $google2fa_url; ?>"></p>
-              <p>Then enter one of your one-time passkeys here:</p>
+              <p><?=lang("2FA_THEN")?>:</p>
               <p>
                   <table border="0">
                       <tr>
                           <td><input class="form-control" placeholder="2FA Code" type="text" name="twoCode" id="twoCode" size="10" required autofocus></td>
-                          <td><button id="twoBtn" class="btn btn-primary">Verify</button></td>
+                          <td><button id="twoBtn" class="btn btn-primary"><?=lang("GEN_VERIFY");?></button></td>
                       </tr>
                   </table>
               </p>
@@ -72,13 +95,15 @@ $google2fa_url = $google2fa->getQRCodeGoogleUrl(
                 success: function(result) {
                     var resultO = JSON.parse(result);
                     if(!resultO.error){
-                        window.location.replace("account.php?msg=Two FA has been verified and enabled.");
+                        var msg = '<?=$msg1?>';
+                        window.location.replace("account.php?msg="+msg);
                     }else{
                         alert(resultO.errorMsg);
                     }
                 },
                 error: function(result) {
-                    alert('There was a problem verifying 2FA. Please check Internet or contact support.');
+                    var msg2 = '<?=$msg2?>';
+                    alert(msg2);
                 }
             });
         });
