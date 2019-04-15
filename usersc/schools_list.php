@@ -66,38 +66,19 @@ Admin Dashboard ex. page
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">User Addition</h4>
+                <h4 class="modal-title">School Addition</h4>
               </div>
               <div class="modal-body">
-                <form class="form-signup" action="admin_users.php" method="POST" id="payment-form">
+                <form class="form-signup" action="schools_list.php" method="POST" id="payment-form">
                   <div class="panel-body">
-                    <?php if($settings->auto_assign_un==0) {?><label>Username: </label>&nbsp;&nbsp;<span id="usernameCheck" class="small"></span><input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?php if (!$form_valid && !empty($_POST)){ echo $username;} ?>" required><?php } ?>
-                      <label>First Name: </label><input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required>
-                      <label>Last Name: </label><input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required>
-                      <label>Email: </label><input  class="form-control" type="text" name="email" id="email" placeholder="Email Address" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" required >
-                      <label>Password: </label>
-                      <div class="input-group" data-container="body">
-                        <span class="input-group-addon password_view_control" id="addon1"><span class="glyphicon glyphicon-eye-open"></span></span>
-                        <input  class="form-control" type="password" name="password" id="password" <?php if($settings->force_pr==1) { ?>value="<?=$random_password?>" readonly<?php } ?> placeholder="Password" required aria-describedby="passwordhelp">
-                        <?php if($settings->force_pr==1) { ?>
-                          <span class="input-group-addon" id="addon2"><a class="nounderline pwpopover" data-container="body" data-toggle="popover" data-placement="top" data-content="The Administrator has manual creation password resets enabled. If you choose to send an email to this user, it will supply them with the password reset link and let them know they have an account. If you choose to not, you should manually supply them with this password (discouraged).">Why can't I edit this?</a></span>
-                        <?php } ?>
-                      </div>
-                      <label>Confirm Password: </label>
-                      <div class="input-group" data-container="body">
-                        <span class="input-group-addon password_view_control" id="addon1"><span class="glyphicon glyphicon-eye-open"></span></span>
-                        <input  type="password" id="confirm" name="confirm" <?php if($settings->force_pr==1) { ?>value="<?=$random_password?>" readonly<?php } ?> class="form-control" placeholder="Confirm Password" required >
-                        <?php if($settings->force_pr==1) { ?>
-                          <span class="input-group-addon" id="addon2"><a class="nounderline pwpopover" data-container="body" data-toggle="popover" data-placement="top" data-content="The Administrator has manual creation password resets enabled. If you choose to send an email to this user, it will supply them with the password reset link and let them know they have an account. If you choose to not, you should manually supply them with this password (discouraged).">Why can't I edit this?</a></span>
-                        <?php } ?>
-                      </div>
-                      <label><input type="checkbox" name="sendEmail" id="sendEmail" checked /> Send Email?</label>
-                      <br />
+                      <label>School Name: </label><input type="text" class="form-control" id="sname" name="sname" placeholder="School Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $sname;} ?>" required>
+                      <br>
+                      <label>School District: </label><input type="text" class="form-control" id="sdistrict" name="sdistrict" placeholder="School District" value="<?php if (!$form_valid && !empty($_POST)){ echo $sdistrict;} ?>" required>
                     </div>
                     <div class="modal-footer">
                       <div class="btn-group">
                         <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
-                        <input class='btn btn-primary' type='submit' id="addUser" name="addUser" value='Add User' class='submit' /></div>
+                        <input class='btn btn-primary' type='submit' id="addSchool" name="addSchool" value='Add School' class='submit' /></div>
                         <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
                       </div>
                     </form>
@@ -123,15 +104,6 @@ Admin Dashboard ex. page
 <script>
     $(document).ready(function() {
         $('#paginate').DataTable({"pageLength": 25,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
-
-        $('.password_view_control').hover(function () {
-            $('#password').attr('type', 'text');
-            $('#confirm').attr('type', 'text');
-        }, function () {
-            $('#password').attr('type', 'password');
-            $('#confirm').attr('type', 'password');
-        });
-
 
         $('[data-toggle="popover"], .pwpopover').popover();
         $('.pwpopover').on('click', function (e) {
