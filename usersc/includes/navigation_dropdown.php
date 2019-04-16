@@ -25,3 +25,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 <!-- <li class="divider"></li>
 <li><a href="<?=$us_url_root?>users/admin.php"><i class="fa fa-fw fa-cogs"></i> Test Link</a></li> -->
+
+
+<li class="nav-item navbar-right dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-cog"></i> Options</a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+    <?php if (checkMenu(2,$user->data()->id)){  //Links for permission level 2 (Superuser) ?>
+      <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php"><i class="fa fa-fw fa-cogs"></i> Admin Dashboard</a>
+      <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=users"><i class="fa fa-user"></i> User Management</a>
+      <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=permissions"><i class="fa fa-lock"></i> User Permissions</a>
+      <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=pages"><i class="fa fa-wrench"></i> System Pages</a>
+      <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=messages"><i class="fa fa-envelope"></i> Messages Admin</a>
+      <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=logs"><i class="fa fa-search"></i> System Logs</a>
+      <div class="dropdown-divider"></div>
+    <?php } // if user is logged in ?>
+
+
+    <?php if (checkMenu(3,$user->data()->id)){  //Links for permission level 3 (Managers) ?>
+      <a class="dropdown-item" href="<?=$us_url_root?>usersc/learners_list.php"><i class="fa fa-user"></i> Learners List</a>
+      <div class="dropdown-divider"></div>
+    <?php } // if user is logged in ?>
+
+      <a class="dropdown-item" href="<?=$us_url_root?>users/logout.php"><i class="fa fa-power-off"></i> Logout</a>
+  </div>
+</li>
