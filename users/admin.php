@@ -22,6 +22,7 @@ ini_set('memory_limit','1024M');
 ?>
 <?php
 require_once '../users/init.php';
+include $abs_us_root.$us_url_root."users/includes/dashboard_language.php";
 $db = DB::getInstance();
 $settings = $db->query("SELECT * FROM settings")->first();
 ?>
@@ -32,7 +33,7 @@ $settings = $db->query("SELECT * FROM settings")->first();
 <div id="right-panel" class="right-panel">
 
   <div id="messages" class="sufee-alert alert with-close alert-primary alert-dismissible fade show d-none">
-    <span id="message" >Testing123</span>
+    <span id="message"></span>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -81,6 +82,10 @@ $settings = $db->query("SELECT * FROM settings")->first();
       break;
     case "forms_views":
       $path = usView('_admin_forms_views.php');
+      include($path);
+      break;
+    case "form_preview":
+      $path = usView('_admin_forms_preview.php');
       include($path);
       break;
     case "general":
@@ -215,6 +220,7 @@ $settings = $db->query("SELECT * FROM settings")->first();
 
         <script type="text/javascript">
         $(document).ready(function() {
+          $('[data-toggle="popover"]').popover();
 
           //Transaction total in the lower right
           function messages(data) {
@@ -339,5 +345,12 @@ $settings = $db->query("SELECT * FROM settings")->first();
           });
         });
       </script>
+      <?php foreach($usplugins as $k=>$v){
+        if($v == 1){
+        if(file_exists($abs_us_root.$us_url_root."usersc/plugins/".$k."/footer.php")){
+          include($abs_us_root.$us_url_root."usersc/plugins/".$k."/footer.php");
+          }
+        }
+      }?>
     </body>
     </html>
