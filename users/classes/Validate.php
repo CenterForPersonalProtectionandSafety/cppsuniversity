@@ -45,9 +45,8 @@ class Validate
 				$verb   = is_array($value) ? "are"         : "is";
 
 				if ($rule==='required'  &&  $length==0) {
-					$str = lang("GEN_REQ");
 					if ($rule_value)
-						$this->addError(["{$display} $str",$item]);
+					$this->addError(["{$display} {$verb} required",$item]);
 				}
 				else
 				if ($length != 0) {
@@ -55,31 +54,26 @@ class Validate
 						case 'min':
 						if (is_array($rule_value))
 						$rule_value = max($rule_value);
-						$str = lang("GEN_MIN");
-						$str1 = lang("GEN_CHAR");
-						$str2 = lang("GEN_REQ");
+
 						if ($length < $rule_value)
-							$this->addError(["{$display} $str {$rule_value} $str1 $str2",$item]);
+						$this->addError(["{$display} must be a minimum of {$rule_value} characters",$item]);
 						break;
 
 						case 'max':
 						if (is_array($rule_value))
 						$rule_value = min($rule_value);
-						$str = lang("GEN_MAX");
-						$str1 = lang("GEN_CHAR");
-						$str2 = lang("GEN_REQ");
+
 						if ($length > $rule_value)
-						$this->addError(["{$display} $str {$rule_value} $str1 $str2",$item]);
+						$this->addError(["{$display} must be a maximum of {$rule_value} characters",$item]);
 						break;
 
 						case 'matches':
 						if (!is_array($rule_value))
 						$array = [$rule_value];
-						$str = lang("GEN_AND");
-						$str1 = lang("VAL_SAME");
+
 						foreach ($array as $rule_value)
 						if ($value != sanitize(trim($source[$rule_value])))
-						$this->addError(["{$items[$rule_value]['display']} $str {$display} $str1",$item]);
+						$this->addError(["{$items[$rule_value]['display']} and {$display} must match",$item]);
 						break;
 
 						case 'unique':
@@ -87,12 +81,10 @@ class Validate
 						$fields = is_array($rule_value) ? $rule_value[1] : [$item, '=', $value];
 
 						if ($this->_db->get($table, $fields)) {
-							$str = lang("VAL_EXISTS");
-							$str1 = lang("VAL_DB");
 							if ($this->_db->count())
-							$this->addError(["{$display} $str2 {$display}",$item]);
+							$this->addError(["{$display} already exists. Please choose another {$display}",$item]);
 						} else
-							$this->addError([$str1,$item]);
+						$this->addError(["Cannot verify {$display}. Database error",$item]);
 						break;
 
 						case 'unique_update':
@@ -101,38 +93,33 @@ class Validate
 						$id    = $t[1];
 						$query = "SELECT * FROM {$table} WHERE id != {$id} AND {$item} = '{$value}'";
 						$check = $this->_db->query($query);
-						$str = lang("VAL_EXISTS");
+
 						if ($check->count())
-						$this->addError(["{$display} $str {$display}",$item]);
+						$this->addError(["{$display} already exists. Please choose another {$display}",$item]);
 						break;
 
 						case 'is_numeric': case 'is_num':
-						$str = lang("VAL_NUM");
 						if ($rule_value  &&  !is_numeric($value))
-							$this->addError(["{$display} $str",$item]);
+						$this->addError(["{$display} has to be a number. Please use a numeric value",$item]);
 						break;
 
 						case 'valid_email':
-						$str = lang("VAL_EMAIL");
 						if(!filter_var($value,FILTER_VALIDATE_EMAIL))
-							$this->addError(["{$display} $str",$item]);
+						$this->addError(["{$display} must be a valid email address",$item]);
 						break;
 
 						case 'is_not_email':
-						$str = lang("VAL_NO_EMAIL");
 						if(filter_var($value,FILTER_VALIDATE_EMAIL))
-						$this->addError(["{$display} $str",$item]);
+						$this->addError(["{$display} cannot be a email address",$item]);
 						break;
 
 						case 'valid_email_beta':
-						$str = lang("VAL_EMAIL");
 						if(!filter_var($value,FILTER_VALIDATE_EMAIL))
-						$this->addError(["{$display} $str",$item]);
+						$this->addError(["{$display} must be a valid email address",$item]);
 
 						$email_parts = explode('@', $value);
-						$str = lang("VAL_SERVER");
 						if ((!filter_var(gethostbyname($email_parts[1]), FILTER_VALIDATE_IP) && !filter_var(gethostbyname('www.' . $email_parts[1]), FILTER_VALIDATE_IP)) && !getmxrr($email_parts[1], $mxhosts)){
-							$this->addError(["{$display} $str",$item]);
+							$this->addError(["{$display} must belong to a valid server",$item]);
 						}
 						break;
 
@@ -153,61 +140,43 @@ class Validate
 								$rule_value         = $source[$rule_value];
 							}
 
-							if ($rule=="<"  &&  $value>=$rule_value){
-							$str = lang("VAL_LESS");
-							$this->addError(["{$display} $str {$rule_value_display}",$item]);
-							}
+							if ($rule=="<"  &&  $value>=$rule_value)
+							$this->addError(["{$display} must be smaller than {$rule_value_display}",$item]);
 
-							if ($rule==">"  &&  $value<=$rule_value){
-							$str = lang("VAL_LESS");
-							$this->addError(["{$display} $str {$rule_value_display}",$item]);
-							}
+							if ($rule==">"  &&  $value<=$rule_value)
+							$this->addError(["{$display} must be larger than {$rule_value_display}",$item]);
 
-							if ($rule=="<="  &&  $value>$rule_value){
-							$str = lang("VAL_LESS_EQ");
-							$this->addError(["{$display} $str {$rule_value_display}",$item]);
-							}
+							if ($rule=="<="  &&  $value>$rule_value)
+							$this->addError(["{$display} must be equal {$rule_value_display} or smaller",$item]);
 
-							if ($rule==">="  &&  $value<$rule_value){
-							$str = lang("VAL_GREAT_EQ");
-							$this->addError(["{$display} $str {$rule_value_display}",$item]);
-							}
+							if ($rule==">="  &&  $value<$rule_value)
+							$this->addError(["{$display} must be equal {$rule_value_display} or larger",$item]);
 
-							if ($rule=="!="  &&  $value==$rule_value) {
-							$str = lang("VAL_NOT_EQ");
-							$this->addError(["{$display} $str {$rule_value_display}",$item]);
-							}
+							if ($rule=="!="  &&  $value==$rule_value)
+							$this->addError(["{$display} must be different from {$rule_value_display}",$item]);
 
-							if ($rule=="=="  &&  $value!=$rule_value){
-							$str = lang("VAL_EQ");
-							$this->addError(["{$display} $str {$rule_value_display}",$item]);
-							}
-
+							if ($rule=="=="  &&  $value!=$rule_value)
+							$this->addError(["{$display} must equal {$rule_value_display}",$item]);
 						}
 						else
-						$str = lang("VAL_NUM");
-						$this->addError(["{$display} $str",$item]);
+						$this->addError(["{$display} has to be a number. Please use a numeric value",$item]);
 						break;
 
 						case 'is_integer': case 'is_int':
-						if ($rule_value  &&  filter_var($value, FILTER_VALIDATE_INT)===false){
-						$str = lang("VAL_INT");
-						$this->addError(["{$display} $str",$item]);
-						}
+						if ($rule_value  &&  filter_var($value, FILTER_VALIDATE_INT)===false)
+						$this->addError(["{$display} has to be an integer",$item]);
 						break;
 
 						case 'is_timezone':
 						if ($rule_value)
-						if (array_search($value, DateTimeZone::listIdentifiers(DateTimeZone::ALL)) === FALSE){
-							$str = lang("VAL_TZ");
-							$this->addError(["{$display} $str",$item]);
-						}
+						if (array_search($value, DateTimeZone::listIdentifiers(DateTimeZone::ALL)) === FALSE)
+						$this->addError(["{$display} has to be a valid time zone name",$item]);
 						break;
 
 
 
 						case 'in':
-						$verb           = lang("VAL_MUST");
+						$verb           = "have to be";
 						$list_of_names  = [];	// if doesn't match then display these in an error message
 						$list_of_values = [];	// to compare it against
 
@@ -225,7 +194,7 @@ class Validate
 						}
 
 						if (!is_array($value)) {
-							$verb  = lang("VAL_MUST_LIST");
+							$verb  = "has to be one of the following";
 							$value = [$value];
 						}
 
@@ -241,35 +210,30 @@ class Validate
 						if ($rule_value !== false) {
 							$object = DateTime::createFromFormat((empty($rule_value) || is_bool($rule_value) ? "Y-m-d H:i:s" : $rule_value), $value);
 
-							if (!$object  ||  DateTime::getLastErrors()["warning_count"]>0  ||  DateTime::getLastErrors()["error_count"]>0){
-							$str = lang("VAL_TIME");
-							$this->addError(["{$display} $str",$item]);
-							}
+							if (!$object  ||  DateTime::getLastErrors()["warning_count"]>0  ||  DateTime::getLastErrors()["error_count"]>0)
+							$this->addError(["{$display} has to be a valid time",$item]);
 						}
 						break;
 
 						case 'is_in_array':
 						if(!is_array($rule_value)){ //If we're not checking $value against an array, that's a developer fail.
-							$str = lang("2FA_FATAL");
-							$this->addError(["{$display} $str",$item]);
+							$this->addError(["{$display} is not being checked properly by our system.  Please contact us for assistance",$item]);
 						} else {
 							$to_be_checked = $value; //The value to checked
 							$array_to_check_in = $rule_value; //The array to check $value against
-							if(!in_array($to_be_checked, $array_to_check_in)){
-							$str = lang("VAL_SEL");
-							$this->addError(["{$display} $str",$item]);
-						}
+							if(!in_array($to_be_checked, $array_to_check_in))
+							$this->addError(["{$display} is not a valid selection",$item]);
 						}
 						break;
 
 						case 'is_valid_north_american_phone':
 						$numeric_only_phone = preg_replace("/[^0-9]/", "", $value); //Strip out all non-numeric characters
-						$str = lang("VAL_NA_PHONE");
+
 						if($numeric_only_phone[0] == 0 || $numeric_only_phone[0] == 1){ //It the number starts with a 0 or 1, it's not a valid North American phone number.
-							$this->addError(["{$display} $str",$item]);
+							$this->addError(["{$display} must be a valid North American phone number",$item]);
 						}
 						if(strlen($numeric_only_phone) != 10){ //Valid North American phone numbers are 10 digits long
-							$this->addError(["{$display} $str",$item]);
+							$this->addError(["{$display} must be a valid North American phone number",$item]);
 						}
 						break;
 					}

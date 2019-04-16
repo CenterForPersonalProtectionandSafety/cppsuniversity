@@ -27,21 +27,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 $db = DB::getInstance();
 $settings = $db->query("SELECT * FROM settings")->first();
 
-//language
-
-if($settings->allow_language == 0 || !isset($user) || !$user->isLoggedIn()){
-	if(!isset($_SESSION['us_lang'])){
-	$_SESSION['us_lang'] = $settings->default_language;
-}
-}else{
-	if(isset($user) && $user->isLoggedIn()){
-	$_SESSION['us_lang'] = $user->data()->language;
-	}else{
-	$_SESSION['us_lang'] = $settings->default_language;
-}
-}
-
-include $abs_us_root.$us_url_root.'users/lang/'.$_SESSION['us_lang'].".php";
 //check for a custom page
 $currentPage = currentPage();
 $currentPage = currentPage();
@@ -132,7 +117,6 @@ else $pageTitle = '';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link rel="shortcut icon" href="<?=$abs_us_root?><?=$us_url_root?>favicon.ico">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -156,37 +140,18 @@ else $pageTitle = '';
 	?>
 	<title><?= (($pageTitle != '') ? $pageTitle : ''); ?> <?=$settings->site_name?></title>
 
-	<?php if($settings->session_manager && !isset($_SESSION['fingerprint'])) {?>
-		<script src="<?=$us_url_root?>users/js/tomfoolery.js"></script>
-		<script>
-		if (window.requestIdleCallback) {
-			requestIdleCallback(function () {
-				Fingerprint2.get(function (components) {
-					var values = components.map(function (component) { return component.value })
-					var murmur = Fingerprint2.x64hash128(values.join(''), 31)
-					var fingerprint = murmur;
-					$.ajax({
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs2/1.6.1/fingerprint2.min.js" integrity="sha256-goBybI2a+FUEO9n1gkRyIYOwLPq6fO8z192AxA9O54I=" crossorigin="anonymous"></script>
+<?php if(!isset($_SESSION['fingerprint'])) {?>
+<script>
+new Fingerprint2().get(function(result, components) {
+  var fingerprint = result;
+		$.ajax({
 						type: "POST",
 						url: '<?=$us_url_root?>users/parsers/fingerprint_post.php',
 						data: ({fingerprint:fingerprint}),
-					});
-								})
-							})
-						} else {
-							setTimeout(function () {
-								Fingerprint2.get(function (components) {
-									var values = components.map(function (component) { return component.value })
-									var murmur = Fingerprint2.x64hash128(values.join(''), 31)
-									var fingerprint = murmur;
-									$.ajax({
-										type: "POST",
-										url: '<?=$us_url_root?>users/parsers/fingerprint_post.php',
-										data: ({fingerprint:fingerprint}),
-									});
-								})
-							}, 500)
-						}
-					</script>
+		});
+});
+</script>
 <?php }
 if($settings->session_manager==1) storeUser(); ?>
 

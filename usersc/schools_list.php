@@ -71,9 +71,9 @@ Admin Dashboard ex. page
               <div class="modal-body">
                 <form class="form-signup" action="schools_list.php" method="POST" id="payment-form">
                   <div class="panel-body">
-                      <label>School Name: </label><input type="text" class="form-control" id="sname" name="sname" placeholder="School Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $sname;} ?>" required>
+                      <label>School Name: </label><input type="text" class="form-control" id="fname" name="fname" placeholder="School Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required>
                       <br>
-                      <label>School District: </label><input type="text" class="form-control" id="sdistrict" name="sdistrict" placeholder="School District" value="<?php if (!$form_valid && !empty($_POST)){ echo $sdistrict;} ?>" required>
+                      <label>School District: </label><input type="text" class="form-control" id="lname" name="lname" placeholder="School District" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required>
                     </div>
                     <div class="modal-footer">
                       <div class="btn-group">

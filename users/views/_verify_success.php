@@ -1,6 +1,5 @@
 <?php
 /*
-This is a user-facing page
 UserSpice 4
 An Open Source PHP User Management System
 by the UserSpice Team at http://UserSpice.com
@@ -21,8 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ?>
 <div class="row">
   <div class="col-sm-12">
-    <h2><?=lang("VER_SUC");?></h2>
-    <a href="login.php" class="btn btn-primary"><?=lang("SIGNIN_BUTTONTEXT");?></a>
+    <h2>Your Email has been verified!</h2>
+    <a href="login.php" class="btn btn-primary">Log In</a>
     <br />
   </div>
 </div>

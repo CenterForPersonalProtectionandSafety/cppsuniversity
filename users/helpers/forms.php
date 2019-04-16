@@ -261,8 +261,6 @@ function formField($o, $v = []){
           }
           if(isset($opts['where'])){
             $table = $db->get($name,$opts['where']);
-          }elseif(isset($opts['raw'])){
-            $table = $db->query($opts['raw']);
           }else{
             $table = $db->query("SELECT * FROM $name");
           }
@@ -299,14 +297,12 @@ function formField($o, $v = []){
                         $v = rtrim(implode(',', $v), ','); ?>
                         <td><?=$v?></td>
                         <?php
-                      }elseif(isset($opts['html'])){
-                        ?>
-                        <td><?=htmlspecialchars_decode(stripslashes($v));?></td>
-                        <?php
-                      }else{?>
+                      }else{ ?>
                         <td><?=$v?></td>
-                      <?php }
+
+                        <?php
                       }
+                    }
                     ?>
                   </tr>
                   <?php

@@ -91,7 +91,7 @@ if(Input::exists()){
         if($settings->auto_assign_un==0) {
         $validation->check($_POST,array(
           'username' => array(
-                'display' => lang("GEN_UNAME"),
+                'display' => 'Username',
                 'is_not_email' => true,
                 'required' => true,
                 'min' => $settings->min_un,
@@ -99,32 +99,32 @@ if(Input::exists()){
                 'unique' => 'users',
           ),
           'fname' => array(
-                'display' => lang("GEN_FNAME"),
+                'display' => 'First Name',
                 'required' => true,
                 'min' => 1,
                 'max' => 60,
           ),
           'lname' => array(
-                'display' => lang("GEN_LNAME"),
+                'display' => 'Last Name',
                 'required' => true,
                 'min' => 1,
                 'max' => 60,
           ),
           'email' => array(
-                'display' => lang("GEN_EMAIL"),
+                'display' => 'Email',
                 'required' => true,
                 'valid_email' => true,
                 'unique' => 'users',
           ),
 
           'password' => array(
-                'display' => lang("GEN_PASS"),
+                'display' => 'Password',
                 'required' => true,
                 'min' => $settings->min_pw,
                 'max' => $settings->max_pw,
           ),
           'confirm' => array(
-                'display' => lang("PW_CONF"),
+                'display' => 'Confirm Password',
                 'required' => true,
                 'matches' => 'password',
           ),
@@ -132,32 +132,32 @@ if(Input::exists()){
         if($settings->auto_assign_un==1) {
           $validation->check($_POST,array(
             'fname' => array(
-                  'display' => lang("GEN_FNAME"),
+                  'display' => 'First Name',
                   'required' => true,
                   'min' => 1,
                   'max' => 60,
             ),
             'lname' => array(
-                  'display' => lang("GEN_LNAME"),
+                  'display' => 'Last Name',
                   'required' => true,
                   'min' => 1,
                   'max' => 60,
             ),
             'email' => array(
-                  'display' => lang("GEN_EMAIL"),
+                  'display' => 'Email',
                   'required' => true,
                   'valid_email' => true,
                   'unique' => 'users',
             ),
 
             'password' => array(
-                  'display' => lang("GEN_PASS"),
+                  'display' => 'Password',
                   'required' => true,
                   'min' => $settings->min_pw,
                   'max' => $settings->max_pw,
             ),
             'confirm' => array(
-                  'display' => lang("PW_CONF"),
+                  'display' => 'Confirm Password',
                   'required' => true,
                   'matches' => 'password',
             ),
@@ -166,7 +166,7 @@ if(Input::exists()){
 
         //if the agreement_checkbox is not checked, add error
         if (!$agreement_checkbox){
-                $validation->addError([lang("ERR_TC")]);
+                $validation->addError(["Please read and accept terms and conditions"]);
         }
 
         if($validation->passed() && $agreement_checkbox){
@@ -190,7 +190,7 @@ if(Input::exists()){
                         }else{
                                 $reCaptchaValid=FALSE;
                                 $form_valid=FALSE;
-                                $validation->addError([lang("ERR_CAP")]);
+                                $validation->addError(["reCaptcha check failed, please contact the Administrator"]);
                                 $reCapErrors = $response->getErrorCodes();
                                 // $count=0;
                                 foreach($reCapErrors as $error) {

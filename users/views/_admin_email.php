@@ -111,7 +111,6 @@ if(!empty($_POST)){
   }else{
   }
   if($results->email_act != $_POST['email_act']) {
-	//dump($_POST['email_act']);
     $email_act = Input::get('email_act');
     $fields=array('email_act'=>$email_act);
     $db->update('email',1,$fields);
@@ -162,76 +161,64 @@ if(!empty($_POST)){
 
 ?>
 <div class="content mt-3">
-<form name='update' action='admin.php?view=email' method='post'>
-<h2 class="mb-3">Email Server Settings</h2>
+  <h2>Email Server Settings</h2>
   <p>
     These settings control all things email-related for the server including emailing your users and verifying the user's email address.
     You must obtain and verify all settings below for YOUR email server or hosting provider. Encryption with TLS is STRONGLY recommended,
     followed by SSL. No encryption is like shouting your login credentials out into a crowded field and is not supported for now.
   </p>
-<p>It is <strong>HIGHLY</strong> recommended that you test your email settings before turning on the feature to require new users to verify their email</p>
+</p>It is <strong>HIGHLY</strong> recommended that you test your email settings before turning on the feature to require new users to verify their email<br>
 
 <?=resultBlock($errors,$successes);?>
-<div class="row">
-  <div class="col-sm-6">
+  <div class="col-lg-3 col-md-0"></div>
+  <div class="col-md-12 col-lg-6">
 
-<div class="card no-padding">
-	<div class="card-body">
 
-	<div class="form-group">
+
+
+<form name='update' action='admin.php?view=email' method='post'>
+
   <label>Website Name:</label>
   <input required size='50' class='form-control' type='text' name='website_name' value='<?=$results->website_name?>' />
-  </div>
-  <div class="form-group">
+
   <label>SMTP Server:</label>
   <input required size='50' class='form-control' type='text' name='smtp_server' value='<?=$results->smtp_server?>' />
-  </div>
-  <div class="form-group">
+
   <label>SMTP Port:</label>
   <input required size='50' class='form-control' type='text' name='smtp_port' value='<?=$results->smtp_port?>' />
-  </div>
+
   <label>Email Login/Username:</label>
   <input required size='50' class='form-control' type='password' name='email_login' value='<?=$results->email_login?>' />
-  <div class="form-group">
+
   <label>Email Password:</label>
   <input required size='50' class='form-control' type='password' name='email_pass' value='<?=$results->email_pass?>' />
-  </div>
-  <div class="form-group">
+
   <label>From Name (For Sent Emails):</label>
   <input required size='50' class='form-control' type='text' name='from_name' value='<?=$results->from_name?>' />
-  </div>
-  <div class="form-group">
+
   <label>From Email (For Sent Emails):</label>
   <input required size='50' class='form-control' type='text' name='from_email' value='<?=$results->from_email?>' />
-  </div>
-</div>
-</div>
-</div>
 
-<div class="col-sm-6">
-<div class="card no-padding">
-	<div class="card-body">
-	<div class="form-group">
-	<label>Transport</label>
+  <label>Transport:</label>
   <select class="form-control" name="transport">
     <option value="tls" <?php if($results->transport=='tls') echo 'selected="selected"'; ?> >TLS (encrypted)</option>
     <option value="ssl" <?php if($results->transport=='ssl') echo 'selected="selected"'; ?> >SSL (encrypted, but weak)</option>
   </select>
-  </div>
-  <div class="form-group">
-  <label>Email Debugging Level <a href="#!" tabindex="-1" title="Note" data-trigger="focus" class="nounderline" data-toggle="popover" data-content="0=Off, 1=Client Messages, 2=Normal Debug, 3=More Verbose, 4=Extremely Verbose.
-  Debugging should be off in production projects for security reasons"><i class="fa fa-question-circle"></i></a></label>
+
+  <label>Email Debugging Level: <br/></label>
+  0=Off, 1=Client Messages, 2=Normal Debug, 3=More Verbose, 4=Extremely Verbose<br>
+  Debugging should be off in production projects for security reasons
   <select class="form-control" width="100%" name="debug_level">
     <option value="<?=$results->debug_level?>"><?=$results->debug_level?></option>
     <option value="0">0</option>
     <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
+    <option value="1">2</option>
+    <option value="1">3</option>
+    <option value="1">4</option>
   </select>
-  </div>
-  <div class="form-group">
-  <label>Use isSMTP Feature <a href="#!" tabindex="-1" title="Note" data-trigger="focus" class="nounderline" data-toggle="popover" data-content="Use this if your email keeps failing and you know your credentials are correct."><i class="fa fa-question-circle"></i></a></label>
+
+  <label>Use isSMTP Feature: <br/></label>
+  Use this if your email keeps failing and you know your credentials are correct.<br>
   <select class="form-control" width="100%" name="isSMTP">
     <?php if($results->isSMTP == 0){
       echo "<option value='0'>No</option>";
@@ -241,9 +228,8 @@ if(!empty($_POST)){
       echo "<option value='0'>No</option>";
     } ?>
   </select>
-  </div>
-  <div class="form-group">
-  <label>Use SMTP Authentication: (Almost always, yes)</label>
+
+  <label>Use SMTP Authentication: (Almost always, yes)<br/></label>
   <select class="form-control" width="100%" name="useSMTPauth">
     <?php if($results->useSMTPauth == 'false'){
       echo "<option value='false'>No</option>";
@@ -253,9 +239,9 @@ if(!empty($_POST)){
       echo "<option value='false'>No</option>";
     } ?>
   </select>
-  </div>
-  <div class="form-group">
-  <label>Send email as HTML by default</label>
+
+
+  <label>Send email as HTML by default: <br/></label>
   <select class="form-control" width="100%" name="isHTML">
     <?php if($results->isHTML == 'false'){
       echo "<option value='false'>No</option>";
@@ -265,23 +251,21 @@ if(!empty($_POST)){
       echo "<option value='false'>No</option>";
     } ?>
   </select>
-  </div>
-  <div class="form-group">
-  <label>Root URL of your UserSpice install <a href="#!" tabindex="-1" title="Note" data-trigger="click" class="nounderline" data-toggle="popover" data-content="Including http or https protocol (VERY Important). Default location would be: <?=$urlProtocol.$_SERVER['HTTP_HOST'].$us_url_root?>"><i class="fa fa-question-circle"></i></a></label>
+
+
+
+  <label>Root URL of your UserSpice install including http or https protocol (VERY Important) <br/><div class="text-muted"> <?="Default location would be: ".$urlProtocol.$_SERVER['HTTP_HOST'].$us_url_root?></div></label>
   <input required  size='50' class='form-control' type='text' name='verify_url' value='<?=$results->verify_url?>' />
-  </div>
-  <div class="form-group">
-  <label for="email_act">Require User to Verify Their Email</label>
-  <label for="email_act_yes"><input type="radio" id="email_act_yes" name="email_act" value="1" <?php echo ($results->email_act==1)?'checked':''; ?> size="25"/>&nbsp;Yes</label>&nbsp;
-  <label for="email_act_no"><input type="radio" id="email_act_no" name="email_act" value="0" <?php echo ($results->email_act==0)?'checked':''; ?> size="25"/>&nbsp;No</label>
-	</div>
-  <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
-  <div class="text-center">
+
+
+  <label>Require User to Verify Their Email?:</label>
+  <input type="radio" name="email_act" value="1" <?php echo ($results->email_act==1)?'checked':''; ?> size="25">Yes</input>
+  <input type="radio" name="email_act" value="0" <?php echo ($results->email_act==0)?'checked':''; ?> size="25">No</input>
+
+  <input type="hidden" name="csrf" value="<?=Token::generate();?>" /><br><br>
   <input class='btn btn-primary' name="update_only" type='submit' value='Update Email Settings' class='submit' />
   <input class='btn btn-danger' name="update_and_test" type='submit' value='Update and Test Email Settings' class='submit' />
+</form>
+
+</div>
   </div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</form>
