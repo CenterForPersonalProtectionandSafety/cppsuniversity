@@ -14,6 +14,7 @@ if(isset($user) && $user->isLoggedIn()){}
 <div class="container-fluid">
     <div class="text-center">
         <p class="welcomeTitle">WELCOME TO</p>
+        <p class="welcomeTitle"><?=lang("TEST");?></p>
         <img src="/usersc/images/universitylogo.png" alt="..." class="">
     </div>
 </div>
@@ -34,7 +35,7 @@ if(isset($user) && $user->isLoggedIn()){}
     include $abs_us_root.$us_url_root.'usersc/modules/card_flip/Tier2_Module.php';
 
     //Include the Tier 3 Module
-    if (checkMenu(3,$user->data()->id)){
+    if (checkMenu(3,$user->data()->id) || checkMenu(2,$user->data()->id) || checkMenu(7,$user->data()->id)){
       include $abs_us_root.$us_url_root.'usersc/modules/card_flip/Tier3_Module.php';
     }
 
@@ -44,7 +45,9 @@ if(isset($user) && $user->isLoggedIn()){}
     // }
 
     //Include the Beyond Lockdown Module
-    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/BL_Module.php';
+    if (checkMenu(6,$user->data()->id) || checkMenu(2,$user->data()->id) || checkMenu(7,$user->data()->id)){
+      include $abs_us_root.$us_url_root.'usersc/modules/card_flip/BL_Module.php';
+    }
   ?>
 </div>
 
