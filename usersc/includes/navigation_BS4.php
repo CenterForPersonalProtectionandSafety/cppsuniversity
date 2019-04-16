@@ -7,7 +7,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="<?=$us_url_root?>"><img class="img-responsive" src="<?=$us_url_root?>users/images/logo.png" alt="" /></a>
 
   <?php if($user->isLoggedIn()){ //anyone is logged in?>
@@ -15,54 +15,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" style="pointer-events: none; cursor: default;" ><?php echo echousername($user->data()->id);?></a>
+          <a class="nav-link" href="#" style="pointer-events: none; cursor: default;" ><i class="fa fa-fw fa-user"></i><?php echo echousername($user->data()->id);?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?=$us_url_root?>users/logout.php">Logout</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-            <?php if (checkMenu(2,$user->data()->id)){  //Links for permission level 2 (Superuser) ?>
-              <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php">Admin Dashboard</a>
-              <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=users">User Management</a>
-              <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=permissions">User Permissions</a>
-              <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=pages">System Pages</a>
-              <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=messages">Messages Admin</a>
-              <a class="dropdown-item" href="<?=$us_url_root?>users/admin.php?view=logs">System Logs</a>
-              <div class="dropdown-divider"></div>
-            <?php } // if user is logged in ?>
-
-
-            <?php if (checkMenu(3,$user->data()->id)){  //Links for permission level 3 (Managers) ?>
-              <a class="dropdown-item" href="<?=$us_url_root?>usersc/custom_list.php">Manager User List</a>
-              <div class="dropdown-divider"></div>
-            <?php } // if user is logged in ?>
-
-              <a class="dropdown-item" href="<?=$us_url_root?>users/logout.php">Logout</a>
-          </div>
+          <a class="nav-link" href="<?=$us_url_root?>users/logout.php"><i class="fa fa-power-off"></i> Logout</a>
         </li>
 
-    <?php }else{ // if user is not logged in ?>
-
-        <li class="nav-item">
-          <a class="nav-link" href="<?=$us_url_root?>users/login.php">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?=$us_url_root?>users/join.php">Register</a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<?=$us_url_root?>users/logout.php">Forgot Password</a>
-            <?php if ($email_act){ //Only display following menu item if activation is enabled ?>
-              <a class="dropdown-item" href="<?=$us_url_root?>users/login.php">Resend Activation Email</a>
-            <?php }?>
-          </div>
-        </li>
+        <?php include $abs_us_root.$us_url_root.'usersc/includes/navigation_dropdown.php'; ?>
       </ul>
-    <?php } // if user is not logged in ?>
+    <?php } else { ?>
+      <ul class="navbar-nav mr-auto">
+      <?php include $abs_us_root.$us_url_root.'usersc/includes/navigation_loggedout.php'; } ?>
+    </ul>
   </div>
 </nav>

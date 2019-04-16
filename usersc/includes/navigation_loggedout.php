@@ -26,14 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <!-- <li class="divider"></li>
 <li><a href="<?=$us_url_root?>users/admin.php"><i class="fa fa-fw fa-cogs"></i> Test Link</a></li> -->
 
-
-<li class="nav-item">
-  <a class="nav-link" href="<?=$us_url_root?>users/login.php"><i class="fa fa-sign-in"></i> Login</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="<?=$us_url_root?>users/join.php"><i class="fa fa-user-plus"></i> Register</a>
-</li>
-
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,4 +34,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
       <a class="dropdown-item" href="<?=$us_url_root?>users/login.php">Resend Activation Email</a>
     <?php }?>
   </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="#"></a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="<?=$us_url_root?>users/login.php"><i class="fa fa-sign-in"></i> Login</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="<?=$us_url_root?>users/join.php"><i class="fa fa-user-plus"></i> Register</a>
 </li>

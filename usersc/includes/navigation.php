@@ -31,17 +31,22 @@ if($settings->navigation_type==0) {
   <?php if($user->isLoggedIn()){ //anyone is logged in?>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav ml-auto mr-1">
+        <?php include $abs_us_root.$us_url_root.'usersc/includes/navigation_dropdown.php'; ?>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#" style="pointer-events: none; cursor: default;" ><i class="fa fa-fw fa-user"></i><?php echo echousername($user->data()->id);?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=$us_url_root?>users/logout.php"><i class="fa fa-power-off"></i> Logout</a>
         </li>
-
-        <?php include $abs_us_root.$us_url_root.'usersc/includes/navigation_dropdown.php'; ?>
-
-    <?php } else { include $abs_us_root.$us_url_root.'usersc/includes/navigation_loggedout.php'; } ?>
+      </ul>
+    <?php } else { ?>
+      <ul class="navbar-nav ml-auto mr-1">
+      <?php include $abs_us_root.$us_url_root.'usersc/includes/navigation_loggedout.php'; } ?>
+    </ul>
   </div>
 </nav>
 
