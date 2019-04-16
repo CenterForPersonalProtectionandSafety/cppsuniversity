@@ -9,7 +9,7 @@ ini_set("allow_url_fopen", 1);
 ?>
 <?php require_once '../users/init.php';?>
 <?php require_once $abs_us_root.$us_url_root.'users/includes/header.php'; ?>
-<?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
+<?php require_once $abs_us_root.$us_url_root.'usersc/includes/navigation_loggedout.php';
 use PragmaRX\Google2FA\Google2FA;
 if($settings->twofa == 1){
 $google2fa = new Google2FA();
