@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="<?=$us_url_root?>users/forgot_password.php"><i class="fa fa-info-circle"></i> Forgot Password</a>
+    <a class="dropdown-item" href="<?=$us_url_root?>usersc/forgot_password.php"><i class="fa fa-info-circle"></i> Forgot Password</a>
     <?php if ($email_act){ //Only display following menu item if activation is enabled ?>
       <a class="dropdown-item" href="<?=$us_url_root?>users/login.php">Resend Activation Email</a>
     <?php }?>
