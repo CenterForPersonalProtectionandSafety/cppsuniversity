@@ -17,6 +17,7 @@ Admin Dashboard ex. page
 
 ?>
 
+
 <div id="page-wrapper">
   <div class="container">
     <!-- Page Heading -->
@@ -61,37 +62,43 @@ Admin Dashboard ex. page
           </div><br>
         </div>
 
-        <div id="addschool" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">School Addition</h4>
-              </div>
-              <div class="modal-body">
-                <form class="form-signup" action="schools_list.php" method="POST" id="payment-form">
-                  <div class="panel-body">
-                      <label>School Name: </label><input type="text" class="form-control" id="fname" name="fname" placeholder="School Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required>
-                      <br>
-                      <label>School District: </label><input type="text" class="form-control" id="lname" name="lname" placeholder="School District" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required>
-                    </div>
-                    <div class="modal-footer">
-                      <div class="btn-group">
-                        <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
-                        <input class='btn btn-primary' type='submit' id="addSchool" name="addSchool" value='Add School' class='submit' /></div>
-                        <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-                      </div>
+            <!-- The Modal -->
+            <div class="modal fade" id="addschool">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">School Addition</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <!-- Modal body -->
+                  <div class="modal-body">
+                    <form class="form-signup" action="schools_list.php" method="POST" id="payment-form">
+                      <div class="panel-body">
+                          <label>School Name: </label><input type="text" class="form-control" id="sname" name="sname" placeholder="School Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $sname;} ?>" required>
+                          <br>
+                          <label>School District: </label><input type="text" class="form-control" id="sdistrict" name="sdistrict" placeholder="School District" value="<?php if (!$form_valid && !empty($_POST)){ echo $sdistrict;} ?>" required>
+                        </div>
                     </form>
                   </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
+                    <input class='btn btn-primary' type='submit' id="addSchool" name="addSchool" value='Add School' class='submit' />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
-
-
 
 
 <!-- End of main content section -->
