@@ -14,7 +14,6 @@ if(isset($user) && $user->isLoggedIn()){}
 <div class="container-fluid">
     <div class="text-center">
         <p class="welcomeTitle">WELCOME TO</p>
-        <p class="welcomeTitle"><?= lang("TEST","");?></p>
         <img src="/usersc/images/universitylogo.png" alt="..." class="">
     </div>
 </div>
