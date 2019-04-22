@@ -45,24 +45,17 @@
         }
       }
 
-
+      $userdetails = fetchUserDetails(NULL, NULL, $userId); //Fetch user details
     }
   }
-
-  $userdetails = fetchUserDetails(NULL, NULL, $userId); //Fetch user details
 
   $userPermission = fetchUserPermissions($userId);
   // $currentuserPermission = fetchUserPermissions($user->data()->id);
   $permissionData = fetchAllPermissions();
 
 
-
-
-
-
-
+if (checkMenu(5,$user->data()->id) || checkMenu(2,$user->data()->id)){
 ?>
-
 
 <div class="content mt-3">
   <?=resultBlock($errors,$successes);?>
@@ -105,10 +98,6 @@
                 </center>
               </div>
             </div>
-
-
-
-
 
             <div id="permissions" class="modal fade" role="dialog">
               <div class="modal-dialog">
@@ -167,15 +156,17 @@
 
 
 
-                      <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
-                      <div class="pull-right">
-                        <div class="btn-group"><input class='btn btn-primary' type='submit' value='Update' class='submit' /></div>
-                        <div class="btn-group"><a class='btn btn-warning' href="<?=$us_url_root?>users/admin.php?view=users">Cancel</a></div><br /><Br />
-                      </div>
+            <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
+            <div class="pull-right">
+              <div class="btn-group"><input class='btn btn-primary' type='submit' value='Update' class='submit' /></div>
+              <div class="btn-group"><a class='btn btn-warning' href="<?=$us_url_root?>users/admin.php?view=users">Cancel</a></div><br /><Br />
+            </div>
 
-                    </form>
+          </form>
 
-                  </div><!--/col-9-->
-                </div><!--/row-->
+          </div><!--/col-9-->
+        </div><!--/row-->
 
-              </div>
+      </div>
+
+    <?php } ?>
