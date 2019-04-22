@@ -49,300 +49,6 @@ if(!empty($_POST)) {
     }
     else
     {
-
-      if(!empty($_POST['cloak'])){
-        if($user->data()->cloak_allowed!=1 && !in_array($user->data()->id,$master_account) && !isset($_SESSION['cloak_to'])) {
-          logger($user->data()->id,"Cloaking","User attempted to cloak User ID #".$userId);
-          Redirect::to($us_url_root.'usersc/client_admin.php?view=users&err=You do not have permission to cloak.');
-        }else{
-          if(in_array($userId,$master_account) && !in_array($user->data()->id,$master_account)){
-            logger($user->data()->id,"Cloaking","User attempted to cloak User ID #$userId who belongs to the Master Account Array.");
-            Redirect::to($us_url_root.'usersc/client_admin.php?view=users&err=You cannot cloak into a master account.');
-          }elseif($userId == $user->data()->id){
-            logger($user->data()->id,"Cloaking","User attempted to cloak themself.");
-            Redirect::to($us_url_root.'usersc/client_admin.php?view=users&err=Cloaking+into+yourself+would+open+up+a+black+hole!');
-          }else{
-            $check = $db->query("SELECT id FROM users WHERE id = ?",array($userId));
-            $count = $check->count();
-            if($count < 1){
-              Redirect::to($us_url_root.'usersc/client_admin.php?view=users&err=You+broke+it!+User+not+found.');
-            }else{
-              $_SESSION['cloak_from']=$user->data()->id;
-              $_SESSION['cloak_to']=$userId;
-              logger($user->data()->id,"Cloaking","Cloaked into ".$userId);
-              Redirect::to('account.php?err=You+are+now+cloaked!');
-            }
-          }
-        }
-      }
-
-      //Update display name
-      $displayname = Input::get("username");
-      if ($userdetails->username != $displayname) {
-
-        $fields=array('username'=>$displayname);
-        $validation->check($_POST,array(
-          'username' => array(
-            'display' => 'Username',
-            'required' => true,
-            'unique_update' => 'users,'.$userId,
-            'min' => $settings->min_un,
-            'max' => $settings->max_un
-          )
-        ));
-        if($validation->passed()){
-          $db->update('users',$userId,$fields);
-          $successes[] = "Username Updated";
-          logger($user->data()->id,"User Manager","Updated username for $userdetails->fname from $userdetails->username to $displayname.");
-        }else{
-
-        }
-      }
-
-      //Update first name
-      $fname = ucfirst(Input::get("fname"));
-      if ($userdetails->fname != $fname) {
-
-        $fields=array('fname'=>$fname);
-        $validation->check($_POST,array(
-          'fname' => array(
-            'display' => 'First Name',
-            'required' => true,
-            'min' => 1,
-            'max' => 25
-          )
-        ));
-        if($validation->passed()){
-          $db->update('users',$userId,$fields);
-          $successes[] = "First Name Updated";
-          logger($user->data()->id,"User Manager","Updated first name for $userdetails->fname from $userdetails->fname to $fname.");
-        }else{
-          ?><?php if(!$validation->errors()=='') {?><div class="alert alert-danger"><?=display_errors($validation->errors());?></div><?php } ?>
-          <?php
-        }
-      }
-
-      //Update last name
-      $lname = ucfirst(Input::get("lname"));
-      if ($userdetails->lname != $lname){
-
-        $fields=array('lname'=>$lname);
-        $validation->check($_POST,array(
-          'lname' => array(
-            'display' => 'Last Name',
-            'required' => true,
-            'min' => 1,
-            'max' => 25
-          )
-        ));
-        if($validation->passed()){
-          $db->update('users',$userId,$fields);
-          $successes[] = "Last Name Updated";
-          logger($user->data()->id,"User Manager","Updated last name for $userdetails->fname from $userdetails->lname to $lname.");
-        }else{
-          ?>
-          <?php if(!$validation->errors()=='') {?><div class="alert alert-danger"><?=display_errors($validation->errors());?></div><?php } ?>
-          <?php
-        }
-      }
-
-      if(!empty($_POST['password'])) {
-        $validation->check($_POST,array(
-          'password' => array(
-            'display' => 'New Password',
-            'required' => true,
-            'min' => $settings->min_pw,
-            'max' => $settings->max_pw,
-          ),
-          'confirm' => array(
-            'display' => 'Confirm New Password',
-            'required' => true,
-            'matches' => 'password',
-          ),
-        ));
-
-        if (empty($errors)) {
-          //process
-          $new_password_hash = password_hash(Input::get('password', true), PASSWORD_BCRYPT, array('cost' => 12));
-          $user->update(array('password' => $new_password_hash,),$userId);
-          $successes[]='Password updated.';
-          logger($user->data()->id,"User Manager","Updated password for $userdetails->fname.");
-          if($settings->session_manager==1) {
-            if($userId==$user->data()->id) $passwordResetKillSessions=passwordResetKillSessions();
-            else $passwordResetKillSessions=passwordResetKillSessions($userId);
-            if(is_numeric($passwordResetKillSessions)) {
-              if($passwordResetKillSessions==1) $successes[] = "Successfully Killed 1 Session";
-              if($passwordResetKillSessions >1) $successes[] = "Successfully Killed $passwordResetKillSessions Session";
-            } else {
-              $errors[] = "Failed to kill active sessions, Error: ".$passwordResetKillSessions;
-            }
-          }
-        }
-      }
-      $vericode_expiry=date("Y-m-d H:i:s",strtotime("+$settings->reset_vericode_expiry minutes",strtotime(date("Y-m-d H:i:s"))));
-      $vericode=randomstring(15);
-      $db->update('users',$userdetails->id,['vericode' => $vericode,'vericode_expiry' => $vericode_expiry]);
-      if(isset($_POST['sendPwReset'])) {
-        $params = array(
-          'username' => $userdetails->username,
-          'sitename' => $settings->site_name,
-          'fname' => $userdetails->fname,
-          'email' => rawurlencode($userdetails->email),
-          'vericode' => $userdetails->vericode,
-          'reset_vericode_expiry' => $settings->reset_vericode_expiry
-        );
-        $to = rawurlencode($userdetails->email);
-        $subject = 'Password Reset';
-        $body = email_body('_email_adminPwReset.php',$params);
-        email($to,$subject,$body);
-        $successes[] = "Password reset sent.";
-        logger($user->data()->id,"User Manager","Sent password reset email to $userdetails->fname, Vericode expires in $settings->reset_vericode_expiry minutes.");
-      }
-
-      //Block User
-      $active = Input::get("active");
-      if ($userdetails->permissions != $active){
-        $fields=array('permissions'=>$active);
-        $db->update('users',$userId,$fields);
-        $successes[] = "Set user access to $active.";
-        logger($user->data()->id,"User Manager","Updated active for $userdetails->fname from $userdetails->active to $active.");
-      }
-
-      //Force PW User
-      $force_pr = Input::get("force_pr");
-      if ($userdetails->force_pr != $force_pr){
-        $fields=array('force_pr'=>$force_pr);
-        $db->update('users',$userId,$fields);
-        $successes[] = "Set force_pr to $force_pr.";
-        logger($user->data()->id,"User Manager","Updated force_pr for $userdetails->fname from $userdetails->force_pr to $force_pr.");
-      }
-
-      //Update email
-      $email = Input::get("email");
-      if ($userdetails->email != $email){
-        $fields=array('email'=>$email);
-        $validation->check($_POST,array(
-          'email' => array(
-            'display' => 'Email',
-            'required' => true,
-            'valid_email' => true,
-            'unique_update' => 'users,'.$userId,
-            'min' => 3,
-            'max' => 75
-          )
-        ));
-        if($validation->passed()){
-          $db->update('users',$userId,$fields);
-          $successes[] = "Email Updated";
-          logger($user->data()->id,"User Manager","Updated email for $userdetails->fname from $userdetails->email to $email.");
-        }else{
-          ?>
-          <?php if(!$validation->errors()=='') {?><div class="alert alert-danger"><?=display_errors($validation->errors());?></div><?php } ?>
-          <?php
-        }
-
-      }
-
-      //Update validation
-      if($act==1) {
-        $email_verified = Input::get("email_verified");
-        if (isset($email_verified) AND $email_verified == '1'){
-          if ($userdetails->email_verified == 0){
-            if (updateUser('email_verified', $userId, 1)){
-              $successes[] = "Verification Updated";
-              logger($user->data()->id,"User Manager","Updated email_verified for $userdetails->fname to $email_verified..");
-            }else{
-              $errors[] = lang("SQL_ERROR");
-            }
-          }
-        }elseif ($userdetails->email_verified == 1){
-          if (updateUser('email_verified', $userId, 0)){
-            $successes[] = "Verification Updated";
-            logger($user->data()->id,"User Manager","Updated email_verified for $userdetails->fname to $email_verified..");
-          }else{
-            $errors[] = lang("SQL_ERROR");
-          }
-        }
-      }
-
-      //Toggle protected setting
-      if(in_array($user->data()->id,$master_account)) {
-        $protected = Input::get("protected");
-        if (isset($protected) AND $protected == '1'){
-          if ($userdetails->protected == 0){
-            if (updateUser('protected', $userId, 1)){
-              $successes[] = lang("USER_PROTECTION", array("now"));
-              logger($user->data()->id,"User Manager","Updated protection for $userdetails->fname from 0 to 1.");
-            }else{
-              $errors[] = lang("SQL_ERROR");
-            }
-          }
-        }elseif ($userdetails->protected == 1){
-          if (updateUser('protected', $userId, 0)){
-            $successes[] = lang("USER_PROTECTION", array("no longer"));
-            logger($user->data()->id,"User Manager","Updated protection for $userdetails->fname from 1 to 0.");
-          }else{
-            $errors[] = lang("SQL_ERROR");
-          }
-        }
-      }
-
-      //Toggle msg_exempt setting
-      $msg_exempt = Input::get("msg_exempt");
-      if (isset($msg_exempt) AND $msg_exempt == '1'){
-        if ($userdetails->msg_exempt == 0){
-          if (updateUser('msg_exempt', $userId, 1)){
-            $successes[] = lang("USER_MESSAGE_EXEMPT", array("now"));
-            logger($user->data()->id,"User Manager","Updated msg_exempt for $userdetails->fname from 0 to 1.");
-          }else{
-            $errors[] = lang("SQL_ERROR");
-          }
-        }
-      }elseif ($userdetails->msg_exempt == 1){
-        if (updateUser('msg_exempt', $userId, 0)){
-          $successes[] = lang("USER_MESSAGE_EXEMPT", array("no longer"));
-          logger($user->data()->id,"User Manager","Updated msg_exempt for $userdetails->fname from 1 to 0.");
-        }else{
-          $errors[] = lang("SQL_ERROR");
-        }
-      }
-
-      //Toggle dev_user setting
-      $dev_user = Input::get("dev_user");
-      if (isset($dev_user) AND $dev_user == '1'){
-        if ($userdetails->dev_user == 0){
-          if (updateUser('dev_user', $userId, 1)){
-            $successes[] = lang("USER_DEV_OPTION", array("now"));
-            logger($user->data()->id,"User Manager","Updated dev_user for $userdetails->fname from 0 to 1.");
-          }else{
-            $errors[] = lang("SQL_ERROR");
-          }
-        }
-      }elseif ($userdetails->dev_user == 1){
-        if (updateUser('dev_user', $userId, 0)){
-          $successes[] = lang("USER_DEV_OPTION", array("no longer"));
-          logger($user->data()->id,"User Manager","Updated dev_user for $userdetails->fname from 1 to 0.");
-        }else{
-          $errors[] = lang("SQL_ERROR");
-        }
-      }
-
-      //Two FA disabler
-      $twofa = Input::get('twofa');
-      if (isset($twofa) AND $twofa == '1' && $settings->twofa==1 && $userdetails->twoEnabled==1){
-        $db->query("UPDATE users SET twoKey=null,twoEnabled=0 WHERE id = ?",[$userId]);
-        logger($user->data()->id,"Two FA","Disabled Two FA for User ID $userId");
-        $successes[] = "Disabled 2FA";
-      }
-
-      $cloak_allowed = Input::get("cloak_allowed");
-      if ($userdetails->cloak_allowed != $cloak_allowed){
-        $fields=array('cloak_allowed'=>$cloak_allowed);
-        $db->update('users',$userId,$fields);
-        $successes[] = "Set user cloaking to $cloak_allowed.";
-        logger($user->data()->id,"User Manager","Updated cloak_allowed for $userdetails->fname from $userdetails->cloak_allowed to $cloak_allowed.");
-      }
-
       //Remove permission level
       if(!empty($_POST['removePermission'])){
         $remove = Input::get('removePermission');
@@ -366,13 +72,6 @@ if(!empty($_POST)) {
         }
       }
 
-      if(!empty($_POST['resetPin']) && Input::get('resetPin')==1) {
-        $user->update(['pin'=>NULL],$userId);
-        logger($user->data()->id,"User Manager","Reset PIN for $userdetails->fname $userdetails->lname");
-        $successes[]='Reset PIN';
-        $successes[]='User can set a new PIN the next time they require verification';
-      }
-
       if(file_exists($abs_us_root.$us_url_root.'usersc/includes/admin_user_system_settings_post.php')){
         require_once $abs_us_root.$us_url_root.'usersc/includes/admin_user_system_settings_post.php';
       }
@@ -380,10 +79,13 @@ if(!empty($_POST)) {
     $userdetails = fetchUserDetails(NULL, NULL, $userId);
   } }
 
-
   $userPermission = fetchUserPermissions($userId);
-  // $currentuserPermission = fetchUserPermissions($user->data()->id);
-  $permissionData = fetchAllPermissions();
+
+  //Fetch all permissions with the exception of superuser (id=2)
+  $db = DB::getInstance();
+  $query = $db->query("SELECT id, name FROM permissions WHERE id!=2");
+  $permissionData = $query->results();
+
 
   $grav = get_gravatar(strtolower(trim($userdetails->email)));
   $useravatar = '<img src="'.$grav.'" class="img-responsive img-thumbnail" alt="">';
@@ -400,7 +102,7 @@ if(!empty($_POST)) {
       </div><!--/col-2-->
 
       <div class="col-sm-12 col-sm-10">
-        <form class="form" id='adminUser' name='adminUser' action='admin.php?view=user&id=<?=$userId?>' method='post'>
+        <form class="form" id='adminUser' name='adminUser' action='client_admin.php?view=user&id=<?=$userId?>' method='post'>
 
           <h3><?=$userdetails->fname?> <?=$userdetails->lname?> - <?=$userdetails->username?></h3>
           <div class="panel panel-default">
@@ -411,34 +113,27 @@ if(!empty($_POST)) {
 
                 <label>Last Login: </label> <?php if($userdetails->last_login != 0) { echo $userdetails->last_login; } else {?> <i>Never</i> <?php }?><br/>
 
-                <label>Username:</label>
-                <input  class='form-control' type='text' name='username' value='<?=$userdetails->username?>' autocomplete="off" />
+                <label>Username: </label> <?=$userdetails->username?><br/>
 
-                <label>Email:</label>
-                <input class='form-control' type='text' name='email' value='<?=$userdetails->email?>' autocomplete="off" />
+                <label>Email: </label> <?=$userdetails->email?><br/>
 
-                <label>First Name:</label>
-                <input  class='form-control' type='text' name='fname' value='<?=$userdetails->fname?>' autocomplete="off" />
+                <label>First Name: </label> <?=$userdetails->fname?><br/>
 
-                <label>Last Name:</label>
-                <input  class='form-control' type='text' name='lname' value='<?=$userdetails->lname?>' autocomplete="off" />
+                <label>Last Name: </label> <?=$userdetails->lname?><br/>
+
 
               </div>
             </div>
 
 
             <div class="panel panel-default">
-              <div class="panel-heading">Functions <?php if($protectedprof==1) {?><p class="pull-right">PROTECTED PROFILE - EDIT DISABLED</p><?php } ?></div>
+              <div class="panel-heading"><?php if($protectedprof==1) {?><p class="pull-right">PROTECTED PROFILE - EDIT DISABLED</p><?php } ?></div>
               <div class="panel-body">
                 <center>
                   <div class="btn-group"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#permissions">Permission Settings</button></div>
                   </center>
                 </div>
               </div>
-
-
-
-
 
               <div id="permissions" class="modal fade" role="dialog">
                 <div class="modal-dialog">
@@ -510,7 +205,7 @@ if(!empty($_POST)) {
 
                 </div>
 
-                <script src="js/jwerty.js"></script>
+                <script src="../../users/js/jwerty.js"></script>
                 <script>
                 jwerty.key('esc', function () {
                   $('.modal').modal('hide');

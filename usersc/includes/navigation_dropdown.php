@@ -44,7 +44,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <?php if(checkMenu(2,$user->data()->id) || checkMenu(5,$user->data()->id)){  //Links for permission level 5 (Admin) ?>
       <a class="dropdown-item" href="<?=$us_url_root?>usersc/client_admin.php"><i class="fa fa-cogs"></i> Admin Dashboard</a>
-      <a class="dropdown-item" href="<?=$us_url_root?>usersc/learners_list.php"><i class="fa fa-user"></i> Learners List</a>
+      <a class="dropdown-item" href="<?=$us_url_root?>usersc/client_admin.php?view=users"><i class="fa fa-users"></i> Manage Users</a>
+      <a class="dropdown-item" href="<?=$us_url_root?>usersc/client_admin.php?view=learner"><i class="fa fa-file-text"></i> Learners List</a>
       <div class="dropdown-divider"></div>
     <?php } // if user is logged in ?>
 

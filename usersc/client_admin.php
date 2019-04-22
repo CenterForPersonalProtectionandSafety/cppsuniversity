@@ -21,11 +21,12 @@ ini_set('max_execution_time', 1356);
 ini_set('memory_limit','1024M');
 ?>
 <?php
-require_once '../users/init.php';
-include $abs_us_root.$us_url_root."users/includes/dashboard_language.php";
-$db = DB::getInstance();
-$settings = $db->query("SELECT * FROM settings")->first();
+  require_once '../users/init.php';
+  include $abs_us_root.$us_url_root."users/includes/dashboard_language.php";
+  $db = DB::getInstance();
+  $settings = $db->query("SELECT * FROM settings")->first();
 ?>
+
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 <?php $view = Input::get('view');?>
 <?php require_once $abs_us_root.$us_url_root.'usersc/views/_admin_menu.php'; ?>
@@ -45,6 +46,9 @@ $settings = $db->query("SELECT * FROM settings")->first();
     }
     return $path;
   }
+
+  if (checkMenu(2,$user->data()->id) || checkMenu(5,$user->data()->id)){
+
   //$view = Input::get('view');
   include($abs_us_root.$us_url_root.'usersc/includes/admin_override.php');
   switch ($view) {
@@ -67,7 +71,8 @@ $settings = $db->query("SELECT * FROM settings")->first();
     $path = usView($view.".php");
     include($path);
   }
-    }
+  }
+}
 ?>
 <p align="center">
 <font color='black'><br>&copy;<?=date("Y ")?><?=$settings->copyright; ?></font>

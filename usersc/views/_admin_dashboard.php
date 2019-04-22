@@ -9,7 +9,7 @@
 </div>
 </div>
 </header><!-- /header -->
-<script src="js/Chart.bundle.js"></script>
+<script src="../../users/js/Chart.bundle.js"></script>
 <div class="content mt-3">
   <div class="row">
     <div class="col-12">
@@ -25,11 +25,8 @@
     include($widget.'/widget.php');
   }
 ?>
-
 <!-- </div> -->
 <!-- End Widgets -->
-
-
 
 
 <!-- admin_panel_buttons.php-->
