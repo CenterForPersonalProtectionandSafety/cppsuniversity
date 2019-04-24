@@ -29,6 +29,7 @@
   $widgets = glob($abs_us_root.$us_url_root.'usersc/custom_widgets/*' , GLOB_ONLYDIR);
   foreach($widgets as $widget){
     include($widget.'/widget.php');
+    echo "</br>";
   }
 ?>
 <!-- </div> -->

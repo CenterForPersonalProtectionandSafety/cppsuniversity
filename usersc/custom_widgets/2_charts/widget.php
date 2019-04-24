@@ -1,5 +1,5 @@
 <!-- This is an example widget file.  It will be included on the statistics page of the Dashboard. -->
-<h4>Courses Completed</h4></br>
+<h4>Courses Completed</h4></br><hr>
 <div class="row">
 
 <!-- Do any php that needs to happen. You already have access to the db -->
@@ -8,9 +8,18 @@ $private = $db->query("SELECT id FROM pages WHERE private = ?",array(1))->count(
 $public = $db->query("SELECT id FROM pages WHERE private = ?",array(0))->count();
 
 ?>
+
+<style>
+
+.chart:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+</style>
+
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-    <div class="card">
+    <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">When Lightning Strikes Completed </h4>
             <!-- id should be unique -->
@@ -21,7 +30,7 @@ $public = $db->query("SELECT id FROM pages WHERE private = ?",array(0))->count()
 
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-    <div class="card">
+    <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">Tier 2 Completed </h4>
             <!-- id should be unique -->
@@ -32,7 +41,7 @@ $public = $db->query("SELECT id FROM pages WHERE private = ?",array(0))->count()
 
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-    <div class="card">
+    <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">Tier 3 Completed </h4>
             <!-- id should be unique -->
@@ -43,7 +52,7 @@ $public = $db->query("SELECT id FROM pages WHERE private = ?",array(0))->count()
 
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-    <div class="card">
+    <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">Beyond Lockdown Completed </h4>
             <!-- id should be unique -->
@@ -58,7 +67,7 @@ $public = $db->query("SELECT id FROM pages WHERE private = ?",array(0))->count()
 <script type="text/javascript">
 $(document).ready(function() {
   var ctx = document.getElementById( "wls-chart" );
-      ctx.height = 150;
+      ctx.height = 125;
       var myChart = new Chart( ctx, {
           type: 'pie',
           data: {
@@ -85,7 +94,7 @@ $(document).ready(function() {
       } );
 
   var ctx = document.getElementById( "tier2-chart" );
-      ctx.height = 150;
+      ctx.height = 125;
       var myChart = new Chart( ctx, {
           type: 'pie',
           data: {
@@ -112,7 +121,7 @@ $(document).ready(function() {
       } );
 
   var ctx = document.getElementById( "tier3-chart" );
-      ctx.height = 150;
+      ctx.height = 125;
       var myChart = new Chart( ctx, {
           type: 'pie',
           data: {
@@ -139,7 +148,7 @@ $(document).ready(function() {
       } );
 
   var ctx = document.getElementById( "bl-chart" );
-      ctx.height = 150;
+      ctx.height = 125;
       var myChart = new Chart( ctx, {
           type: 'pie',
           data: {
