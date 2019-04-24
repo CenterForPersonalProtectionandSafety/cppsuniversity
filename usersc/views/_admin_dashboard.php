@@ -17,7 +17,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <h1>Welcome to the admin dashboard.</h1>
+      <h3>Welcome <?= echousername($user->data()->id);?> to the admin dashboard.</h3>
       <hr>
     </div>
   </div>
