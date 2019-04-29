@@ -81,6 +81,8 @@ if ($settings->force_ssl==1){
 }
 require_once $abs_us_root.$us_url_root.'usersc/includes/security_headers.php';
 
+
+
 //if track_guest enabled AND there is a user logged in
 if($settings->track_guest == 1 && $user->isLoggedIn()){
 	if ($user->isLoggedIn()){
@@ -100,6 +102,9 @@ if ($titleQ->count() > 0) {
     $pageTitle = $titleQ->first()->title;
 }
 else $pageTitle = '';
+
+
+include $abs_us_root.$us_url_root."users/lang/en-US.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

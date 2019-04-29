@@ -139,7 +139,7 @@ if (empty($dest = sanitizedDest('dest'))) {
     <div class="row" id="login-row">
         <div class="col-xs-12">
             <form name="login" id="login-form" class="form-signin" action="login.php" method="post">
-                    <h2 class="form-signin-heading"></i>Sign In</h2>
+                    <h2 class="form-signin-heading"></i> <?=lang("SIGNIN_TITLE","");?></h2>
                 <input type="hidden" name="dest" value="<?= $dest ?>" />
 
                 <div class="form-group">
@@ -164,18 +164,18 @@ if (empty($dest = sanitizedDest('dest'))) {
 
                 <input type="hidden" name="csrf" value="<?=Token::generate(); ?>">
                 <input type="hidden" name="redirect" value="<?=Input::get('redirect')?>" />
-                <button class="submit  btn  btn-primary" id="next_button" type="submit"><i class="fa fa-sign-in"></i>Login</button>
+                <button class="submit  btn  btn-primary" id="next_button" type="submit"><i class="fa fa-sign-in"></i> <?=lang("SIGNIN_BUTTONTEXT","");?></button>
 
             </form>
         </div>
     </div>
     <div class="row forgot-password-row" id="login-row">
         <div class="col-xs-6"><br>
-            <a class="pull-left" href='../users/forgot_password.php'><i class="fa fa-wrench"></i>Forgot Password</a><br><br>
+            <a class="pull-left" href='../users/forgot_password.php'><i class="fa fa-wrench"></i><?=lang("SIGNIN_FORGOTPASS","");?></a><br><br>
         </div>
         <?php if($settings->registration==1) {?>
         <div class="col-xs-6""><br>
-            <a class="pull-right" href='../users/join.php'><i class="fa fa-plus-square"></i>Register</a><br><br>
+            <a class="pull-right" href='../users/join.php'><i class="fa fa-plus-square"></i> <?=lang("SIGNUP_TEXT","");?></a><br><br>
         </div><?php } ?>
     </div>
     </div>
