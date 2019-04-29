@@ -87,7 +87,7 @@ $_SESSION['fb_access_token'] = (string) $accessToken;
 //header('Location: https://example.com/members.php');
 try {
   // Returns a `Facebook\FacebookResponse` object
-  $response = $fb->get('/me?fields=id,name,email', $_SESSION['fb_access_token']);
+  $response = $fb->get('/me?fields=id,first_name,last_name,email', $_SESSION['fb_access_token']);
 } catch(Facebook\Exceptions\FacebookResponseException $e) {
   echo 'Graph returned an error: ' . $e->getMessage();
   exit;
@@ -132,7 +132,21 @@ if($twoQ->count()>0) {
     logger($user->data()->id,"Two FA","Two FA being requested.");
     Redirect::To($us_url_root.'users/twofa.php');
   }
-
+  $ip = ipCheck();
+  $q = $db->query("SELECT id FROM us_ip_list WHERE ip = ?",array($ip));
+  $c = $q->count();
+  if($c < 1){
+    $db->insert('us_ip_list', array(
+      'user_id' => $feusr->id,
+      'ip' => $ip,
+    ));
+  }else{
+    $f = $q->first();
+    $db->update('us_ip_list',$f->id, array(
+      'user_id' => $feusr->id,
+      'ip' => $ip,
+    ));
+  }
 Redirect::to($us_url_root.'users/account.php');
 }else{
   if($settings->registration==0) {
@@ -144,14 +158,24 @@ Redirect::to($us_url_root.'users/account.php');
     // if ($CEQCount<0){
     //$fbpassword = password_hash(Token::generate(),PASSWORD_BCRYPT,array('cost' => 12));
     $date = date("Y-m-d H:i:s");
-    $fbname = $fbuser['name'];
-    $fields=array('email'=>$fbEmail,'username'=>$fbEmail,'fname'=>$fbname,'lname'=>'','permissions'=>1,'logins'=>1,'company'=>'none','join_date'=>$date,'last_login'=>$date,'email_verified'=>1,'password'=>NULL,'fb_uid'=>$fbuser['id']);
+    $fb_fname = $fbuser['first_name'];
+    $fb_lname = $fbuser['last_name'];
+    $fbname=$fb_fname.' '.$fb_lname;
+    if($settings->auto_assign_un==1) {
+      $username=username_helper($fb_fname,$fb_lname,$fbEmail);
+      if(!$username) $username=NULL;
+    } else {
+      $username=$fbEmail;
+    }
+    $fields=array('email'=>$fbEmail,'username'=>$username,'fname'=>$fb_fname,'lname'=>$fb_lname,'permissions'=>1,'logins'=>1,'company'=>'none','join_date'=>$date,'last_login'=>$date,'email_verified'=>1,'password'=>NULL,'fb_uid'=>$fbuser['id']);
 
     $db->insert('users',$fields);
     $lastID = $db->lastId();
 
     $insert2 = $db->query("INSERT INTO user_permission_matches SET user_id = $lastID, permission_id = 1");
-    $insert3 = $db->query("INSERT INTO profiles SET user_id = $lastID, bio = 'This is your bio'");
+
+    $theNewId=$lastID;
+    include($abs_us_root.$us_url_root.'usersc/scripts/during_user_creation.php');
 
     $_SESSION["user"] = $lastID;
     Redirect::to($whereNext);

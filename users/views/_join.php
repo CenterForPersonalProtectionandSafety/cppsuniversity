@@ -32,26 +32,26 @@ Special thanks to John Bovey for the password strenth feature.
 
     <form class="form-signup" action="<?=$form_action;?>" method="<?=$form_method;?>">
 
-      <h2 class="form-signin-heading">Register</h2>
+      <h2 class="form-signin-heading"> <?=lang("SIGNUP_TEXT","");?></h2>
 
       <div class="form-group">
 
-        <?php if($settings->auto_assign_un==0) {?><label>Username*</label>&nbsp;&nbsp;<span id="usernameCheck" class="small"></span>
-        <input type="text" class="form-control" id="username" name="username" placeholder="User Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $username;} ?>" required autofocus autocomplete="username"><?php } ?>
+        <?php if($settings->auto_assign_un==0) {?><label><?=lang("GEN_UNAME");?>*</label>&nbsp;&nbsp;<span id="usernameCheck" class="small"></span>
+        <input type="text" class="form-control" id="username" name="username" placeholder="<?=lang("GEN_UNAME");?>" value="<?php if (!$form_valid && !empty($_POST)){ echo $username;} ?>" required autofocus autocomplete="username"><?php } ?>
 
 
-        <label for="fname">First Name*</label>
-        <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autofocus autocomplete="first-name">
+        <label for="fname"><?=lang("GEN_FNAME");?>*</label>
+        <input type="text" class="form-control" id="fname" name="fname" placeholder="<?=lang("GEN_FNAME");?>" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autofocus autocomplete="first-name">
 
-        <label for="lname">Last Name*</label>
-        <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required autocomplete="family-name">
+        <label for="lname"><?=lang("GEN_LNAME");?>*</label>
+        <input type="text" class="form-control" id="lname" name="lname" placeholder="<?=lang("GEN_LNAME");?>" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required autocomplete="family-name">
 
-        <label for="email">Email*</label>
-        <input  class="form-control" type="text" name="email" id="email" placeholder="Email" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" required autocomplete="email">
+        <label for="email"><?=lang("GEN_EMAIL");?>*</label>
+        <input  class="form-control" type="text" name="email" id="email" placeholder="<?=lang("GEN_EMAIL");?>" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" required autocomplete="email">
 
         <?php
 
-        $character_range = "min"." ".$settings->min_pw . " ". "and" ." ". $settings->max_pw . " " . "max" ." ". "char";
+        $character_range = lang("GEN_MIN")." ".$settings->min_pw . " ". lang("GEN_AND") ." ". $settings->max_pw . " " .lang("GEN_MAX")." ".lang("GEN_CHAR");
         $character_statement = '<span id="character_range" class="gray_out_text">' . $character_range . ' </span>';
 
         if ($settings->req_cap == 1){
@@ -59,7 +59,7 @@ Special thanks to John Bovey for the password strenth feature.
           if($num_caps != 1){
             $num_caps_s = 's';
           }
-          $num_caps_statement = '<span id="caps" class="gray_out_text">'. "Have at least " . $num_caps . " capital letter" .'</span>';
+          $num_caps_statement = '<span id="caps" class="gray_out_text">'.lang("JOIN_HAVE") . $num_caps . lang("JOIN_CAP") .'</span>';
         }
 
         if ($settings->req_num == 1){
@@ -68,9 +68,9 @@ Special thanks to John Bovey for the password strenth feature.
             $num_numbers_s = 's';
           }
 
-          $num_numbers_statement = '<span id="number" class="gray_out_text">'. "Have at least " . $num_numbers . "number" .'</span>';
+          $num_numbers_statement = '<span id="number" class="gray_out_text">'.lang("JOIN_HAVE") . $num_numbers . lang("GEN_NUMBER") .'</span>';
         }
-        $password_match_statement = '<span id="password_match" class="gray_out_text">'."Be typed correctly twice".'</span>';
+        $password_match_statement = '<span id="password_match" class="gray_out_text">'.lang("JOIN_TWICE").'</span>';
 
 
         //2.) Apply default class to gray out green check icon
@@ -143,14 +143,14 @@ Special thanks to John Bovey for the password strenth feature.
         ?>
 
         <div style="display: inline-block">
-          <label for="password">Password* (min <?=$settings->min_pw?> and max <?=$settings->max_pw?> char)</label>
-          <input  class="form-control" type="password" name="password" id="password" placeholder="Password" required autocomplete="password" aria-describedby="passwordhelp">
+          <label for="password"><?=lang("GEN_PASS");?>* (<?=lang("GEN_MIN");?> <?=$settings->min_pw?> <?=lang("GEN_AND");?> <?=lang("GEN_MAX");?> <?=$settings->max_pw?> <?=lang("GEN_CHAR");?>)</label>
+          <input  class="form-control" type="password" name="password" id="password" placeholder="<?=lang("GEN_PASS");?>" required autocomplete="password" aria-describedby="passwordhelp">
 
-          <label for="confirm">Confirm Password*</label>
-          <input  type="password" id="confirm" name="confirm" class="form-control" placeholder="Confirm Password" required autocomplete="password" >
+          <label for="confirm"><?=lang("PW_CONF");?>*</label>
+          <input  type="password" id="confirm" name="confirm" class="form-control" placeholder="<?=lang("PW_CONF");?>" required autocomplete="password" >
         </div>
         <div style="display: inline-block; padding-left: 20px">
-          <strong>Password Should...</strong><br>
+          <strong><?=lang("PW_SHOULD");?></strong><br>
           <span id="character_range_icon" class="fa fa-thumbs-o-up gray_out_icon" style="color: green"></span>&nbsp;&nbsp;<?php echo $character_statement;?>
           <br>
           <?php
@@ -165,13 +165,15 @@ Special thanks to John Bovey for the password strenth feature.
           <?php } ?>
           <span id="password_match_icon" class="fa fa-thumbs-o-up gray_out_icon" style="color: green"></span>&nbsp;&nbsp;<?php echo $password_match_statement;?>
           <br><br>
-          <a class="nounderline" id="password_view_control"><span class="fa fa-eye"></span> Show Password</a>
+          <a class="nounderline" id="password_view_control"><span class="fa fa-eye"></span> <?=lang("PW_SHOWS");?></a>
         </div>
         <br><br>
 
-        <?php include($abs_us_root.$us_url_root.'usersc/scripts/additional_join_form_fields.php'); ?>
+        <?php
+        includeHook($hooks,'form');
+        include($abs_us_root.$us_url_root.'usersc/scripts/additional_join_form_fields.php'); ?>
         <?php if($settings->show_tos == 1){ ?>
-          <label for="confirm"> Registration User Terms and Conditions</label>
+          <label for="confirm"> <?=lang("JOIN_TC");?></label>
           <textarea id="agreement" name="agreement" rows="5" class="form-control" style="background-color:white;" disabled >
             <?php
             if(!isset($_SESSION['us_lang']) || $_SESSION['us_lang'] == 'en-US' || $_SESSION['us_lang'] == '' ){
@@ -186,12 +188,12 @@ Special thanks to John Bovey for the password strenth feature.
             ?>
           </textarea>
 
-          <label><input type="checkbox" id="agreement_checkbox" name="agreement_checkbox"> I Accept User Terms and Conditions</label>
+          <label><input type="checkbox" id="agreement_checkbox" name="agreement_checkbox"> <?=lang("JOIN_ACCEPTTC");?></label>
         <?php } //if TOS enabled ?>
       </div>
 
       <input type="hidden" value="<?=Token::generate();?>" name="csrf">
-      <button class="submit btn btn-primary " type="submit" id="next_button"><i class="fa fa-plus-square"></i> Register</button>
+      <button class="submit btn btn-primary " type="submit" id="next_button"><i class="fa fa-plus-square"></i> <?=lang("SIGNUP_TEXT");?></button>
       <?php if($settings->recaptcha == 1|| $settings->recaptcha == 2){ ?>
         <div class="g-recaptcha" data-sitekey="<?=$settings->recap_public; ?>" data-bind="next_button" data-callback="submitForm"></div>
       <?php } ?>
