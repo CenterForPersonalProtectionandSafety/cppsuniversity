@@ -174,7 +174,7 @@ if (empty($dest = sanitizedDest('dest'))) {
             <a class="pull-left" href='../users/forgot_password.php'><i class="fa fa-wrench"></i><?=lang("SIGNIN_FORGOTPASS","");?></a><br><br>
         </div>
         <?php if($settings->registration==1) {?>
-        <div class="col-xs-6""><br>
+        <div class="col-xs-6"><br>
             <a class="pull-right" href='../users/join.php'><i class="fa fa-plus-square"></i> <?=lang("SIGNUP_TEXT","");?></a><br><br>
         </div><?php } ?>
     </div>
