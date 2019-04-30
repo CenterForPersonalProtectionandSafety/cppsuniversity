@@ -230,65 +230,110 @@ if (!empty($_POST)) {
   <?php }else { include $abs_us_root.$us_url_root.'usersc/includes/warning.php'; } ?>
 
 
+  <div id="adduser" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">User Addition</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-signup" action="client_admin.php?view=users" method="POST">
+            <div class="panel-body">
+              <?php if($settings->auto_assign_un==0) {?><label>Username: </label>&nbsp;&nbsp;<span id="usernameCheck" class="small"></span><input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off" value="<?php if (!$form_valid && !empty($_POST)){ echo $username;} ?>" required><?php } ?>
+                <label>First Name: </label><input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $fname;} ?>" required autocomplete="off">
+                <label>Last Name: </label><input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" value="<?php if (!$form_valid && !empty($_POST)){ echo $lname;} ?>" required autocomplete="off">
+                <label>Email: </label><input  class="form-control" type="text" name="email" id="email" placeholder="Email Address" value="<?php if (!$form_valid && !empty($_POST)){ echo $email;} ?>" required autocomplete="off">
+                <label>Password: </label>
+                <div class="input-group" data-container="body">
+                  <span class="input-group-addon password_view_control" id="addon1"><span class="fa fa-eye"></span></span>
+                  <input  class="form-control" type="password" name="password" id="password" <?php if($settings->force_pr==1) { ?>value="<?=$random_password?>" readonly<?php } ?> placeholder="Password" required autocomplete="off" aria-describedby="passwordhelp">
+                  <?php if($settings->force_pr==1) { ?>
+                    <span class="input-group-addon" id="addon2"><a class="nounderline pwpopover" data-container="body" data-toggle="popover" data-placement="top" data-content="The Administrator has manual creation password resets enabled. If you choose to send an email to this user, it will supply them with the password reset link and let them know they have an account. If you choose to not, you should manually supply them with this password (discouraged).">Why can't I edit this?</a></span>
+                  <?php } ?>
+                </div>
+                <label>Confirm Password: </label>
+                <div class="input-group" data-container="body">
+                  <span class="input-group-addon password_view_control" id="addon1"><span class="fa fa-eye"></span></span>
+                  <input  type="password" id="confirm" name="confirm" <?php if($settings->force_pr==1) { ?>value="<?=$random_password?>" readonly<?php } ?> class="form-control" autocomplete="off" placeholder="Confirm Password" required >
+                  <?php if($settings->force_pr==1) { ?>
+                    <span class="input-group-addon" id="addon2"><a class="nounderline pwpopover" data-container="body" data-toggle="popover" data-placement="top" data-content="The Administrator has manual creation password resets enabled. If you choose to send an email to this user, it will supply them with the password reset link and let them know they have an account. If you choose to not, you should manually supply them with this password (discouraged).">Why can't I edit this?</a></span>
+                  <?php } ?>
+                </div>
+
+                <?php include($abs_us_root.$us_url_root.'usersc/scripts/additional_join_form_fields.php'); ?>
+                <label><input type="checkbox" name="sendEmail" id="sendEmail" checked /> Send Email?</label>
+                <br />
+              </div>
+              <div class="modal-footer">
+                <div class="btn-group">
+                  <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
+                  <input class='btn btn-primary' type='submit' id="addUser" name="addUser" value='Add User' class='submit' /></div>
+                  <div class="btn-group"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
+      <script type="text/javascript" src="js/pagination/datatables.min.js"></script>
+      <script src="js/jwerty.js"></script>
 
-    <script type="text/javascript" src="js/pagination/datatables.min.js"></script>
-    <script src="js/jwerty.js"></script>
+      <script>
+      $(document).ready(function() {
+        jwerty.key('esc', function(){
+          $('.modal').modal('hide');
+        });
+        $('#paginate').DataTable({"pageLength": 25,"stateSave": true,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
 
-    <script>
-    $(document).ready(function() {
-      jwerty.key('esc', function(){
-        $('.modal').modal('hide');
-      });
-      $('#paginate').DataTable({"pageLength": 25,"aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]], "aaSorting": []});
-
-      $('.password_view_control').hover(function () {
-        $('#password').attr('type', 'text');
-        $('#confirm').attr('type', 'text');
-      }, function () {
-        $('#password').attr('type', 'password');
-        $('#confirm').attr('type', 'password');
-      });
-
-
-      $('[data-toggle="popover"], .pwpopover').popover();
-      $('.pwpopover').on('click', function (e) {
-        $('.pwpopover').not(this).popover('hide');
-      });
-      $('.modal').on('hidden.bs.modal', function () {
-        $('.pwpopover').popover('hide');
-      });
-    });
-    </script>
-
-    <?php if($settings->auto_assign_un==0) { ?>
-      <script type="text/javascript">
-      $(document).ready(function(){
-        var x_timer;
-        $("#username").keyup(function (e){
-          clearTimeout(x_timer);
-          var username = $(this).val();
-          if (username.length > 0) {
-            x_timer = setTimeout(function(){
-              check_username_ajax(username);
-            }, 500);
-          }
-          else $('#usernameCheck').text('');
+        $('.password_view_control').hover(function () {
+          $('#password').attr('type', 'text');
+          $('#confirm').attr('type', 'text');
+        }, function () {
+          $('#password').attr('type', 'password');
+          $('#confirm').attr('type', 'password');
         });
 
-        function check_username_ajax(username){
-          $("#usernameCheck").html('Checking...');
-          $.post('parsers/existingUsernameCheck.php', {'username': username}, function(response) {
-            if (response == 'error') $('#usernameCheck').html('There was an error while checking the username.');
-            else if (response == 'taken') { $('#usernameCheck').html('<i class="fa fa-times" style="color: red; font-size: 12px"></i> This username is taken.');
-            $('#addUser').prop('disabled', true); }
-            else if (response == 'valid') { $('#usernameCheck').html('<i class="fa fa-thumbs-o-up" style="color: green; font-size: 12px"></i> This username is not taken.');
-            $('#addUser').prop('disabled', false); }
-            else { $('#usernameCheck').html('');
-            $('#addUser').prop('disabled', false); }
-          });
-        }
+
+        $('[data-toggle="popover"], .pwpopover').popover();
+        $('.pwpopover').on('click', function (e) {
+          $('.pwpopover').not(this).popover('hide');
+        });
+        $('.modal').on('hidden.bs.modal', function () {
+          $('.pwpopover').popover('hide');
+        });
       });
       </script>
+
+      <?php if($settings->auto_assign_un==0) { ?>
+        <script type="text/javascript">
+        $(document).ready(function(){
+          var x_timer;
+          $("#username").keyup(function (e){
+            clearTimeout(x_timer);
+            var username = $(this).val();
+            if (username.length > 0) {
+              x_timer = setTimeout(function(){
+                check_username_ajax(username);
+              }, 500);
+            }
+            else $('#usernameCheck').text('');
+          });
+
+          function check_username_ajax(username){
+            $("#usernameCheck").html('Checking...');
+            $.post('parsers/existingUsernameCheck.php', {'username': username}, function(response) {
+              if (response == 'error') $('#usernameCheck').html('There was an error while checking the username.');
+              else if (response == 'taken') { $('#usernameCheck').html('<i class="fa fa-times" style="color: red; font-size: 12px"></i> This username is taken.');
+              $('#addUser').prop('disabled', true); }
+              else if (response == 'valid') { $('#usernameCheck').html('<i class="fa fa-thumbs-o-up" style="color: green; font-size: 12px"></i> This username is not taken.');
+              $('#addUser').prop('disabled', false); }
+              else { $('#usernameCheck').html('');
+              $('#addUser').prop('disabled', false); }
+            });
+          }
+        });
+        </script>
     <?php } ?>
