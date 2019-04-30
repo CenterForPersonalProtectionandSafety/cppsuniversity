@@ -225,6 +225,10 @@ if (!empty($_POST)) {
         </tbody>
       </table>
     </div>
+    <!-- <a class="pull-right" href="#" data-toggle="modal" data-target="#adduser"><font color="blue"><i class="fa fa-plus"></i> Manually Add User</a></font> -->
+    <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#adduser">
+      <i class="fa fa-plus"></i> Manually Add User
+    </button>
   </div>
 
   <?php }else { include $abs_us_root.$us_url_root.'usersc/includes/warning.php'; } ?>
