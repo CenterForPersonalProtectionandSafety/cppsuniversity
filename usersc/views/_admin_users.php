@@ -203,7 +203,6 @@ if (!empty($_POST)) {
         <thead class="thead-light">
           <tr>
             <th></th>
-            <th></th>
             <th>Username</th>
             <th>Name</th>
             <th>Email</th>
@@ -216,7 +215,7 @@ if (!empty($_POST)) {
             ?>
             <tr>
               <td><a class="nounderline" href='client_admin.php?view=user&id=<?=$v1->id?>'><?=$v1->id?></a></td>
-              <td><a class="nounderline" href='client_admin.php?view=user&id=<?=$v1->id?>'><?php if($v1->force_pr==1) {?><font color="red"><i class="fa fa-lock"></i></font><?php } ?></a></td>
+
               <td><a class="nounderline" href='client_admin.php?view=user&id=<?=$v1->id?>'><?=$v1->username?></a></td>
               <td><a class="nounderline" href='client_admin.php?view=user&id=<?=$v1->id?>'><?=$v1->fname?> <?=$v1->lname?></a></td>
               <td><a class="nounderline" href='client_admin.php?view=user&id=<?=$v1->id?>'><?=$v1->email?></a></td>
