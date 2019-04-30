@@ -35,7 +35,7 @@
 
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-  <a href="<?=$us_url_root?>usersc/client_admin.php?view=learner">
+  <a href="<?=$us_url_root?>usersc/client_admin.php?view=wls">
     <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">When Lightning Strikes Completed </h4>
@@ -48,7 +48,7 @@
 
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-  <a href="<?=$us_url_root?>usersc/client_admin.php?view=learner">
+  <a href="<?=$us_url_root?>usersc/client_admin.php?view=tier2">
     <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">Tier 2 Completed </h4>
@@ -61,7 +61,7 @@
 
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-  <a href="<?=$us_url_root?>usersc/client_admin.php?view=learner">
+  <a href="<?=$us_url_root?>usersc/client_admin.php?view=tier3">
     <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">Tier 3 Completed </h4>
@@ -74,7 +74,7 @@
 
 <!-- Create a div to hold your widget -->
 <div class="col-lg-6">
-  <a href="<?=$us_url_root?>usersc/client_admin.php?view=learner">
+  <a href="<?=$us_url_root?>usersc/client_admin.php?view=bl">
     <div class="card chart">
         <div class="card-body">
             <h4 class="mb-3">Beyond Lockdown Completed </h4>

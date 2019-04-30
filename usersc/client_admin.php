@@ -64,6 +64,22 @@ ini_set('memory_limit','1024M');
       $path = usView('_admin_users.php');
       include($path);
       break;
+    case "bl":
+      $path = usView('_bl_list.php');
+      include($path);
+      break;
+    case "wls":
+      $path = usView('_wls_list.php');
+      include($path);
+      break;
+    case "tier2":
+      $path = usView('_tier2_list.php');
+      include($path);
+      break;
+    case "tier3":
+      $path = usView('_tier3_list.php');
+      include($path);
+      break;
     default:
     if($view == ''){
     include($abs_us_root.$us_url_root.'usersc/views/_admin_dashboard.php');
