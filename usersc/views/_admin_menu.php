@@ -117,6 +117,7 @@ function activeDropdown($View, $dropId, $Area = false){
             <?php if(file_exists($abs_us_root.$us_url_root.'usersc/includes/admin_menu.php')){
               include($abs_us_root.$us_url_root.'usersc/includes/admin_menu.php');
             }?>
+            <a href="<?=$us_url_root?>usersc/user_settings.php"><i class="menu-icon fa fa-qq"></i>Your Account</a>
             <a href="<?=$us_url_root?>index.php"><i class="menu-icon fa fa-home"></i>Visit Homepage</a>
             <a href="<?=$us_url_root?>users/logout.php"><i class="menu-icon fa fa-hand-peace-o"></i>Logout</a>
           </li>

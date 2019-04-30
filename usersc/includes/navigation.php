@@ -37,7 +37,7 @@ if($settings->navigation_type==0) {
           <a class="nav-link" href="#"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="pointer-events: none; cursor: default;" ><i class="fa fa-fw fa-user"></i><?php echo echousername($user->data()->id);?></a>
+          <a class="nav-link" href="<?=$us_url_root?>usersc/user_settings.php"><i class="fa fa-fw fa-user"></i><?php echo echousername($user->data()->id);?></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=$us_url_root?>users/logout.php"><i class="fa fa-power-off"></i> Logout</a>
