@@ -30,6 +30,12 @@ if(isset($user) && $user->isLoggedIn()){}
     //Include the When Lightning Strikes Module
     include $abs_us_root.$us_url_root.'usersc/modules/card_flip/WLS_Module.php';
 
+    //Include the FPDP Module
+    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/FP_Module.php';
+
+    //Include the Safe Passage Module
+    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/SafePassage_Module.php';
+
     //Include the Tier 2 Module
     include $abs_us_root.$us_url_root.'usersc/modules/card_flip/Tier2_Module.php';
 
@@ -42,13 +48,6 @@ if(isset($user) && $user->isLoggedIn()){}
     if (checkMenu(6,$user->data()->id) || checkMenu(2,$user->data()->id) || checkMenu(7,$user->data()->id)){
       include $abs_us_root.$us_url_root.'usersc/modules/card_flip/BL_Module.php';
     }
-
-    //Include the FPDP Module
-    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/FP_Module.php';
-
-    //Include the Safe Passage Module
-    include $abs_us_root.$us_url_root.'usersc/modules/card_flip/SafePassage_Module.php';
-
 
     // //Include the Travelers Module - ***** ADD ONCE CREATED ****
     // if (checkMenu(4,$user->data()->id)){
