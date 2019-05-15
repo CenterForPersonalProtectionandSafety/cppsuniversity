@@ -7,10 +7,10 @@ Flashpoint De-escalation and Prevention Module
     <input type="checkbox" id="card5" class="more">
     <div class="content">
       <?php if ($user->data()->complete_fpdp == 0){ ?>
-      <div class="front" style="background-image: url('/usersc/images/wls.jpg')">
+      <div class="front" style="background-image: url('/usersc/images/fpdp.jpg')">
       <?php } ?>
       <?php if ($user->data()->complete_fpdp == 1){ ?>
-      <div class="front" style="background-image: url('/usersc/images/wls_watched.png')">
+      <div class="front" style="background-image: url('/usersc/images/fpdp_watched.png')">
       <?php } ?>
             <div class="inner">
                 <h2>Flashpoint De-escalation and Prevention</h2>
