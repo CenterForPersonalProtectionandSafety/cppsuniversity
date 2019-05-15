@@ -579,7 +579,7 @@ require_once $abs_us_root.$us_url_root.'usersc/includes/navigation.php';
                 initTimeout = 0;
                 timeoutErrorDisplayed = false;
                 //            var launchFileAltVal = $('launchFileAlt').value;
-                var launchFileAltVal = '../SCORM/WLS/index_lms.html';
+                var launchFileAltVal = '../SCORM/FPDP/index_lms.html';
                 //            var cookieNameAltVal = $('cookieNameAlt').value;
                 if(launchFileAltVal.length > 0)
                 {
