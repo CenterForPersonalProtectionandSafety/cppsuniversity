@@ -7,7 +7,7 @@ Safe Passage Module
     <input type="checkbox" id="card6" class="more">
     <div class="content">
       <?php if ($user->data()->complete_sp == 0){ ?>
-      <div class="front" style="background-image: url('/usersc/images/sp.jpg')">
+      <div class="front" style="background-image: url('/usersc/images/sp.png')">
       <?php } ?>
       <?php if ($user->data()->complete_sp == 1){ ?>
       <div class="front" style="background-image: url('/usersc/images/sp_watched.png')">
