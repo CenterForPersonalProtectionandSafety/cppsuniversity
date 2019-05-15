@@ -14,7 +14,7 @@ Safe Passage Module
       <?php } ?>
             <div class="inner">
                 <h2>Safe Passage</h2>
-                <label for="card4" class="button" aria-hidden="true">
+                <label for="card6" class="button" aria-hidden="true">
                     Details
                 </label>
             </div>
@@ -25,7 +25,7 @@ Safe Passage Module
                   <h4>Safe Passage</h4>
                   <p>CPPS has created this latest program to prepare any individual to become situationally aware of their surroundings, pick up on early indicators that something might be wrong, and respond effectively if “Lightning Does Strike” and they find themselves in an Extreme Violence event.</p>
                 </div>
-                <label for="card4" class="button return" aria-hidden="true">
+                <label for="card6" class="button return" aria-hidden="true">
                     <i class="fa fa-arrow-left"></i>
                 </label>
                 <a href="/usersc/viewWLS.php" class="button return button-play" aria-hidden="true">

@@ -14,7 +14,7 @@ Flashpoint De-escalation and Prevention Module
       <?php } ?>
             <div class="inner">
                 <h2>Flashpoint De-escalation and Prevention</h2>
-                <label for="card4" class="button" aria-hidden="true">
+                <label for="card5" class="button" aria-hidden="true">
                     Details
                 </label>
             </div>
@@ -25,7 +25,7 @@ Flashpoint De-escalation and Prevention Module
                   <h4>Flashpoint De-escalation and Prevention</h4>
                   <p>CPPS has created this latest program to prepare any individual to become situationally aware of their surroundings, pick up on early indicators that something might be wrong, and respond effectively if “Lightning Does Strike” and they find themselves in an Extreme Violence event.</p>
                 </div>
-                <label for="card4" class="button return" aria-hidden="true">
+                <label for="card5" class="button return" aria-hidden="true">
                     <i class="fa fa-arrow-left"></i>
                 </label>
                 <a href="/usersc/viewWLS.php" class="button return button-play" aria-hidden="true">
