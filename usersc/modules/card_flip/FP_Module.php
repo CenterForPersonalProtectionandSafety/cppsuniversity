@@ -28,7 +28,7 @@ Flashpoint De-escalation and Prevention Module
                 <label for="card5" class="button return" aria-hidden="true">
                     <i class="fa fa-arrow-left"></i>
                 </label>
-                <a href="/usersc/viewWLS.php" class="button return button-play" aria-hidden="true">
+                <a href="/usersc/viewFPDP.php" class="button return button-play" aria-hidden="true">
                   <i class="fa fa-play"></i>
                 </a>
             </div>
