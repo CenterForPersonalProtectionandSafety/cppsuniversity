@@ -23,7 +23,7 @@ Safe Passage Module
             <div class="inner">
                 <div class="description">
                   <h4>Safe Passage</h4>
-                  <p>CPPS has created this latest program to prepare any individual to become situationally aware of their surroundings, pick up on early indicators that something might be wrong, and respond effectively if “Lightning Does Strike” and they find themselves in an Extreme Violence event.</p>
+                  <p>Reduce your exposure and those your protect; guide your people through the key stages of travel and provide them with critical strategies, techniques and procedures aimed at minimizing travel risks including how to survive a hostage situation.</p>
                 </div>
                 <label for="card6" class="button return" aria-hidden="true">
                     <i class="fa fa-arrow-left"></i>

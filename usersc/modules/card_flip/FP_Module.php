@@ -23,7 +23,14 @@ Flashpoint De-escalation and Prevention Module
             <div class="inner">
                 <div class="description">
                   <h4>Flashpoint De-escalation and Prevention</h4>
-                  <p>CPPS has created this latest program to prepare any individual to become situationally aware of their surroundings, pick up on early indicators that something might be wrong, and respond effectively if “Lightning Does Strike” and they find themselves in an Extreme Violence event.</p>
+                  <p>Research shows that over 2 million people are affected each year by violent victimizations in the workplace at a cost of over 100 billion dollars to U.S. corporations annually.  Violence, however, is almost always evolutionary with warning signs along the way.  In this 12-minute video, viewers are equipped to:</p>
+                    <ul>
+                      <li>Understand what Workplace Violence is</li>
+                      <li>Recognize Behaviors of Concern before violence occurs</li>
+                      <li>Understand how to report concerns once they are observed</li>
+                      <li>Recognize indicators that a co-worker might be involved in a Domestic or Intimate Partner violence relationship…and what to do about it</li>
+                      <li>Understand key strategies for de-escalating tense situations in the workplace</li>
+                    </ul>
                 </div>
                 <label for="card5" class="button return" aria-hidden="true">
                     <i class="fa fa-arrow-left"></i>
