@@ -27,8 +27,8 @@ $GLOBALS['config'] = array(
 	'mysql'      => array(
 'host'         => 'localhost',
 'username'     => 'root',
-'password'     => '1357RiskyDiscos!',
-'db'           => 'university',
+'password'     => 'CPPSdev1!',
+'db'           => 'cpps_university',
 ),
 'remember'        => array(
   'cookie_name'   => 'pmqesoxiw318374csb',
