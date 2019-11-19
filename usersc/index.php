@@ -15,7 +15,7 @@ if($user->data()->first_login_pass_reset == 0) {
 	   <h3>WELCOME TO</h3>
 	   <!-- <h1 class="display-3">CPPS Employees</h1>
 	   <h3 class="lead pb-4">To CPPS University</h3> -->
-     <img src="images/cpps_white_logo_small.png" alt="">
+     <img src="images/cpps_white_logo.png" alt="">
 	   <!-- <a href="#" id="link_about" class="btn btn-md" role="button">About Us</a> -->
 	  </div>
 	</header>
