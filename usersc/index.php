@@ -60,14 +60,11 @@ if($user->data()->first_login_pass_reset == 0) {
 	          </div>
 	      </div>
 	    </div>
-	    <!-- <div class="text-center">
-	      <a href="#" id="sec_tier2_link" class="sec-btn btn-md" role="button"><i class="fa fa-arrow-down"></i></a>
-	    </div> -->
 	  </div>
 	</div>
 
 	<!-- Course Modules -->
-	<div id="" class="row">
+	<div id="fpdp" class="row">
 	  <div class="col-xl custom-col">
 	    <div class="container">
 	      <h2 class="display-4 text-center mt-5 mb-3">Flashpoint DP</h2>
@@ -77,13 +74,60 @@ if($user->data()->first_login_pass_reset == 0) {
 	    <div class="wrapper">
 	      <?php include $abs_us_root.$us_url_root.'courses/FPDP/cards/FPDP_Card.php';?>
 	    </div>
-      <div class="text-center">
-        <a href="#" id="to_top_link" class="sec-btn btn-md" role="button"><i class="fa fa-arrow-up"></i></a>
-      </div>
-
 	  </div>
 	</div>
+  
+  <div id="sp" class="row">
+    <div class="col-xl custom-col">
+      <div class="container">
+        <h2 class="display-4 text-center mt-5 mb-3">Safe Passage</h2>
+        <hr>
+        <p class="sec-description"></p>
+      </div>
+      <div class="wrapper">
+        <?php include $abs_us_root.$us_url_root.'courses/SP/cards/SP_Card.php';?>
+      </div>
+    </div>
+  </div>
 
+  <div id="tier2" class="row">
+    <div class="col-xl custom-col">
+      <div class="container">
+        <h2 class="display-4 text-center mt-5 mb-3">Tier 2</h2>
+        <hr>
+        <p class="sec-description"></p>
+      </div>
+      <div class="wrapper">
+        <?php include $abs_us_root.$us_url_root.'courses/Tier2/cards/Tier2_Card.php';?>
+      </div>
+    </div>
+  </div>
+
+  <div id="tier3" class="row">
+    <div class="col-xl custom-col">
+      <div class="container">
+        <h2 class="display-4 text-center mt-5 mb-3">Tier 3</h2>
+        <hr>
+        <p class="sec-description"></p>
+      </div>
+      <div class="wrapper">
+        <?php include $abs_us_root.$us_url_root.'courses/Tier3/cards/Tier3_Card.php';?>
+      </div>
+    </div>
+  </div>
+
+  <div id="wls" class="row">
+    <div class="col-xl custom-col">
+      <div class="container">
+        <h2 class="display-4 text-center mt-5 mb-3">When Lightning Strikes</h2>
+        <hr>
+        <p class="sec-description"></p>
+      </div>
+      <div class="wrapper">
+        <?php include $abs_us_root.$us_url_root.'courses/WLS/cards/WLS_Card.php';?>
+      </div>
+    </div>
+  </div>
 
 <?php  languageSwitcher();?>
 <!-- Place any per-page javascript here -->
