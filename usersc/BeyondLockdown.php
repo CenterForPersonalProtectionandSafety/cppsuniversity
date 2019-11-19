@@ -4,6 +4,9 @@ require_once $abs_us_root.$us_url_root.'users/includes/template/prep.php';
 if(isset($user) && $user->isLoggedIn()){
 }
 ?>
+<!-- Custom Beyond Lockdown CSS -->
+<link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/bl.css">
+
   <a id="to-top" title="Back to top" href="#"><i class="fa fa-arrow-up"></i></a>
 
 	<!-- Hero Banner Welcome Section -->

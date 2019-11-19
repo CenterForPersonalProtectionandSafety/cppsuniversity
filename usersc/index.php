@@ -7,8 +7,9 @@ if(isset($user) && $user->isLoggedIn()){
 if($user->data()->first_login_pass_reset == 0) {
   Redirect::to($us_url_root.'usersc/user_settings.php');
 }
-
 ?>
+
+
 	<!-- Hero Banner Welcome Section -->
 	<header id="hero-section"class="jumbotron jumbotron-fluid hero">
 	  <div class="container-fluid text-center">
@@ -76,7 +77,7 @@ if($user->data()->first_login_pass_reset == 0) {
 	    </div>
 	  </div>
 	</div>
-  
+
   <div id="sp" class="row">
     <div class="col-xl custom-col">
       <div class="container">
