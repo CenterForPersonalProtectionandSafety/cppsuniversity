@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="<?=$us_url_root?>users/fonts/css/font-awesome.min.css">
 <link href="<?=$us_url_root?>users/css/datatables.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 <!-- Custom CSS -->
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/custom.css">
