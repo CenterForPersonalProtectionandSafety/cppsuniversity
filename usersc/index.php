@@ -16,7 +16,6 @@ if($user->data()->first_login_pass_reset == 0) {
 	   <h1 class="display-3">CPPS Employees</h1>
 	   <h3 class="lead pb-4">To CPPS University</h3>
 	   <a href="#" id="link_about" class="btn btn-md" role="button">About Us</a>
-	   <a href="#" id="tier2_link" class="btn btn-md" role="button">Onboarding Courses</a>
 	  </div>
 	</header>
 
@@ -60,33 +59,22 @@ if($user->data()->first_login_pass_reset == 0) {
 	          </div>
 	      </div>
 	    </div>
-	    <div class="text-center">
+	    <!-- <div class="text-center">
 	      <a href="#" id="sec_tier2_link" class="sec-btn btn-md" role="button"><i class="fa fa-arrow-down"></i></a>
-	    </div>
+	    </div> -->
 	  </div>
 	</div>
 
 	<!-- Course Modules -->
-	<div id="t2course" class="row">
+	<div id="" class="row">
 	  <div class="col-xl custom-col">
 	    <div class="container">
-	      <h2 class="display-4 text-center mt-5 mb-3">Onboarding Training</h2>
+	      <h2 class="display-4 text-center mt-5 mb-3">Flashpoint DP</h2>
 	      <hr>
 	      <p class="sec-description"></p>
 	    </div>
 	    <div class="wrapper">
-	      <?php
-	          // -- card_flip
-	          //Include OAE Card
-	          include $abs_us_root.$us_url_root.'courses/OAE/cards/OAE_Card.php';
-
-            //Include OS Card
-	          include $abs_us_root.$us_url_root.'courses/OS/cards/OS_Card.php';
-
-            //Include OTT Card
-	          include $abs_us_root.$us_url_root.'courses/OTT/cards/OTT_Card.php';
-
-	       ?>
+	      <?php include $abs_us_root.$us_url_root.'courses/FPDP/cards/FPDP_Card.php';?>
 	    </div>
       <div class="text-center">
         <a href="#" id="to_top_link" class="sec-btn btn-md" role="button"><i class="fa fa-arrow-up"></i></a>
