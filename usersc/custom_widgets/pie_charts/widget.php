@@ -6,37 +6,12 @@
 <?php
 
   //Queries for T2M1 Course
-  $t2m1Complete = $db->query("SELECT id FROM users WHERE complete_t2m1 = 1",array(1))->count();
-  $t2m1Incomplete = $db->query("SELECT id FROM users WHERE complete_t2m1 = 0",array(0))->count();
+  $elearningComplete = $db->query("SELECT id FROM users WHERE complete_elearning = 1",array(1))->count();
+  $elearningIncomplete = $db->query("SELECT id FROM users WHERE complete_elearning = 0",array(0))->count();
   //Queries for T2M2 Course
-  $t2m2Complete = $db->query("SELECT id FROM users WHERE complete_t2m2 = 1",array(1))->count();
-  $t2m2Incomplete = $db->query("SELECT id FROM users WHERE complete_t2m2 = 0",array(0))->count();
-  //Queries for T2M3 Course
-  $t2m3Complete = $db->query("SELECT id FROM users WHERE complete_t2m3 = 1",array(1))->count();
-  $t2m3Incomplete = $db->query("SELECT id FROM users WHERE complete_t2m3 = 0",array(0))->count();
-  //Queries for T2M4 Course
-  $t2m4Complete = $db->query("SELECT id FROM users WHERE complete_t2m4 = 1",array(1))->count();
-  $t2m4Incomplete = $db->query("SELECT id FROM users WHERE complete_t2m4 = 0",array(0))->count();
-  //Queries for T2M5 Course
-  $t2m5Complete = $db->query("SELECT id FROM users WHERE complete_t2m5 = 1",array(1))->count();
-  $t2m5Incomplete = $db->query("SELECT id FROM users WHERE complete_t2m5 = 0",array(0))->count();
-  //Queries for T2Quiz Course
-  $t2quizComplete = $db->query("SELECT id FROM users WHERE complete_t2quiz = 1",array(1))->count();
-  $t2quizIncomplete = $db->query("SELECT id FROM users WHERE complete_t2quiz = 0",array(0))->count();
+  $videoComplete = $db->query("SELECT id FROM users WHERE complete_video = 1",array(1))->count();
+  $videoIncomplete = $db->query("SELECT id FROM users WHERE complete_video = 0",array(0))->count();
 
-
-  //Queries for T3M1 Course
-  $t3m1Complete = $db->query("SELECT id FROM users WHERE complete_t3m1 = 1",array(1))->count();
-  $t3m1Incomplete = $db->query("SELECT id FROM users WHERE complete_t3m1 = 0",array(0))->count();
-  //Queries for T3M2 Course
-  $t3m2Complete = $db->query("SELECT id FROM users WHERE complete_t3m2 = 1",array(1))->count();
-  $t3m2Incomplete = $db->query("SELECT id FROM users WHERE complete_t3m2 = 0",array(0))->count();
-  //Queries for T3M3 Course
-  $t3m3Complete = $db->query("SELECT id FROM users WHERE complete_t3m3 = 1",array(1))->count();
-  $t3m3Incomplete = $db->query("SELECT id FROM users WHERE complete_t3m3 = 0",array(0))->count();
-  //Queries for T3Quiz Course
-  $t3quizComplete = $db->query("SELECT id FROM users WHERE complete_t3quiz = 1",array(1))->count();
-  $t3quizIncomplete = $db->query("SELECT id FROM users WHERE complete_t3quiz = 0",array(0))->count();
 ?>
 
 <style>
@@ -48,139 +23,58 @@
 </style>
 
 
-  <!-- TIER 2 -->
+  <!-- E-Learning -->
   <div class="row">
     <div class="col-lg-6">
-      <h4>Tier-2</h4></br>
+      <h4>E-Learning Course</h4></br>
     </div>
   </div>
 
   <div class="row">
     <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t2m1">
+      <a href="<?=$us_url_root?>usersc/client_admin.php?view=elearning">
         <div class="card chart">
           <div class="card-body">
-            <h4 class="mb-3">Tier 2 Module 1 </h4>
-            <canvas id="t2m1-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t2m2">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 2 Module 2 </h4>
-            <canvas id="t2m2-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t2m3">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 2 Module 3 </h4>
-            <canvas id="t2m3-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t2m4">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 2 Module 4 </h4>
-            <canvas id="t2m4-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t2m5">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 2 Module 5 </h4>
-            <canvas id="t2m5-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t2quiz">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 2 Quiz </h4>
-            <canvas id="t2quiz-chart"></canvas>
+            <h4 class="mb-3">E-Learning </h4>
+            <canvas id="elearning-chart"></canvas>
           </div>
         </div>
       </a>
     </div>
   </div>
 
-  <!-- TIER 3 -->
+  <!-- Video -->
   <div class="row">
     <div class="col-lg-6">
-      <h4>Tier-3</h4></br>
+      <h4>Video Course</h4></br>
     </div>
   </div>
 
   <div class="row">
     <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t3m1">
+      <a href="<?=$us_url_root?>usersc/client_admin.php?view=video">
         <div class="card chart">
           <div class="card-body">
-            <h4 class="mb-3">Tier 3 Module 1 </h4>
-            <canvas id="t3m1-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t3m2">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 3 Module 2 </h4>
-            <canvas id="t3m2-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t3m3">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 3 Module 3 </h4>
-            <canvas id="t3m3-chart"></canvas>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="col-lg-6">
-      <a href="<?=$us_url_root?>usersc/client_admin.php?view=t3quiz">
-        <div class="card chart">
-          <div class="card-body">
-            <h4 class="mb-3">Tier 3 Quiz </h4>
-            <canvas id="t3quiz-chart"></canvas>
+            <h4 class="mb-3">Video </h4>
+            <canvas id="video-chart"></canvas>
           </div>
         </div>
       </a>
     </div>
   </div>
-
 
 
 <!-- end of widget -->
 <!-- Put any javascript here -->
 <script type="text/javascript">
 $(document).ready(function() {
-  var ctx = document.getElementById( "t2m1-chart" );
+  var ctx = document.getElementById( "elearning-chart" );
       ctx.height = 125;
       var blChart = new Chart( ctx, {
           type: 'pie',
           data: {
               datasets: [ {
-                  data: [ <?=$t2m1Complete?>, <?=$t2m1Incomplete?> ],
+                  data: [ <?=$elearningComplete?>, <?=$elearningIncomplete?> ],
                   backgroundColor: [
                                       "rgba(224, 87, 106, 1)",
                                       "rgba(93, 225, 207, 1)"
@@ -200,224 +94,13 @@ $(document).ready(function() {
               responsive: true
           }
       } );
-  var ctx = document.getElementById( "t2m2-chart" );
+  var ctx = document.getElementById( "video-chart" );
       ctx.height = 125;
       var blChart = new Chart( ctx, {
           type: 'pie',
           data: {
               datasets: [ {
-                  data: [ <?=$t2m2Complete?>, <?=$t2m2Incomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-  var ctx = document.getElementById( "t2m3-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t2m3Complete?>, <?=$t2m3Incomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-  var ctx = document.getElementById( "t2m4-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t2m4Complete?>, <?=$t2m4Incomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-  var ctx = document.getElementById( "t2m5-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t2m5Complete?>, <?=$t2m5Incomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-  var ctx = document.getElementById( "t2quiz-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t2quizComplete?>, <?=$t2quizIncomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-
-
-
-  var ctx = document.getElementById( "t3m1-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t3m1Complete?>, <?=$t3m1Incomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-  var ctx = document.getElementById( "t3m2-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t3m2Complete?>, <?=$t3m2Incomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-  var ctx = document.getElementById( "t3m3-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t3m3Complete?>, <?=$t3m3Incomplete?> ],
-                  backgroundColor: [
-                                      "rgba(224, 87, 106, 1)",
-                                      "rgba(93, 225, 207, 1)"
-                                  ],
-                  hoverBackgroundColor: [
-                                      "rgba(224, 87, 106, .6)",
-                                      "rgba(93, 225, 207, .7)"
-                                  ]
-
-                              } ],
-              labels: [
-                              "Complete",
-                              "Incomplete"
-                          ]
-          },
-          options: {
-              responsive: true
-          }
-      } );
-  var ctx = document.getElementById( "t3quiz-chart" );
-      ctx.height = 125;
-      var blChart = new Chart( ctx, {
-          type: 'pie',
-          data: {
-              datasets: [ {
-                  data: [ <?=$t3quizComplete?>, <?=$t3quizIncomplete?> ],
+                  data: [ <?=$videoComplete?>, <?=$videoIncomplete?> ],
                   backgroundColor: [
                                       "rgba(224, 87, 106, 1)",
                                       "rgba(93, 225, 207, 1)"

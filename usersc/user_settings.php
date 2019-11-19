@@ -302,8 +302,8 @@ $userdetails=$user2->data();
       <input type="hidden" name="csrf" value="<?=Token::generate();?>" />
 
       <div class="col text-center">
-        <input class='sec-btn' type='submit' value='<?=lang("GEN_UPDATE");?>' class='submit' />
-        <a class="sec-btn" href="index.php"><?=lang("GEN_CANCEL");?></a>
+        <input class='btn usr-btn' type='submit' value='<?=lang("GEN_UPDATE");?>' class='submit' />
+        <a class="btn usr-btn" href="index.php"><?=lang("GEN_CANCEL");?></a>
       </div>
 
     </form>

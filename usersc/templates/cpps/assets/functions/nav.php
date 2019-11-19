@@ -1,3 +1,5 @@
+
+
 <?php if($user->isLoggedIn()){ //anyone is logged in?>
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 		<div class="container">
@@ -10,8 +12,17 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto ">
 
+						<li class="nav-item">
+							<a id="sks_nav" class="nav-link" href="#"> BACKGROUND</a>
+						</li>
+						<li class="nav-item">
+							<a id="about_nav" class="nav-link" href="#"> ABOUT</a>
+						</li>
+						<li class="nav-item">
+							<a id="courses_nav" class="nav-link" href="#"> COURSES</a>
+						</li>
 						<li class="nav-item navbar-right dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-cog"></i> Options</a>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo strtoupper(echousername($user->data()->id));?></a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 								<?php if (checkMenu(2,$user->data()->id)) {  //Links for permission level 2 (Superuser) ?>
@@ -25,15 +36,9 @@
 									<a class="dropdown-item" href="<?=$us_url_root?>usersc/client_admin.php?view=learner"><i class="fa fa-file-text"></i> Learners List</a>
 									<div class="dropdown-divider"></div>
 								<?php } // if user is logged in ?>
-
+									<a class="dropdown-item" href="<?=$us_url_root?>usersc/user_settings.php"><i class="fa fa-user"></i> User Settings</a>
 									<a class="dropdown-item" href="<?=$us_url_root?>users/logout.php"><i class="fa fa-power-off"></i> Logout</a>
 							</div>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="<?=$us_url_root?>usersc/user_settings.php"><i class="fa fa-fw fa-user"></i><?php echo echousername($user->data()->id);?></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="<?=$us_url_root?>users/logout.php"><i class="fa fa-power-off"></i> Logout</a>
 						</li>
 					</ul>
 				<?php }?>

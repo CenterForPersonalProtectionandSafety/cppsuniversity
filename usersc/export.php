@@ -15,7 +15,7 @@ if(isset($_POST["Export"])){
   $output = fopen("php://output", "w");
 
   //Set Headers of Columns
-  fputcsv($output, array('Name', 'Email', 'Last-Sign-In', 'T2M1', 'T2M2', 'T2M3', 'T2M4', 'T2M5', 'T3M1', 'T3M2', 'T3M3', 'T3M4', 'T3M5'));
+  fputcsv($output, array('Name', 'Email', 'Last-Sign-In', 'ELearning', 'Video');
 
   //Run Query
   $db = DB::getInstance();
@@ -25,67 +25,19 @@ if(isset($_POST["Export"])){
   // Loop through query and to convert 0's and 1's into complete / incomplete statements for CSV
   foreach ($userData as $person) {
 
-    if($person->complete_t2m1==0){
-      $t2m1 = "Incomplete";
+    if($person->complete_elearning==0){
+      $elearning = "Incomplete";
     }else {
-      $t2m1 = "Complete";
+      $elearning = "Complete";
     }
 
-    if($person->complete_t2m2==0){
-      $t2m2 = "Incomplete";
+    if($person->complete_video==0){
+      $video = "Incomplete";
     }else {
-      $t2m2 = "Complete";
+      $video = "Complete";
     }
 
-    if($person->complete_t2m3==0){
-      $t2m3 = "Incomplete";
-    }else {
-      $t2m3 = "Complete";
-    }
-
-    if($person->complete_t2m4==0){
-      $t2m4 = "Incomplete";
-    }else {
-      $t2m4 = "Complete";
-    }
-
-    if($person->complete_t2m5==0){
-      $t2m5 = "Incomplete";
-    }else {
-      $t2m5 = "Complete";
-    }
-
-    if($person->complete_t3m1==0){
-      $t3m1 = "Incomplete";
-    }else {
-      $t3m1 = "Complete";
-    }
-
-    if($person->complete_t3m2==0){
-      $t3m2 = "Incomplete";
-    }else {
-      $t3m2 = "Complete";
-    }
-
-    if($person->complete_t3m3==0){
-      $t3m3 = "Incomplete";
-    }else {
-      $t3m3 = "Complete";
-    }
-
-    if($person->complete_t3m4==0){
-      $t3m4 = "Incomplete";
-    }else {
-      $t3m4 = "Complete";
-    }
-
-    if($person->complete_t3m5==0){
-      $t3m5 = "Incomplete";
-    }else {
-      $t3m5 = "Complete";
-    }
-
-    fputcsv($output, array($person->fname . " " . $person->lname, $person->email, $person->last_login, $t2m1, $t2m2, $t2m3, $t2m4, $t2m5, $t3m1, $t3m2, $t3m3, $t3m4, $t3m5));
+    fputcsv($output, array($person->fname . " " . $person->lname, $person->email, $person->last_login, $elearning, $video));
   }
 
   fclose($output);

@@ -1,38 +1,51 @@
-$(document).scroll(function () {
-  var $nav = $(".fixed-top");
-  $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
-});
+// $(document).scroll(function () {
+//   var $nav = $(".fixed-top");
+//   $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+// });
 
 function scrollToAnchor(aid) {
   var aTag = $("div[id='"+ aid +"']");
   $('html,body').animate({scrollTop: aTag.offset().top},'slow');
 }
-
-$("#link_about").click(function() {
-   scrollToAnchor('aboutus');
+// Navbar button scroll
+$("#sks_nav").click(function() {
+   scrollToAnchor('sks');
 });
 
-$("#tier2_link").click(function() {
-   scrollToAnchor('t2course');
+$("#about_nav").click(function() {
+   scrollToAnchor('about');
 });
 
-$("#tier3_link").click(function() {
-   scrollToAnchor('t3course');
+$("#courses_nav").click(function() {
+   scrollToAnchor('courses');
 });
 
-$("#sec_tier2_link").click(function() {
-   scrollToAnchor('t2course');
+// Home page button scroll
+$("#sks_link").click(function() {
+   scrollToAnchor('sks');
 });
 
-$("#sec_tier3_link").click(function() {
-   scrollToAnchor('t3course');
+$("#about_link").click(function() {
+   scrollToAnchor('about');
 });
 
-function scrollupToAnchor(aid){
-  var aTag = $("div[id='"+ aid +"']");
-  $('html,body').animate({scrollTop: 0},'slow');
-}
+$("#courses_link").click(function() {
+   scrollToAnchor('courses');
+});
 
-$("#to_top_link").click(function() {
-   scrollupToAnchor('hero-section');
+$(window).scroll(function() {
+    var height = $(window).scrollTop();
+    if (height > 850) {
+        $('#to-top').fadeIn();
+    } else {
+        $('#to-top').fadeOut();
+    }
+});
+$(document).ready(function() {
+    $("#to-top").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
+
 });
