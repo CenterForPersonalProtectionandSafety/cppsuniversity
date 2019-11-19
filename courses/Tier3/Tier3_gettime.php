@@ -11,7 +11,7 @@ $user_id = $user->data()->id;
 
 
 //get bookmark
-$myvalue = $user->data()->t3m1_bookmark;
+$myvalue = $user->data()->tier3_bookmark;
 return $myvalue;
 
 //save bookmark
