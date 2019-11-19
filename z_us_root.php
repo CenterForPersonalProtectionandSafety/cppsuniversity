@@ -1,5 +1,5 @@
 <?php
-$path=['','users/','usersc/', 'courses/BL/', 'courses/FPDP/', 'courses/SP/', 'courses/Tier2/', 'courses/Tier3/', 'courses/WLS/'];
+$path=['','users/','usersc/', 'courses/BL/', 'courses/FPDP/', 'courses/SP/', 'courses/Tier2/', 'courses/Tier3/', 'courses/WLS/', 'courses/BL/ELearning/', 'courses/BL/Video/'];
 $abs_us_root=$_SERVER['DOCUMENT_ROOT'];
 
 $self_path=explode("/", $_SERVER['PHP_SELF']);
