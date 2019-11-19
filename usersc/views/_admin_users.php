@@ -189,7 +189,8 @@ if (!empty($_POST)) {
     $random_password = random_password();
   ?>
 
-
+  <!--  Add checkMenu(X,$user->data()->id) ||  with proper permission id value-->
+  <?php if (checkMenu(3,$user->data()->id)){ ?>
 
   <div class="container">
     <h2>View Users</h2>
@@ -207,19 +208,26 @@ if (!empty($_POST)) {
           </tr>
         </thead>
         <tbody>
-        <?php foreach ($userData as $v1) { ?>
-          <tr>
-            <td><?=$v1->id?></td>
-            <td><?=$v1->username?></td>
-            <td><?=$v1->fname?> <?=$v1->lname?></td>
-            <td><?=$v1->email?></td>
-          </tr>
-        <?php } ?>
+          <?php
+          //Cycle through users
+          foreach ($userData as $v1) {
+            ?>
+            <tr>
+              <td><?=$v1->id?></td>
+              <td><?=$v1->username?></td>
+              <td><?=$v1->fname?> <?=$v1->lname?></td>
+              <td><?=$v1->email?></td>
+            </tr>
+          <?php } ?>
         </tbody>
       </table>
     </div>
+    <!-- <button class="btn btn-secondary btn-lg pull-right" data-toggle="modal" data-target="#adduser">
+      <i class="fa fa-plus"></i> Manually Add User
+    </button> -->
   </div>
 
+  <?php }else { include $abs_us_root.$us_url_root.'usersc/includes/warning.php'; } ?>
 
 
       <script type="text/javascript" src="js/pagination/datatables.min.js"></script>
