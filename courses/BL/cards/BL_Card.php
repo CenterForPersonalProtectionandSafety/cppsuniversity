@@ -6,10 +6,10 @@ BL Module
 <div class="card">
     <input type="checkbox" id="blcard" class="more" aria-hidden="true">
     <div class="content">
-        <?php if ($user->data()->complete_t2m1 == 0){ ?>
+        <?php if ($user->data()->complete_bl == 0){ ?>
         <div class="front" style="background-image: url('/usersc/images/modules/')">
         <?php } ?>
-        <?php if ($user->data()->complete_t2m1 == 1){ ?>
+        <?php if ($user->data()->complete_bl == 1){ ?>
         <div class="front" style="background-image: url('/usersc/images/modules/')">
         <?php } ?>
             <div class="inner">
