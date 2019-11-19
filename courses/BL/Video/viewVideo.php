@@ -30,7 +30,7 @@ SCORM Player - Tier 3
     function scormIsComplete() {
         //my code goes here
         jQuery.ajax({
-            url:"BL_iscomplete.php",
+            url:"Video_iscomplete.php",
             method:"POST",
             success: function() {
                 console.log('success');
@@ -46,7 +46,7 @@ SCORM Player - Tier 3
 
     function scormSaveTime(mytime) {
         jQuery.ajax({
-            url:"BL_savetime.php",
+            url:"Video_savetime.php",
             method:"POST",
             data:{mybookmark:mytime},
             success: function() {
@@ -61,7 +61,7 @@ SCORM Player - Tier 3
     function scormGetTime() {
         //my code goes here
         var mytime = jQuery.ajax({
-            url:"BL_gettime.php",
+            url:"Video_gettime.php",
             method:"POST",
             async: false,
             success: function() {
@@ -576,7 +576,7 @@ SCORM Player - Tier 3
                 initTimeout = 0;
                 timeoutErrorDisplayed = false;
                 //            var launchFileAltVal = $('launchFileAlt').value;
-                var launchFileAltVal = '../../SCORM/BL/index_lms.html';
+                var launchFileAltVal = '../../SCORM/BLVideo/index_lms.html';
                 //            var cookieNameAltVal = $('cookieNameAlt').value;
                 if(launchFileAltVal.length > 0)
                 {
