@@ -12,9 +12,9 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto ">
 
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a id="bl" class="nav-link" href="BeyondLockdown.php"> BeyondLockdown</a>
-						</li>
+						</li> -->
 
 						<li class="nav-item navbar-right dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo strtoupper(echousername($user->data()->id));?></a>
