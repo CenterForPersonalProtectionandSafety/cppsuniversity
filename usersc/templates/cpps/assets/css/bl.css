@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   text-align: center;
   color: #fff;
-  background-image: linear-gradient(rgba(37, 101, 163, .6), rgba(37, 101, 163, .6)), url('../../../../images/bl_hero_LI.jpg');
+  background-image: linear-gradient(rgba(37, 101, 163, .6), rgba(37, 101, 163, .6)), url('../../../../images/hero/bl_hero.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -258,101 +258,12 @@ hr.style-one {
     transition: all 0.8s;
 }
 /********************** SCROLL BUTTON END **********************/
-
-/********************** VIEW PAGES **********************/
-.view-page-logo {
-  padding-bottom: 2em;
-}
-.view-custom{
-  overflow: hidden;
-}
-
-@media only screen and (max-width: 450px) {
-  .view-page-text{
-    font-size: 15px;
-  }
-}
-/********************** VIEW PAGES END **********************/
-
-/********************** USER SETTINGS UPDATE **********************/
-.settings-hero{
-  width: 100%;
-  display: flex;
-  text-align: left;
-  padding-left: 4em;
-  padding-right: 4em;
-  padding-top: 6em;
-  padding-bottom: 6em;
-  background-color: #f9f9f9;
-  /* background-color: #2565a3; */
-  margin: 0;
-  height: 93vh;
-  overflow: hidden
-}
-
-.settings-hero label {
-    font-size: 1.5em;
-}
-
-.settings-hero h1 {
-    font-size: 5em;
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-    color: #343A40;
-}
-.settings-hero h3 {
-    font-size: 2em;
-}
-
-.usr-btn {
-  background-color: #2565a3;
-  color: #fff;
-  border: 3px solid #fff;
-}
-.usr-btn:hover {
-  border: 3px solid #2565a3;
-  background-color: #fff;
-  color: #2565a3;
-}
-@media only screen and (max-width: 400px) {
-  .usr-btn, .usr-btn:hover {
-    width: 90px;
-    padding: .2em;
-    font-size: 13px;
-    display: inline-block;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
-
-@media only screen and (max-width: 832px) {
-  .settings-hero h1{
-    font-size: 25px;
-  }
-  .settings-hero label{
-    font-size: 14px;
-  }
-  .settings-hero .usr-btn{
-    margin-top: 1em;
-  }
-}
-/********************** USER SETTINGS UPDATE END **********************/
-
 /********************** FOOTER **********************/
 .login-footer {
   height: 60px;
   line-height: 60px;
   color: white;
   background-color: #2565a3;
-  text-align: center;
-}
-.logout-footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  color: white;
   text-align: center;
 }
 /********************** FOOTER END**********************/

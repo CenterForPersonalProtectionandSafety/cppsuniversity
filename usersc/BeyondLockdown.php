@@ -17,7 +17,7 @@ if(isset($user) && $user->isLoggedIn()){
      <hr class="style-one">
      <p class="header-text">Preventing and Responding to Extreme School Violence</p>
      <a href="#" id="sks_link" class="btn btn-md" role="button">Background</a>
-	   <a href="#" id="about_link" class="btn btn-md" role="button">About Us</a>
+	   <a href="#" id="blabout_link" class="btn btn-md" role="button">About</a>
      <a href="#" id="courses_link" class="btn btn-md" role="button">Courses</a>
 	  </div>
 	</header>
@@ -92,7 +92,7 @@ if(isset($user) && $user->isLoggedIn()){
           </div>
         </div>
         <div class="wrapper">
-        <?php include $abs_us_root.$us_url_root.'courses/ELearning/cards/ELearning_Card.php'; ?>
+        <?php include $abs_us_root.$us_url_root.'courses/BL/ELearning/cards/ELearning_Card.php'; ?>
         </div>
       </div>
       <div class="col-md-5">
@@ -104,7 +104,7 @@ if(isset($user) && $user->isLoggedIn()){
           </div>
         </div>
         <div class="wrapper">
-        <?php include $abs_us_root.$us_url_root.'courses/Video/cards/Video_Card.php'; ?>
+        <?php include $abs_us_root.$us_url_root.'courses/BL/Video/cards/Video_Card.php'; ?>
         </div>
       </div>
       <div class="col-md-1"></div>

@@ -3,36 +3,49 @@
 //   $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
 // });
 
-function scrollToAnchor(aid) {
+function sectionScrollToAnchor(aid) {
+  var aTag = $("section[id='"+ aid +"']");
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+//Main Page button scroll
+$("#about_link").click(function() {
+   sectionScrollToAnchor('aboutus');
+});
+
+$("#video_link").click(function() {
+   sectionScrollToAnchor('videos');
+});
+
+$("#elearning_link").click(function() {
+   sectionScrollToAnchor('elearnings');
+});
+
+//Safe Passage button scroll
+$("#sp_link").click(function() {
+   sectionScrollToAnchor('sp');
+});
+
+
+
+function divScrollToAnchor(aid) {
   var aTag = $("div[id='"+ aid +"']");
   $('html,body').animate({scrollTop: aTag.offset().top},'slow');
 }
-// Navbar button scroll
-$("#sks_nav").click(function() {
-   scrollToAnchor('sks');
-});
-
-$("#about_nav").click(function() {
-   scrollToAnchor('about');
-});
-
-$("#courses_nav").click(function() {
-   scrollToAnchor('courses');
-});
-
-// Home page button scroll
+// Beyond Lockdown button scroll
 $("#sks_link").click(function() {
-   scrollToAnchor('sks');
+   divScrollToAnchor('sks');
 });
 
-$("#about_link").click(function() {
-   scrollToAnchor('about');
+$("#blabout_link").click(function() {
+   divScrollToAnchor('about');
 });
 
 $("#courses_link").click(function() {
-   scrollToAnchor('courses');
+   divScrollToAnchor('courses');
 });
 
+
+// To top button
 $(window).scroll(function() {
     var height = $(window).scrollTop();
     if (height > 850) {

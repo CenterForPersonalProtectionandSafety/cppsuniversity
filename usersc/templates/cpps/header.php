@@ -12,7 +12,7 @@
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/custom.css">
+<link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/main.css">
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/card-flip.css">
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/hamburgers.min.css">
 

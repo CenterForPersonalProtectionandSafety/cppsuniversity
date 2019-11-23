@@ -128,7 +128,7 @@ if (!empty($_POST['login_hook'])) {
     ?>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" type="text/css" href="templates/cpps/assets/css/logged_out.css">
+<link rel="stylesheet" type="text/css" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/logged_out.css">
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function(){
       document.getElementById('loginModal').style.display='block'

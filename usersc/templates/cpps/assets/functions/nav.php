@@ -12,12 +12,24 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto ">
 
-						<!-- <li class="nav-item">
-							<a id="bl" class="nav-link" href="BeyondLockdown.php"> BeyondLockdown</a>
-						</li> -->
+						<li class="nav-item">
+							<a id="home" class="nav-link" href="index.php"> Home</a>
+						</li>
+
+						<li class="nav-item">
+							<a id="corporate" class="nav-link" href="Corporate.php"> Corporate</a>
+						</li>
+
+						<li class="nav-item">
+							<a id="sp" class="nav-link" href="SafePassage.php"> Safe Passage</a>
+						</li>
+
+						<li class="nav-item">
+							<a id="bl" class="nav-link" href="BeyondLockdown.php"> Beyond Lockdown</a>
+						</li>
 
 						<li class="nav-item navbar-right dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo strtoupper(echousername($user->data()->id));?></a>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <?php echo echousername($user->data()->id);?></a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 								<?php if (checkMenu(2,$user->data()->id)) {  //Links for permission level 2 (Superuser) ?>
