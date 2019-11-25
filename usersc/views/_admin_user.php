@@ -2,10 +2,10 @@
   <div class="page-header float-right">
     <div class="page-title">
       <ol class="breadcrumb text-right">
-        <li><a href="<?=$us_url_root?>users/admin.php">Dashboard</a></li>
+        <!-- <li><a href="<?=$us_url_root?>users/admin.php">Dashboard</a></li>
         <li>Manage</li>
         <li><a href="<?=$us_url_root?>users/admin.php?view=users">Users</a></li>
-        <li class="active">User</li>
+        <li class="active">User</li> -->
       </ol>
     </div>
   </div>
@@ -142,11 +142,17 @@
   }
 
 ?>
+<style media="screen">
+.customcard {
+  min-width: 35%;
+}
+</style>
+
 <div class="container">
   <h2>Course Edits for <?=$userdetails->fname?></h2>
   <hr />
   <div class="card-deck">
-    <div class="card">
+    <div class="card customcard">
       <?php if(!$t2){?><img src="images/modules/tier2.png" class="card-img-top" alt="..."><?php }?>
       <?php if($t2){?><img src="images/modules/tier2_complete.png" class="card-img-top" alt="..."><?php }?>
       <div class="card-body">
@@ -163,7 +169,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card customcard">
       <?php if(!$t3){?><img src="images/modules/tier3.png" class="card-img-top" alt="..."><?php }?>
       <?php if($t3){?><img src="images/modules/tier3_complete.png" class="card-img-top" alt="..."><?php }?>
       <div class="card-body">
@@ -180,7 +186,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card customcard">
       <?php if(!$fpdp){?><img src="images/modules/fpdp.png" class="card-img-top" alt="..."><?php }?>
       <?php if($fpdp){?><img src="images/modules/fpdp_complete.png" class="card-img-top" alt="..."><?php }?>
       <div class="card-body">
@@ -197,7 +203,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card customcard">
       <?php if(!$wls){?><img src="images/modules/wls.png" class="card-img-top" alt="..."><?php }?>
       <?php if($wls){?><img src="images/modules/wls_complete.png" class="card-img-top" alt="..."><?php }?>
       <div class="card-body">
@@ -213,14 +219,8 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-
-<div class="container">
-  <hr />
-  <div class="card-deck">
-    <div class="card">
+    <div class="card customcard">
       <?php if(!$sp){?><img src="images/modules/sp.png" class="card-img-top" alt="..."><?php }?>
       <?php if($sp){?><img src="images/modules/sp_complete.png" class="card-img-top" alt="..."><?php }?>
       <div class="card-body">
@@ -237,7 +237,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card customcard">
       <?php if(!$ble){?><img src="images/modules/blelearning.png" class="card-img-top" alt="..."><?php }?>
       <?php if($ble){?><img src="images/modules/blelearning_complete.png" class="card-img-top" alt="..."><?php }?>
       <div class="card-body">
@@ -254,7 +254,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card customcard">
       <?php if(!$blv){?><img src="images/modules/blvideo.png" class="card-img-top" alt="..."><?php }?>
       <?php if($blv){?><img src="images/modules/blvideo_complete.png" class="card-img-top" alt="..."><?php }?>
       <div class="card-body">
@@ -270,5 +270,34 @@
         </div>
       </div>
     </div>
+
+    <div class="card customcard">
+      <img src="images/modules/placeholder.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">COMING SOON</h5>
+        <p class="card-text">Status:</p>
+      </div>
+      <div class="card-footer">
+        <div class="text-center">
+          <form class="" action="" method="post" name="">
+            <input type="submit" name="" class="btn btn-primary" value="Mark Complete" disabled />
+            <input type="submit" name="" class="btn btn-primary" value="Mark Incomplete" disabled />
+          </form>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
+
+
+<!-- <div class="container">
+  <hr />
+  <div class="card-deck">
+
+
+
+
+  </div>
+</div> -->
