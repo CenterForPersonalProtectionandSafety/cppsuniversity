@@ -9,7 +9,7 @@ SCORM Player - Tier 3
 <?php if (!securePage($_SERVER['PHP_SELF'])){die();} ?>
 
 <!-- Custom Beyond Lockdown CSS -->
-<link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/corporate.css">
+<link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/sp.css">
 
 <!-- Page Content -->
 <header id="hero-section"class="jumbotron jumbotron-fluid hero view-custom" onload="Utils.launchSCO(); return false;">
