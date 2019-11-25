@@ -12,7 +12,7 @@ if($user->data()->first_login_pass_reset == 0) {
 <!-- Custom Beyond Lockdown CSS -->
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/home.css">
 
-  <header>
+  <header onload="$('#carousel').carousel()">
     <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="3500">
       <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
