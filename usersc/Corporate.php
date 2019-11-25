@@ -5,7 +5,7 @@ if(isset($user) && $user->isLoggedIn()){
 }
 ?>
 
-<!-- Custom Beyond Lockdown CSS -->
+<!-- Custom Corporate CSS -->
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/corporate.css">
 
 	<!-- Hero Banner Welcome Section -->

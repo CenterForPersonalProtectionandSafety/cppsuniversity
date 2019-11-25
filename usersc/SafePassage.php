@@ -4,7 +4,7 @@ require_once $abs_us_root.$us_url_root.'users/includes/template/prep.php';
 if(isset($user) && $user->isLoggedIn()){
 }
 ?>
-<!-- Custom Beyond Lockdown CSS -->
+<!-- Custom Safe Passage CSS -->
 <link rel="stylesheet" href="<?=$us_url_root?>usersc/templates/<?=$settings->template?>/assets/css/sp.css">
 
 	<!-- Hero Banner Welcome Section -->
