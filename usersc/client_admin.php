@@ -61,12 +61,36 @@ ini_set('memory_limit','1024M');
       $path = usView('_admin_users.php');
       include($path);
       break;
-    case "elearning":
-      $path = usView('_elearning_list.php');
+    case "user":
+      $path = usView('_admin_user.php');
       include($path);
       break;
-    case "video":
-      $path = usView('_video_list.php');
+    case "tier2":
+      $path = usView('_tier2_list.php');
+      include($path);
+      break;
+    case "tier3":
+      $path = usView('_tier3_list.php');
+      include($path);
+      break;
+    case "fpdp":
+      $path = usView('_fpdp_list.php');
+      include($path);
+      break;
+    case "wls":
+      $path = usView('_wls_list.php');
+      include($path);
+      break;
+    case "sp":
+      $path = usView('_sp_list.php');
+      include($path);
+      break;
+    case "blelearning":
+      $path = usView('_blelearning_list.php');
+      include($path);
+      break;
+    case "blvideo":
+      $path = usView('_blvideo_list.php');
       include($path);
       break;
     default:

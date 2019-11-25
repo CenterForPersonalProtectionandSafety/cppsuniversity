@@ -15,7 +15,7 @@ if(isset($_POST["Export"])){
   $output = fopen("php://output", "w");
 
   //Set Headers of Columns
-  fputcsv($output, array('Name', 'Email', 'Last-Sign-In', 'ELearning', 'Video');
+  fputcsv($output, array('Name', 'Email', 'Tier 2', 'Tier 3', 'FPDP', 'WLS', 'Safe Passage', 'BL ELearning', 'BL Video');
 
   //Run Query
   $db = DB::getInstance();
@@ -25,19 +25,44 @@ if(isset($_POST["Export"])){
   // Loop through query and to convert 0's and 1's into complete / incomplete statements for CSV
   foreach ($userData as $person) {
 
-    if($person->complete_elearning==0){
-      $elearning = "Incomplete";
+    if($person->complete_tier2==0){
+      $tier2 = "Incomplete";
     }else {
-      $elearning = "Complete";
+      $tier2 = "Complete";
+    }
+    if($person->complete_tier3==0){
+      $tier3 = "Incomplete";
+    }else {
+      $tier3 = "Complete";
+    }
+    if($person->complete_fpdp==0){
+      $fpdp = "Incomplete";
+    }else {
+      $fpdp = "Complete";
+    }
+    if($person->complete_wls==0){
+      $wls = "Incomplete";
+    }else {
+      $wls = "Complete";
+    }
+    if($person->complete_sp==0){
+      $sp = "Incomplete";
+    }else {
+      $sp = "Complete";
+    }
+    if($person->complete_blelearning==0){
+      $blelearning = "Incomplete";
+    }else {
+      $blelearning = "Complete";
     }
 
-    if($person->complete_video==0){
-      $video = "Incomplete";
+    if($person->complete_blvideo==0){
+      $blvideo = "Incomplete";
     }else {
-      $video = "Complete";
+      $blvideo = "Complete";
     }
 
-    fputcsv($output, array($person->fname . " " . $person->lname, $person->email, $person->last_login, $elearning, $video));
+    fputcsv($output, array($person->fname . " " . $person->lname, $person->email, $tier2, $tier3, $fpdp, $wls, $sp, $blelearning, $blvideo));
   }
 
   fclose($output);

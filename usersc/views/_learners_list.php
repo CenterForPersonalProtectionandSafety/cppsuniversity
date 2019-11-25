@@ -29,8 +29,13 @@
       <thead class="thead-light">
         <tr>
           <th>Name</th><th>Email</th>
-          <th>E-Learning</th>
-          <th>Video</th>
+          <th>Tier 2</th>
+          <th>Tier 3</th>
+          <th>Flashpoint</th>
+          <th>WLS</th>
+          <th>Safe Passage</th>
+          <th>BL Elearning</th>
+          <th>BL Video</th>
         </tr>
       </thead>
       <tbody>
@@ -38,8 +43,13 @@
         <tr>
           <td><?=$v1->fname?> <?=$v1->lname?></td>
           <td><?=$v1->email?></td>
-          <td><?php if($v1->complete_elearning==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
-          <td><?php if($v1->complete_video==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_tier2==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_tier3==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_fpdp==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_wls==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_sp==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_blelearning==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_blvideo==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
         </tr>
       <?php } ?>
       </tbody>

@@ -17,7 +17,7 @@
 
 
 <div class="container">
-  <h2>Video Course Completed</h2>
+  <h2>Tier 3 Course Completed</h2>
   <?=resultBlock($errors,$successes);?>
   <hr />
   <div class="alluinfo">&nbsp;</div>
@@ -27,7 +27,7 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
-          <th>Video</th>
+          <th>Tier 3</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +35,7 @@
         <tr>
           <td><?=$v1->fname?> <?=$v1->lname?></td>
           <td><?=$v1->email?></td>
-          <td><?php if($v1->complete_video==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
+          <td><?php if($v1->complete_tier3==0) {?> <p>incomplete</p> <?php } else {?> <p>complete</p> <?php }?></td>
         </tr>
       <?php } ?>
       </tbody>
